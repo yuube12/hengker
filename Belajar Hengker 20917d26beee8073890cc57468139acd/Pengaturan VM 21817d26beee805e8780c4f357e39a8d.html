@@ -1,0 +1,812 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Pengaturan VM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  a, a.visited {
+    color: #9ecbff;
+  }
+
+  .source, .callout, .code, blockquote, table, th, td {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #e0e0e0;
+  }
+
+  .simple-table-header-color {
+    background: #333 !important;
+    color: #fff !important;
+  }
+
+  hr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .table_of_contents-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .highlight-default,
+  .highlight-gray,
+  .highlight-brown,
+  .highlight-orange,
+  .highlight-yellow,
+  .highlight-teal,
+  .highlight-blue,
+  .highlight-purple,
+  .highlight-pink,
+  .highlight-red {
+    color: inherit;
+  }
+
+  .highlight-gray_background,
+  .highlight-brown_background,
+  .highlight-orange_background,
+  .highlight-yellow_background,
+  .highlight-teal_background,
+  .highlight-blue_background,
+  .highlight-purple_background,
+  .highlight-pink_background,
+  .highlight-red_background {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .code,
+  code {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f78c6c;
+  }
+
+  blockquote {
+    border-left: 3px solid #888;
+    color: #ccc;
+  }
+
+  .bookmark-description {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .select-value-color-default,
+  .select-value-color-gray,
+  .select-value-color-brown,
+  .select-value-color-orange,
+  .select-value-color-yellow,
+  .select-value-color-green,
+  .select-value-color-blue,
+  .select-value-color-purple,
+  .select-value-color-pink,
+  .select-value-color-red {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+body {
+  padding: 0px 20px 50px 20px;
+}
+
+img {
+  border-radius: 20px;
+}
+
+.block-color-gray_background{
+  border-radius: 10px;
+}
+
+/* Callout dasar: flex container dengan gap */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+              /* fallback background */
+  border: 1px solid #ddd;
+  margin: 1.5em 0;
+}
+
+
+}
+
+/* Contoh ikon dalam callout */
+.callout .icon {
+  font-size: 1.5em;
+  flex-shrink: 0;
+}
+
+/* Konten callout */
+.callout h1,
+.callout h2,
+.callout h3,
+.callout p {
+  margin: 0;
+}
+
+
+	
+</style></head><body><article id="21817d26-beee-805e-8780-c4f357e39a8d" class="page sans"><header><img class="page-cover-image" src="Pengaturan%20VM%2021817d26beee805e8780c4f357e39a8d/hikari_nozomi_rl.jpg" style="object-position:center 64.66000000000001%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🖥️</span></div><h1 class="page-title">Pengaturan VM</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="21817d26-beee-80a0-8b2c-e4d0ce7402fe"><div style="font-size:1.5em"><span class="icon">🛠️</span></div><div style="width:100%"><h1 id="21817d26-beee-8049-8e46-dd97b60d9706" class="">Network</h1></div></figure><h2 id="21817d26-beee-805b-863b-d62a837b7ba6" class="">1. <strong>NAT (Network Address Translation)</strong></h2><h3 id="21817d26-beee-800a-988f-f85131b13b6a" class="">🛠 Penjelasan:</h3><ul id="21817d26-beee-8038-b7dc-c642c3682067" class="bulleted-list"><li style="list-style-type:disc">VM <strong>bisa internetan</strong>.</li></ul><ul id="21817d26-beee-80b7-9917-ec48bdf055e9" class="bulleted-list"><li style="list-style-type:disc"><strong>Terisolasi</strong> dari VM lain dan dari jaringan lokal.</li></ul><ul id="21817d26-beee-801c-8c20-d27bc4273521" class="bulleted-list"><li style="list-style-type:disc">Tidak bisa di-scan dari luar (kecuali kamu buat port forwarding).</li></ul><h3 id="21817d26-beee-8066-a33e-d4db7c3d5448" class="">✅ Digunakan Saat:</h3><ul id="21817d26-beee-80dc-b994-fe700710758d" class="bulleted-list"><li style="list-style-type:disc">Install tools, update, browsing.</li></ul><ul id="21817d26-beee-80cb-8500-ca08cdbb3d6a" class="bulleted-list"><li style="list-style-type:disc">Ingin aman dari luar, dan tidak perlu komunikasi antar VM.</li></ul><h3 id="21817d26-beee-80fd-b972-f8d8d25ca693" class="">❌ <strong>Tidak sepenuhnya anonim</strong>.</h3><ul id="21817d26-beee-8096-bc71-c72cab8d2968" class="bulleted-list"><li style="list-style-type:disc">Memang VM tidak terlihat di jaringan lokal, tapi:<ul id="21817d26-beee-80ad-b2c6-db4325479b6a" class="bulleted-list"><li style="list-style-type:circle">Semua trafik tetap lewat <strong>IP asli host kamu</strong>.</li></ul><ul id="21817d26-beee-804c-bfae-efb4eaffcb77" class="bulleted-list"><li style="list-style-type:circle">Jadi ISP tetap bisa tahu kamu mengakses apa.</li></ul></li></ul><ul id="21817d26-beee-80f3-a68f-e742967cac68" class="bulleted-list"><li style="list-style-type:disc">Kalau kamu pakai VPN di VM, itu <strong>bisa lebih aman</strong>, tapi host tetap terlihat oleh ISP.</li></ul><hr id="21817d26-beee-809c-a242-c70eaf04049a"/><h2 id="21817d26-beee-8033-b154-eb9035ade59f" class="">2. <strong>NAT Network</strong></h2><h3 id="21817d26-beee-80cd-8979-f02f42912f2f" class="">🛠 Penjelasan:</h3><ul id="21817d26-beee-806b-94eb-e67db2197764" class="bulleted-list"><li style="list-style-type:disc">Mirip NAT, tapi <strong>bisa antar VM saling terhubung</strong> dalam 1 jaringan virtual.</li></ul><ul id="21817d26-beee-8065-b3de-c5b1bed4bff0" class="bulleted-list"><li style="list-style-type:disc">Masih <strong>bisa internetan</strong>.</li></ul><ul id="21817d26-beee-802e-b200-d1a668ff22b4" class="bulleted-list"><li style="list-style-type:disc">Perlu setup NAT Network dulu via <em>VirtualBox Preferences</em>.</li></ul><h3 id="21817d26-beee-801b-b127-f21f97234b76" class="">✅ Digunakan Saat:</h3><ul id="21817d26-beee-8074-9ce4-db3fa45d4c6d" class="bulleted-list"><li style="list-style-type:disc">Simulasi jaringan lokal antar beberapa VM (cth: attacker &amp; korban).</li></ul><ul id="21817d26-beee-8013-9fc9-fae1eaee2921" class="bulleted-list"><li style="list-style-type:disc">CTF, malware lab multi-host, MITM antar VM.</li></ul><h3 id="21817d26-beee-8043-828d-ec906b7d2392" class="">✅ Bisa jadi <strong>cukup anonim</strong></h3><ul id="21817d26-beee-8074-aaac-f6aee21e1a8a" class="bulleted-list"><li style="list-style-type:disc">jika:<ul id="21817d26-beee-80b0-b167-ce084fef8ad6" class="bulleted-list"><li style="list-style-type:circle">VM tidak langsung pakai IP dari jaringan lokal.</li></ul><ul id="21817d26-beee-80d6-8613-f3eef3a13b22" class="bulleted-list"><li style="list-style-type:circle">Dan kamu <strong>menggunakan VPN/Tor</strong> langsung dari dalam VM.</li></ul></li></ul><ul id="21817d26-beee-8027-9542-ce521ab3c0d7" class="bulleted-list"><li style="list-style-type:disc">Tapi secara default masih <strong>tidak sepenuhnya anonim</strong> ke ISP.</li></ul><hr id="21817d26-beee-807d-85a3-fb641c44db48"/><h2 id="21817d26-beee-804a-92d7-f7cb63725223" class="">3. <strong>Bridged Adapter</strong></h2><h3 id="21817d26-beee-808c-8545-c897add66f4b" class="">🛠 Penjelasan:</h3><ul id="21817d26-beee-80df-968c-f9698b0d5cb5" class="bulleted-list"><li style="list-style-type:disc">VM <strong>terhubung langsung ke jaringan fisik</strong> (seperti komputer biasa).</li></ul><ul id="21817d26-beee-80ef-b751-e193d273fec1" class="bulleted-list"><li style="list-style-type:disc">Dapat IP dari router, <strong>bisa diakses dari perangkat lain</strong> di jaringan yang sama.</li></ul><h3 id="21817d26-beee-8033-ae7b-c2e8f27766fd" class="">✅ Digunakan Saat:</h3><ul id="21817d26-beee-80d4-9792-d5ca04c174d1" class="bulleted-list"><li style="list-style-type:disc">Butuh VM terlihat di jaringan nyata (misal: dicoba serang dari laptop lain).</li></ul><ul id="21817d26-beee-80c7-ba4c-f2edaa1fc27c" class="bulleted-list"><li style="list-style-type:disc">Ingin uji pentest dengan target yang ada di luar VM.</li></ul><h3 id="21817d26-beee-8054-954a-cf3d479b88b7" class="">❌ <strong>Paling tidak anonim</strong>.</h3><ul id="21817d26-beee-80d2-afc4-e07e8115ae94" class="bulleted-list"><li style="list-style-type:disc">Karena VM <strong>benar-benar muncul sebagai perangkat nyata di jaringan lokal kamu</strong>.</li></ul><ul id="21817d26-beee-80db-9416-d88368511cd0" class="bulleted-list"><li style="list-style-type:disc">Router dan semua perangkat lain akan melihat VM seperti komputer biasa.</li></ul><ul id="21817d26-beee-80ca-a716-f9b3763a6cd5" class="bulleted-list"><li style="list-style-type:disc"><strong>IP-nya berasal dari router rumah</strong>, dan MAC address bisa dengan mudah dilacak.</li></ul><ul id="21817d26-beee-8021-a11c-f6ca34b2edb3" class="bulleted-list"><li style="list-style-type:disc">ISP pun tahu kamu online dengan IP itu.</li></ul><hr id="21817d26-beee-80de-b2fa-ca7865120616"/><h2 id="21817d26-beee-8086-ba54-f5a2219917d5" class="">4. <strong>Not Attached</strong></h2><h3 id="21817d26-beee-80be-8ccb-e892634b5a28" class="">🛠 Penjelasan:</h3><ul id="21817d26-beee-803c-bb93-f508a14493ab" class="bulleted-list"><li style="list-style-type:disc">VM <strong>tidak punya koneksi jaringan sama sekali</strong>.</li></ul><ul id="21817d26-beee-80cb-ab6c-c676085886d6" class="bulleted-list"><li style="list-style-type:disc">Seperti komputer tanpa kabel LAN atau Wi-Fi.</li></ul><h3 id="21817d26-beee-807e-bb15-e784851b68b2" class="">✅ Digunakan Saat:</h3><ul id="21817d26-beee-80c1-a19a-d35e5528331b" class="bulleted-list"><li style="list-style-type:disc">Latihan pentesting offline.</li></ul><ul id="21817d26-beee-80da-8df9-f2506e1b60d8" class="bulleted-list"><li style="list-style-type:disc"><strong>Isolasi total</strong> untuk keamanan (cth: malware analysis).</li></ul><ul id="21817d26-beee-803a-82a2-fe8842bdc176" class="bulleted-list"><li style="list-style-type:disc">Tidak ingin VM mengakses atau diakses siapa pun.</li></ul><h3 id="21817d26-beee-80fd-87ae-ef197e264429" class="">✅ <strong>Paling anonim</strong> secara jaringan.</h3><ul id="21817d26-beee-80fa-abcd-f3f3cbdf70a2" class="bulleted-list"><li style="list-style-type:disc">Karena <strong>tidak ada koneksi ke mana pun</strong>.</li></ul><ul id="21817d26-beee-8048-a801-eb875e2fe06c" class="bulleted-list"><li style="list-style-type:disc">Cocok untuk <strong>analisis malware offline</strong> atau <strong>latihan tanpa risiko kebocoran data</strong>.</li></ul><ul id="21817d26-beee-808e-99a0-f84234ecb1f1" class="bulleted-list"><li style="list-style-type:disc">Tapi tentu saja <strong>tidak bisa browsing atau koneksi luar</strong>.</li></ul><hr id="21817d26-beee-8088-9fee-ea9d617973e9"/><table id="21817d26-beee-809b-bcb1-c5a907f5df79" class="simple-table"><tbody><tr id="21817d26-beee-8032-826b-ef5cbbb5cc48"><td id="e}wO" class="">Mode</td><td id="Ces&lt;" class="">Internet</td><td id="}aEe" class="">Antar VM</td><td id="Ts|&lt;" class="">Host ke VM</td><td id="fz[e" class="">Gunakan Saat</td></tr><tr id="21817d26-beee-8031-86e3-cd1514881afb"><td id="e}wO" class="">NAT</td><td id="Ces&lt;" class="">✅</td><td id="}aEe" class="">❌</td><td id="Ts|&lt;" class="">❌*</td><td id="fz[e" class="">Update, install tools (1 VM)</td></tr><tr id="21817d26-beee-80f9-a20a-da7ad032ab7a"><td id="e}wO" class="">NAT Network</td><td id="Ces&lt;" class="">✅</td><td id="}aEe" class="">✅</td><td id="Ts|&lt;" class="">❌*</td><td id="fz[e" class="">Lab multi-VM, pentest antar mesin</td></tr><tr id="21817d26-beee-80f2-8930-ff1a66de16aa"><td id="e}wO" class="">Bridged</td><td id="Ces&lt;" class="">✅</td><td id="}aEe" class="">✅ (via LAN)</td><td id="Ts|&lt;" class="">✅</td><td id="fz[e" class="">Lab real network, uji dari luar</td></tr><tr id="21817d26-beee-8034-8b00-ef6c416b5d68"><td id="e}wO" class="">Not Attached</td><td id="Ces&lt;" class="">❌</td><td id="}aEe" class="">❌</td><td id="Ts|&lt;" class="">❌</td><td id="fz[e" class="">Isolasi, uji malware, no internet</td></tr></tbody></table><p id="21817d26-beee-80c7-9595-dcb907a9cd17" class="">* Port forwarding bisa digunakan tapi tidak praktis untuk pemula.</p><hr id="21817d26-beee-809f-bbbd-e957738bb952"/><h3 id="21817d26-beee-80be-b88f-e462789bfc31" class="">Kenali bahayanya:</h3><table id="21817d26-beee-80e2-af51-d44ea3ae6ded" class="simple-table"><tbody><tr id="21817d26-beee-8016-b63e-de1711914093"><td id="CdMl" class="">Risiko</td><td id="`?nt" class="">NAT</td><td id="U}dr" class="">NAT Network</td><td id="r:l?" class="">Bridged</td></tr><tr id="21817d26-beee-8093-9892-d3053ca6dc82"><td id="CdMl" class="">VM terlihat di jaringan</td><td id="`?nt" class="">❌</td><td id="U}dr" class="">❌</td><td id="r:l?" class="">✅</td></tr><tr id="21817d26-beee-80ae-a5d0-d9fa1deb6b35"><td id="CdMl" class="">Malware serang jaringan luar</td><td id="`?nt" class="">❌ (kecuali port forwarding)</td><td id="U}dr" class="">❌ (terisolasi)</td><td id="r:l?" class="">✅ (sangat mungkin)</td></tr><tr id="21817d26-beee-8072-9baa-e35313c59db1"><td id="CdMl" class="">Akses balik ke host</td><td id="`?nt" class="">⚠️ (kalau ada fitur sharing aktif)</td><td id="U}dr" class="">⚠️ (sama)</td><td id="r:l?" class="">⚠️ Lebih terbuka</td></tr></tbody></table><p id="23e17d26-beee-8010-b7f8-de57f789f3ed" class="">
+</p><p id="21817d26-beee-801c-9188-dce6cdb6f9f9" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="23e17d26-beee-8033-8d79-c44a3e0ae4b8"><div style="font-size:1.5em"><span class="icon">💾</span></div><div style="width:100%"><h1 id="23e17d26-beee-802a-9e13-f95b9d5e6c0b" class="">Interface</h1></div></figure><p id="23e17d26-beee-804b-99b5-e70888607ecb" class="">Dalam sistem operasi Linux, <strong>interface jaringan</strong> seperti <code>eth0</code>, <code>wlan0</code>, dan <code>lo</code> adalah &quot;pintu&quot; bagi perangkat untuk terhubung ke jaringan lokal maupun internet.</p><p id="23e17d26-beee-80c5-b46e-ee5ba6f775c2" class="">Setiap interface punya tugas dan jalur koneksi masing-masing.</p><h2 id="23e17d26-beee-80b1-9757-c03f9c282500" class="">🌐  1. <code>eth0</code> — <strong>Ethernet Interface</strong></h2><ul id="23e17d26-beee-8045-894a-f6d2d50314e3" class="bulleted-list"><li style="list-style-type:disc"><strong>Artinya</strong>: Ini adalah interface untuk <strong>koneksi kabel (LAN)</strong>.</li></ul><ul id="23e17d26-beee-8010-8b8d-e6ddd8baa7c2" class="bulleted-list"><li style="list-style-type:disc"><strong>Contoh penggunaannya</strong>: Komputer dihubungkan ke router/modem dengan kabel LAN.</li></ul><ul id="23e17d26-beee-8085-9af8-e961305d2289" class="bulleted-list"><li style="list-style-type:disc"><strong>Sifatnya</strong>:<ul id="23e17d26-beee-8040-b654-c5fc583202d6" class="bulleted-list"><li style="list-style-type:circle">Stabil dan cepat.</li></ul><ul id="23e17d26-beee-8024-9620-dafd231b78fd" class="bulleted-list"><li style="list-style-type:circle">Biasanya muncul otomatis di VM kalau pakai <strong>NAT</strong>, <strong>Bridged</strong>, atau <strong>NAT Network</strong>.</li></ul></li></ul><ul id="23e17d26-beee-809f-80dd-e3fba446b057" class="bulleted-list"><li style="list-style-type:disc"><strong>Alamat IP</strong>: Biasanya didapat dari DHCP router (misalnya: <code>192.168.x.x</code>).</li></ul><ul id="23e17d26-beee-8060-b212-ebdb4009ec8f" class="bulleted-list"><li style="list-style-type:disc"><strong>Di ifconfig/ip a</strong>: Ditandai dengan nama <code>eth0</code> atau <code>enp0s3</code> (tergantung distribusi Linux).</li></ul><hr id="23e17d26-beee-80d3-a46d-cf91194b2280"/><h2 id="23e17d26-beee-8094-a102-cb6be7770011" class="">🌀 2. <code>lo</code> — <strong>Loopback Interface</strong></h2><ul id="23e17d26-beee-801f-bd98-c3aad4c81c77" class="bulleted-list"><li style="list-style-type:disc"><strong>Artinya</strong>: Jalur internal untuk komunikasi <strong>dari komputer ke dirinya sendiri</strong>.</li></ul><ul id="23e17d26-beee-803e-9aa1-f0ca704dddc3" class="bulleted-list"><li style="list-style-type:disc"><strong>Alamat IP</strong>: Selalu <code>127.0.0.1</code> (alias <code>localhost</code>).</li></ul><ul id="23e17d26-beee-8098-bcc4-d7c6b50d6e18" class="bulleted-list"><li style="list-style-type:disc"><strong>Fungsi penting</strong>:<ul id="23e17d26-beee-8095-95ed-d0228d7110c3" class="bulleted-list"><li style="list-style-type:circle">Untuk testing jaringan lokal.</li></ul><ul id="23e17d26-beee-8025-9dfa-f250b69b7c4d" class="bulleted-list"><li style="list-style-type:circle">Banyak aplikasi web lokal (seperti database, web server lokal, dsb) berjalan di sini.</li></ul></li></ul><ul id="23e17d26-beee-800b-822a-c7d0c7dd20ef" class="bulleted-list"><li style="list-style-type:disc"><strong>Contoh penggunaan</strong>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="23e17d26-beee-805e-947a-f059a1b5fb8d" class="code"><code class="language-Bash">ping 127.0.0.1
+curl http://localhost</code></pre></li></ul><p id="23e17d26-beee-8059-9b9c-ebe28ee03a2f" class="">➡️ Tanpa <code>lo</code>, banyak sistem internal Linux tidak akan berfungsi dengan benar.</p><hr id="23e17d26-beee-8050-bd86-f2f70dc34fb1"/><h2 id="23e17d26-beee-80eb-a408-eb0d03d4077f" class="">📡 3. <code>wlan0</code> — <strong>Wireless LAN Interface</strong></h2><ul id="23e17d26-beee-805d-ab59-f61ff9bde658" class="bulleted-list"><li style="list-style-type:disc"><strong>Artinya</strong>: Ini adalah interface untuk koneksi <strong>WiFi (nirkabel)</strong>.</li></ul><ul id="23e17d26-beee-8061-bc0f-d17b493865b1" class="bulleted-list"><li style="list-style-type:disc"><strong>Muncul kapan?</strong>:<ul id="23e17d26-beee-80aa-980c-d564ac5f6596" class="bulleted-list"><li style="list-style-type:circle">Hanya muncul kalau sistem mendeteksi <strong>USB WiFi adapter</strong> atau modul WiFi bawaan.</li></ul><ul id="23e17d26-beee-803f-a84e-c4b1b5dd404c" class="bulleted-list"><li style="list-style-type:circle">Di VM, <strong>harus ada USB WiFi yang disambungkan langsung ke VM</strong>.</li></ul></li></ul><ul id="23e17d26-beee-8030-891e-dfab979fb5cd" class="bulleted-list"><li style="list-style-type:disc"><strong>Alamat IP</strong>: Sama seperti <code>eth0</code>, biasanya didapat dari DHCP router.</li></ul><ul id="23e17d26-beee-8012-9d64-faee52943fbe" class="bulleted-list"><li style="list-style-type:disc"><strong>Nama alternatif</strong>:<ul id="23e17d26-beee-8054-a8cd-d10360fc0be3" class="bulleted-list"><li style="list-style-type:circle">Bisa berubah tergantung sistem menjadi <code>wlp2s0</code>, <code>wlx...</code>, dsb.</li></ul></li></ul><ul id="23e17d26-beee-8048-a155-e9fdd51acb78" class="bulleted-list"><li style="list-style-type:disc"><strong>Gunanya dalam pentesting</strong>:<ul id="23e17d26-beee-8064-90ae-d32d36b98fdd" class="bulleted-list"><li style="list-style-type:circle">Untuk <strong>monitoring jaringan wireless</strong>, <strong>inject paket</strong>, atau <strong>membuat rogue AP</strong>.</li></ul></li></ul><hr id="23e17d26-beee-8064-88a2-dbaa3a251d5b"/><table id="23e17d26-beee-80f0-afd9-c50b0ac2d62a" class="simple-table"><tbody><tr id="23e17d26-beee-8050-9c83-ca03f369ea57"><td id="JhD{" class="">Interface</td><td id="GtTg" class="">Tipe Koneksi</td><td id="mP_G" class="">IP Contoh</td><td id="akbM" class="">Kapan Muncul?</td><td id="Q_~N" class="">Fungsi Umum</td></tr><tr id="23e17d26-beee-806b-b5a4-da572d5cd0e7"><td id="JhD{" class=""><code>eth0</code></td><td id="GtTg" class="">Ethernet (kabel)</td><td id="mP_G" class="">192.168.x.x</td><td id="akbM" class="">Default di VM &amp; PC</td><td id="Q_~N" class="">Koneksi kabel/NAT</td></tr><tr id="23e17d26-beee-805c-b031-f6836c15db70"><td id="JhD{" class=""><code>lo</code></td><td id="GtTg" class="">Loopback</td><td id="mP_G" class="">127.0.0.1</td><td id="akbM" class="">Selalu aktif</td><td id="Q_~N" class="">Akses lokal, sistem internal</td></tr><tr id="23e17d26-beee-804e-8cbf-e6f958629e41"><td id="JhD{" class=""><code>wlan0</code></td><td id="GtTg" class="">Wireless (WiFi)</td><td id="mP_G" class="">192.168.x.x</td><td id="akbM" class="">Jika ada WiFi adapter</td><td id="Q_~N" class="">Koneksi WiFi, pentesting</td></tr></tbody></table><p id="23e17d26-beee-80d2-a6cd-e203d9dbb1b7" class="">
+</p><p id="23e17d26-beee-808b-9f00-f03351bfc219" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="23e17d26-beee-80d7-8ada-c501da36b596"><div style="font-size:1.5em"><span class="icon">🔌</span></div><div style="width:100%"><h1 id="23e17d26-beee-8066-a1fd-cfc5130a5620" class="">Port</h1></div></figure><h3 id="23e17d26-beee-80f0-83fa-cbcdbc83bfaa" class="">🔌 Apa Itu Port?</h3><p id="23e17d26-beee-80ec-9147-ee6261522689" class="">Port adalah <strong>gerbang virtual</strong> yang digunakan oleh komputer untuk mengirim dan menerima data dalam jaringan. Setiap kali kita berkomunikasi melalui jaringan (seperti membuka website, kirim email, streaming, dll), komunikasi itu terjadi melalui <strong>port tertentu</strong>.</p><p id="23e17d26-beee-80b4-965c-ce307fbcef14" class="">Bayangkan port seperti <strong>pintu-pintu khusus</strong> yang masing-masing punya tugas berbeda. Misalnya:</p><ul id="23e17d26-beee-80fc-850e-cb2ff5b799de" class="bulleted-list"><li style="list-style-type:disc">Pintu 80 (port 80) untuk HTTP (website biasa)</li></ul><ul id="23e17d26-beee-8091-9885-ebc8ddca1f9b" class="bulleted-list"><li style="list-style-type:disc">Pintu 443 untuk HTTPS (website aman)</li></ul><ul id="23e17d26-beee-800a-a058-e4ffed264000" class="bulleted-list"><li style="list-style-type:disc">Pintu 22 untuk SSH (remote ke server)</li></ul><p id="23e17d26-beee-8001-9227-c6a523c55dce" class="">Komputer bisa menggunakan banyak port dalam satu waktu, dan masing-masing punya fungsi yang berbeda berdasarkan protokol yang digunakan.</p><hr id="23e17d26-beee-80c8-b0a6-c3f43ad65be8"/><h3 id="23e17d26-beee-80f7-a046-f68a6ee1814f" class="">📊 Contoh Daftar Port Umum</h3><table id="23e17d26-beee-80a8-b043-ea6d7408aed9" class="simple-table"><tbody><tr id="23e17d26-beee-80a0-b851-f3254ff94366"><td id="Kj:P" class="">Port</td><td id="HmBQ" class="">Protokol</td><td id="&lt;yJs" class="">Fungsi</td></tr><tr id="23e17d26-beee-80be-8614-df9ffc605aaf"><td id="Kj:P" class="">20/21</td><td id="HmBQ" class="">FTP</td><td id="&lt;yJs" class="">Transfer file</td></tr><tr id="23e17d26-beee-80e6-bee1-f4e4cb5a4ac4"><td id="Kj:P" class="">22</td><td id="HmBQ" class="">SSH</td><td id="&lt;yJs" class="">Remote secure ke sistem</td></tr><tr id="23e17d26-beee-8037-be7a-f35d7119b8e1"><td id="Kj:P" class="">23</td><td id="HmBQ" class="">Telnet</td><td id="&lt;yJs" class="">Remote tidak aman (plaintext)</td></tr><tr id="23e17d26-beee-8079-abbd-f3e18a5291bc"><td id="Kj:P" class="">25</td><td id="HmBQ" class="">SMTP</td><td id="&lt;yJs" class="">Kirim email</td></tr><tr id="23e17d26-beee-8020-8e16-ec0e263ea334"><td id="Kj:P" class="">53</td><td id="HmBQ" class="">DNS</td><td id="&lt;yJs" class="">Penerjemah nama domain</td></tr><tr id="23e17d26-beee-8016-812a-ca4d3bc6a194"><td id="Kj:P" class="">67/68</td><td id="HmBQ" class="">DHCP</td><td id="&lt;yJs" class="">Pemberian IP otomatis</td></tr><tr id="23e17d26-beee-80c7-99d0-c987991e06f5"><td id="Kj:P" class="">69</td><td id="HmBQ" class="">TFTP</td><td id="&lt;yJs" class="">Transfer file ringan</td></tr><tr id="23e17d26-beee-80f0-a769-ee96a3eecdf0"><td id="Kj:P" class="">80</td><td id="HmBQ" class="">HTTP</td><td id="&lt;yJs" class="">Akses website (tanpa enkripsi)</td></tr><tr id="23e17d26-beee-80fd-9305-f9bc92eed541"><td id="Kj:P" class="">110</td><td id="HmBQ" class="">POP3</td><td id="&lt;yJs" class="">Ambil email dari server</td></tr><tr id="23e17d26-beee-8071-be86-f41cab5ed019"><td id="Kj:P" class="">123</td><td id="HmBQ" class="">NTP</td><td id="&lt;yJs" class="">Sinkronisasi waktu jaringan</td></tr><tr id="23e17d26-beee-809c-858d-e0ed35af5183"><td id="Kj:P" class="">137-139</td><td id="HmBQ" class="">NetBIOS</td><td id="&lt;yJs" class="">Berbagi file/printer di Windows</td></tr><tr id="23e17d26-beee-80fe-b460-c76f6244a936"><td id="Kj:P" class="">143</td><td id="HmBQ" class="">IMAP</td><td id="&lt;yJs" class="">Akses email di server</td></tr><tr id="23e17d26-beee-80d1-afd4-f7d85bf8a0ac"><td id="Kj:P" class="">161/162</td><td id="HmBQ" class="">SNMP</td><td id="&lt;yJs" class="">Monitor perangkat jaringan</td></tr><tr id="23e17d26-beee-80b8-8d84-c09b9eb2976f"><td id="Kj:P" class="">179</td><td id="HmBQ" class="">BGP</td><td id="&lt;yJs" class="">Routing antar jaringan besar</td></tr><tr id="23e17d26-beee-8027-b735-f618726ed211"><td id="Kj:P" class="">389</td><td id="HmBQ" class="">LDAP</td><td id="&lt;yJs" class="">Direktori pencarian user/server</td></tr><tr id="23e17d26-beee-804b-a37d-c3cbd71b82ff"><td id="Kj:P" class="">443</td><td id="HmBQ" class="">HTTPS</td><td id="&lt;yJs" class="">Akses website dengan enkripsi</td></tr><tr id="23e17d26-beee-8047-9656-d3d015df1268"><td id="Kj:P" class="">636</td><td id="HmBQ" class="">LDAPS</td><td id="&lt;yJs" class="">LDAP versi aman</td></tr><tr id="23e17d26-beee-80d1-946f-ddc870a116dd"><td id="Kj:P" class="">989/990</td><td id="HmBQ" class="">FTPS</td><td id="&lt;yJs" class="">FTP dengan SSL/TLS</td></tr></tbody></table><h3 id="23e17d26-beee-8014-862f-f024007501cf" class="">📡 Mengapa Port Penting?</h3><ul id="23e17d26-beee-80c7-8da8-c89e9776eb21" class="bulleted-list"><li style="list-style-type:disc"><strong>Setiap aplikasi</strong> di jaringan memakai port tertentu.</li></ul><ul id="23e17d26-beee-802a-8841-ed39220b5969" class="bulleted-list"><li style="list-style-type:disc">Saat kamu menjalankan <code>nmap</code>, kamu bisa melihat <strong>port mana yang terbuka (open)</strong> pada perangkat target.</li></ul><ul id="23e17d26-beee-803c-b08f-daaab9541c2b" class="bulleted-list"><li style="list-style-type:disc"><strong>Port yang terbuka</strong> bisa menjadi <strong>pintu masuk serangan</strong> jika tidak dijaga dengan baik.</li></ul><p id="23e17d26-beee-8008-a18c-d1504668bce1" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

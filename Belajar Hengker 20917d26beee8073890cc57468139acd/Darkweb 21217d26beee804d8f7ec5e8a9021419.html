@@ -1,0 +1,815 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Darkweb</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  a, a.visited {
+    color: #9ecbff;
+  }
+
+  .source, .callout, .code, blockquote, table, th, td {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #e0e0e0;
+  }
+
+  .simple-table-header-color {
+    background: #333 !important;
+    color: #fff !important;
+  }
+
+  hr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .table_of_contents-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .highlight-default,
+  .highlight-gray,
+  .highlight-brown,
+  .highlight-orange,
+  .highlight-yellow,
+  .highlight-teal,
+  .highlight-blue,
+  .highlight-purple,
+  .highlight-pink,
+  .highlight-red {
+    color: inherit;
+  }
+
+  .highlight-gray_background,
+  .highlight-brown_background,
+  .highlight-orange_background,
+  .highlight-yellow_background,
+  .highlight-teal_background,
+  .highlight-blue_background,
+  .highlight-purple_background,
+  .highlight-pink_background,
+  .highlight-red_background {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .code,
+  code {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f78c6c;
+  }
+
+  blockquote {
+    border-left: 3px solid #888;
+    color: #ccc;
+  }
+
+  .bookmark-description {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .select-value-color-default,
+  .select-value-color-gray,
+  .select-value-color-brown,
+  .select-value-color-orange,
+  .select-value-color-yellow,
+  .select-value-color-green,
+  .select-value-color-blue,
+  .select-value-color-purple,
+  .select-value-color-pink,
+  .select-value-color-red {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+body {
+  padding: 0px 20px;
+}
+
+img {
+  border-radius: 20px;
+}
+
+.block-color-gray_background{
+  border-radius: 10px;
+}
+
+/* Callout dasar: flex container dengan gap */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+              /* fallback background */
+  border: 1px solid #ddd;
+  margin: 1.5em 0;
+}
+
+
+}
+
+/* Contoh ikon dalam callout */
+.callout .icon {
+  font-size: 1.5em;
+  flex-shrink: 0;
+}
+
+/* Konten callout */
+.callout h1,
+.callout h2,
+.callout h3,
+.callout p {
+  margin: 0;
+}
+
+
+	
+</style></head><body><article id="21217d26-beee-804d-8f7e-c5e8a9021419" class="page sans"><header><img class="page-cover-image" src="Darkweb%2021217d26beee804d8f7ec5e8a9021419/hikari_nozomi_rl.jpg" style="object-position:center 64.95%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🕸️</span></div><h1 class="page-title">Darkweb</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="21217d26-beee-8047-b77b-c2cfa01fc74b"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><h1 id="21217d26-beee-80d7-adb9-cc5c686d8613" class="">Catatan!</h1></div></figure><h3 id="21217d26-beee-80b8-8664-ce4169584e2a" class="">🔌 Aku akan menyarankan untuk memakai USB Wi-Fi adapter</h3><p id="21217d26-beee-802b-847b-f01a8d9ccd24" class="">Kalian bisa melihat cara menggunakannya di <a href="Network%20Pentesting%2021217d26beee80bbae18ffef69d17ec9.html"><span class="icon">📶</span>Network Pentesting</a>.<br/>Bisa dicoba tanpa pakai usb wifi adapter, tapi akan sangat berisiko jika terjadi kesalahan internet.<br/>Kalian ga mau kan, rumah kalian digedor FBI? ┬┴┬┴┤(･_├┬┴┬┴<br/></p><figure id="21217d26-beee-809c-8229-ed498f8d7dba" class="image" style="text-align:left"><a href="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExY25najVjbWRubHJ6YjRqZnZpa3AxaTlpcGhtYTlnOGl2a2s0d3dzaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/UGBMRe2qFGg3ML0Rvj/giphy.gif"><img style="width:288px" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExY25najVjbWRubHJ6YjRqZnZpa3AxaTlpcGhtYTlnOGl2a2s0d3dzaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/UGBMRe2qFGg3ML0Rvj/giphy.gif"/></a></figure><p id="21217d26-beee-8059-a7e8-cd9e6dc1557a" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="21217d26-beee-80d5-ad93-d6000d6062ae"><div style="font-size:1.5em"><span class="icon">⬇️</span></div><div style="width:100%"><h1 id="21217d26-beee-8027-9f3e-c0eb08a11116" class="">Menggunakan VPN dengan openvpn</h1></div></figure><h2 id="21217d26-beee-80b8-92ef-c00b54ff1abf" class="">📌 Apa Itu OpenVPN?</h2><ul id="21217d26-beee-8090-a677-ed149d447e2b" class="bulleted-list"><li style="list-style-type:disc"><code>openvpn</code> adalah <strong>aplikasi client</strong> untuk menjalankan koneksi VPN.</li></ul><ul id="21217d26-beee-8047-9a37-e8e4ff4173df" class="bulleted-list"><li style="list-style-type:disc">Biasanya sudah terinstal di Kali Linux. Cek dengan:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21217d26-beee-80dc-bc9b-c059f2be4a41" class="code"><code class="language-Bash">openvpn --version</code></pre></li></ul><ul id="21217d26-beee-8025-8253-c2887b0c85ba" class="bulleted-list"><li style="list-style-type:disc">Kalau hanya mengetik <code>openvpn</code>, akan muncul manual-nya.</li></ul><blockquote id="21217d26-beee-8010-8831-d163bd1034dc" class="">Tapi OpenVPN tidak bisa digunakan langsung. Kamu perlu:<ul id="21217d26-beee-80ee-8ddd-f8f169d32dc8" class="bulleted-list"><li style="list-style-type:disc"><strong>Konfigurasi file </strong><code><strong>.ovpn</strong></code> dari penyedia VPN (seperti VPNBook)</li></ul><ul id="21217d26-beee-807a-8fd5-d084df3eedbe" class="bulleted-list"><li style="list-style-type:disc"><strong>Username dan password</strong> (jika diperlukan)</li></ul></blockquote><hr id="21217d26-beee-805b-acf8-ca1ee57b3456"/><h2 id="21217d26-beee-80d1-9c36-dd67c1876222" class="">🔧 <strong>Langkah-Langkah Menggunakan VPNBook di Kali Linux</strong></h2><ol type="1" id="21217d26-beee-80bb-a0f9-cacc191997b3" class="numbered-list" start="1"><li>Kunjungi situs: <strong><a href="https://www.vpnbook.com/">vpnbook.com</a></strong></li></ol><ol type="1" id="21217d26-beee-807d-bfa1-c572f5b61ba9" class="numbered-list" start="2"><li>Klik tab <strong>&quot;Free VPN&quot;</strong> di atas</li></ol><ol type="1" id="21217d26-beee-8013-ba49-c928f4497e42" class="numbered-list" start="3"><li>Scroll ke bagian <strong>&quot;OpenVPN Config Files&quot;</strong></li></ol><ol type="1" id="21217d26-beee-808e-ab71-f63170faa6fb" class="numbered-list" start="4"><li><strong>Download beberapa file ZIP</strong>, misalnya:<ul id="21217d26-beee-8007-a653-dd7fbedde05e" class="bulleted-list"><li style="list-style-type:disc"><code>vpnbook-us1-tcp80.ovpn.zip</code></li></ul><ul id="21217d26-beee-80ed-abb1-d9a2a9a53219" class="bulleted-list"><li style="list-style-type:disc"><code>vpnbook-ca1-udp25000.ovpn.zip</code>, dll</li></ul><p id="21217d26-beee-8076-809f-cb209ab8018f" class="">Karena kadang satu server penuh</p></li></ol><ol type="1" id="21217d26-beee-80be-8d55-d92cd2452687" class="numbered-list" start="5"><li>Ekstrak file ZIP-nya</li></ol><ol type="1" id="21217d26-beee-8024-ab0a-f07f6702a1d6" class="numbered-list" start="6"><li>Buka terminal dan masuk ke folder hasil ekstrak:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21217d26-beee-8098-9010-dae06922e9c8" class="code"><code class="language-Bash">cd ~/Downloads/vpnbook-.../</code></pre></li></ol><ol type="1" id="21217d26-beee-808d-b371-ef199386dd90" class="numbered-list" start="7"><li>Jalankan file <code>.ovpn</code>:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21217d26-beee-80fe-a9ee-eb442e6f2786" class="code"><code class="language-Bash">sudo openvpn vpnbook-(tulis namanya).ovpn</code></pre></li></ol><ol type="1" id="21217d26-beee-80a0-9c54-d8a9fab941ef" class="numbered-list" start="8"><li>Masukkan username: <code>vpnbook</code></li></ol><ol type="1" id="21217d26-beee-8035-8fca-cee77da39d11" class="numbered-list" start="9"><li>Password bisa kamu lihat di halaman yang sama (bagian bawah). <strong>Selalu berubah</strong>, jadi harus cek ulang.</li></ol><ol type="1" id="21217d26-beee-80c9-9a35-e2d65d4302a8" class="numbered-list" start="10"><li>Jika berhasil, akan muncul:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21217d26-beee-8042-bb16-eb8636e8eb23" class="code"><code class="language-Bash">Initialization Sequence Completed</code></pre><p id="21217d26-beee-80ed-a068-c55df5b16e6e" class="">Artinya: VPN aktif</p></li></ol><ol type="1" id="21217d26-beee-80d8-87db-d0f7a3a8fcce" class="numbered-list" start="11"><li>Kalau tidak bisa, berarti server penuh. Hentikan openvpn dengan: (di terminal lain)<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21217d26-beee-80ce-b6ce-f8a13d2d0fbf" class="code"><code class="language-Bash">sudo pkill openvpn</code></pre><p id="21217d26-beee-805d-8b4c-c0a9fb32ee8f" class="">Perintah ini akan mencoba <strong>menghentikan semua proses bernama </strong><code><strong>openvpn</strong></code>.</p></li></ol><ol type="1" id="21217d26-beee-8003-8ccf-eabcc2ffe6fc" class="numbered-list" start="12"><li>Coba hubungkan lagi hingga berhasil.</li></ol><ol type="1" id="21217d26-beee-807e-a59a-c256180bcc3b" class="numbered-list" start="13"><li>Setelah berhasil, coba akses internet, misalnya buka Google. Jika tidak bisa, lakukan <strong>perbaikan DNS</strong>.</li></ol><hr id="21217d26-beee-805c-9f52-ee49b92a68ee"/><h2 id="21217d26-beee-8009-84cb-cdd0f46b7079" class="">❌ <strong>Cara Berhenti dari VPN</strong></h2><ul id="21217d26-beee-809c-aea5-df3de9aa7f5e" class="bulleted-list"><li style="list-style-type:disc">Tekan <strong>Ctrl + C</strong> di terminal tempat VPN berjalan.</li></ul><ul id="21217d26-beee-8043-b271-d544cf18431e" class="bulleted-list"><li style="list-style-type:disc">langsung sudo pkill openvpn kalau tidak bisa ditekan.</li></ul><figure id="21217d26-beee-8058-b8e3-c210396401c6" class="image" style="text-align:left"><a href="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHUxNWk3djQyOXV1aWVzem1kdHNkNW40bDlhemM4N3Nib3ZnZWRseCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/0zNEqDqYzgRpiv0wdf/giphy.gif"><img style="width:240px" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHUxNWk3djQyOXV1aWVzem1kdHNkNW40bDlhemM4N3Nib3ZnZWRseCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/0zNEqDqYzgRpiv0wdf/giphy.gif"/></a></figure><p id="21217d26-beee-80a6-bf4a-f0b672f149ca" class="">
+</p><p id="21217d26-beee-8063-b78d-c0578673cb3b" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="21217d26-beee-8028-b3cc-e5cd7eab9d44"><div style="font-size:1.5em"><span class="icon">💱</span></div><div style="width:100%"><h1 id="21217d26-beee-8018-b346-e5f94117e13c" class="">Mengganti DNS</h1></div></figure><h2 id="21217d26-beee-80fc-ad4e-d79d5843fd59" class="">🔁 <strong>Cara Mengganti DNS di Kali Linux</strong></h2><blockquote id="21217d26-beee-8082-9696-c1656ebc17d6" class="">File DNS default adalah /etc/resolv.conf, namun biasanya dilindungi dengan atribut &quot;immutable&quot; agar tidak bisa diubah seenaknya.</blockquote><ol type="1" id="21217d26-beee-800d-92f1-c56b2eb40549" class="numbered-list" start="1"><li>Cek status proteksi file:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21217d26-beee-80f9-84c9-c137ca3cbc16" class="code"><code class="language-Bash">sudo lsattr /etc/resolv.conf</code></pre><blockquote id="21217d26-beee-80bc-b18c-fdc4a599f013" class="">Jika ada huruf <code><strong>i</strong></code>, artinya file dikunci.</blockquote></li></ol><ol type="1" id="21217d26-beee-8031-9155-f6ca85ada70f" class="numbered-list" start="2"><li>Hapus proyeksi<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21217d26-beee-80db-8ddd-ee2e3038064b" class="code"><code class="language-Bash">sudo chattr -i /etc/resolv.conf</code></pre></li></ol><ol type="1" id="21217d26-beee-8022-acd3-d180af9c7293" class="numbered-list" start="3"><li>Edit file DNS<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21217d26-beee-80d6-b284-c05402477a04" class="code"><code class="language-Bash">sudo nano /etc/resolv.conf</code></pre></li></ol><ol type="1" id="21217d26-beee-80d5-b188-dbe9a4b305c8" class="numbered-list" start="4"><li>Tambahkan dengan DNS yang kamu pilih<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21217d26-beee-80c2-972f-dcbb1dd1d6d7" class="code"><code class="language-Bash">nameserver 8.8.8.8       # Google DNS
+nameserver 8.8.4.4       # Google DNS cadangan
+nameserver 1.1.1.1       # Cloudflare DNS (lebih aman dan privat)</code></pre><p id="21217d26-beee-80d3-82cd-f1f5a9d925ef" class="">Lalu berikan DNS asli tanda pagar <code><strong>#</strong></code><strong> </strong></p></li></ol><ol type="1" id="21217d26-beee-8046-b939-f183bb3264de" class="numbered-list" start="5"><li>Simpan dengan:</li></ol><ul id="21217d26-beee-8067-afb2-c80103e7f203" class="bulleted-list"><li style="list-style-type:disc"><strong>Ctrl + O</strong>, lalu <strong>Enter</strong></li></ul><ul id="21217d26-beee-80e6-91e4-cfb80d532462" class="bulleted-list"><li style="list-style-type:disc"><strong>Ctrl + X</strong> untuk keluar</li></ul><hr id="21317d26-beee-80e4-b083-ff80bd1310dd"/><h2 id="21317d26-beee-8000-be71-fee930d8d974" class="">❗ PERINGATAN:</h2><ul id="21317d26-beee-8060-94fd-f8b4c61ecd6a" class="bulleted-list"><li style="list-style-type:disc">DNS akan kembali ke asli saat reboot (kecuali kamu ubah permanen).</li></ul><p id="21217d26-beee-80a7-84c9-fc9ff5990c86" class="">
+</p><p id="21217d26-beee-802d-a7f0-ca6be9a25476" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="21217d26-beee-80e7-9f8d-f352a734fed0"><div style="font-size:1.5em"><span class="icon">🧅</span></div><div style="width:100%"><h1 id="21217d26-beee-80fd-a451-e79ecbbed869" class="">Onion Browser</h1></div></figure><h2 id="21217d26-beee-801b-bbe5-c87f35a3c085" class="">⚠️ Harus pakai VPN, kenapa?</h2><ul id="21217d26-beee-8085-a272-e18614ce7d2f" class="bulleted-list"><li style="list-style-type:disc"><strong>Beberapa ISP memblokir akses ke situs Tor</strong> atau mendeteksi lalu lintas Tor.</li></ul><ul id="21217d26-beee-80f4-a45f-e3c6009de835" class="bulleted-list"><li style="list-style-type:disc">VPN menyamarkan identitasmu sebelum kamu membuka koneksi Tor.</li></ul><ul id="21217d26-beee-80ee-b20a-c1b4411f7c73" class="bulleted-list"><li style="list-style-type:disc">Tidak wajib 100%, tapi <strong>sangat disarankan</strong> demi privasi.</li></ul><hr id="21217d26-beee-80b3-8aff-e2a31fc278a0"/><h2 id="21217d26-beee-80d6-88ae-d44678724495" class="">📥 <strong>Langkah-Langkah Instalasi Tor Browser:</strong></h2><ol type="1" id="21217d26-beee-805b-b743-c22cc4175380" class="numbered-list" start="1"><li><strong>Aktifkan VPN terlebih dahulu.</strong></li></ol><ol type="1" id="21217d26-beee-8020-a973-f11a3ab726a6" class="numbered-list" start="2"><li>Buka <strong>Firefox</strong> (atau browser lain), dan akses situs resmi:<p id="21217d26-beee-803c-99d8-faf35b205ff9" class=""><a href="https://www.torproject.org/">https://www.torproject.org</a></p></li></ol><ol type="1" id="21217d26-beee-80fd-a742-ce9aef27ec91" class="numbered-list" start="3"><li>Klik tombol <strong>Download Tor Browser for Linux</strong>.</li></ol><ol type="1" id="21217d26-beee-806d-98d2-ee0fe4659e54" class="numbered-list" start="4"><li>File yang terunduh biasanya berekstensi <code>.tar.xz</code>.</li></ol><ol type="1" id="21217d26-beee-808d-a1e7-cdd1b679bcd1" class="numbered-list" start="5"><li><strong>Ekstrak</strong> file tersebut (klik kanan → Extract Here, atau gunakan terminal: <code>tar -xf &lt;namafile&gt;</code>).</li></ol><ol type="1" id="21217d26-beee-80ef-aa66-ef8e2f2080a6" class="numbered-list" start="6"><li>Masuk ke folder hasil ekstraksi, biasanya bernama <code>tor-browser_en-US/</code>.</li></ol><hr id="21217d26-beee-8050-80ad-c9df36042dba"/><h2 id="21217d26-beee-8038-a4de-f8740d632b33" class="">▶️ <strong>Menjalankan Tor Browser:</strong></h2><p id="21217d26-beee-800e-8d47-f2bd4c312d94" class=""><strong>Cara 1: GUI (jika berhasil)</strong></p><p id="21217d26-beee-80a7-93c2-f4015678ff49" class="">7. Double klik file shortcut tor di folder tersebut.</p><ul id="21217d26-beee-8074-b8f9-ed9158f68c80" class="bulleted-list"><li style="list-style-type:disc">Tapi kemungkinan besar ini tidak akan berhasil.</li></ul><p id="21217d26-beee-8006-aa5f-f44546ac57de" class="">
+</p><p id="21217d26-beee-80db-b451-daf1befd66d6" class=""><strong>Cara 2: Terminal (lebih stabil)</strong></p><p id="21217d26-beee-80f7-9e4e-f7413b32d931" class="">8. Buka terminal, masuk ke folder, lalu jalankan:<div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21217d26-beee-80b2-9790-df4919f8d067" class="code"><code class="language-Bash">./start-tor-browser.desktop</code></pre></div></p><hr id="21217d26-beee-80fc-b675-d62c2e0fc1f9"/><h2 id="21217d26-beee-8028-92cb-e05e23fa4952" class="">🌐 <strong>Mengatur Koneksi (Pertama Kali)</strong></h2><ol type="1" id="21217d26-beee-80cf-ac4d-d6a7721cdac9" class="numbered-list" start="9"><li>Akan muncul dua pilihan: <strong>Connect</strong> dan <strong>Configure</strong>.</li></ol><ol type="1" id="21217d26-beee-8017-b83a-d96844da6a1a" class="numbered-list" start="10"><li>Klik <strong>Configure</strong> jika:<ul id="21217d26-beee-80b2-93ff-ceb3c10a65ab" class="bulleted-list"><li style="list-style-type:disc">Koneksi lama terlalu lambat</li></ul><ul id="21217d26-beee-80b6-b312-cca15ee66a5c" class="bulleted-list"><li style="list-style-type:disc">Kamu berada di jaringan yang memblokir Tor</li></ul></li></ol><ol type="1" id="21217d26-beee-8022-b0f9-ec2189473f06" class="numbered-list" start="11"><li>Pada pengaturan, aktifkan:<ul id="21217d26-beee-80d7-a91f-efd543393eaf" class="bulleted-list"><li style="list-style-type:disc"><code>Select a built-in bridge</code></li></ul><ul id="21217d26-beee-8001-ab2e-e3b3f2b5c1da" class="bulleted-list"><li style="list-style-type:disc">Pilih jenis: <code>obfs4</code></li></ul><p id="21217d26-beee-800f-9111-c88bb8918241" class=""><em>(Bridge ini menyamarkan koneksi Tor agar tidak terdeteksi ISP.)</em></p></li></ol><ol type="1" id="21217d26-beee-807b-8dd8-c3118f1f4490" class="numbered-list" start="12"><li>Klik <strong>Connect</strong>.</li></ol><ol type="1" id="21217d26-beee-8069-8751-d812c4c384e6" class="numbered-list" start="13"><li>Tunggu beberapa saat. Jika berhasil, Tor Browser akan terbuka.</li></ol><blockquote id="21217d26-beee-8082-9cc8-d5f17fd05efb" class="">Catatan:<br/>Hati-hati, karena CPU anda akan meledak sampai 1000% lebih<br/>Kalau laptop dengan spesifikasi minimum, akan lebih parah lagi<br/>ε=ε=ε=┏(゜ロ゜;)┛<br/></blockquote><hr id="21217d26-beee-8086-ab67-fcd516440b68"/><h3 id="21217d26-beee-80cb-bf15-e50c7435b304" class="">🔁 <strong>Menjalankan Lagi di Lain Waktu:</strong></h3><ol type="1" id="21217d26-beee-80bf-a595-d4fbde4afe4e" class="numbered-list" start="14"><li>Buka terminal, navigasi ke folder, lalu jalankan:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21217d26-beee-80a4-bb0f-e4a4396cbb72" class="code"><code class="language-Bash">./start-tor-browser.desktop</code></pre></li></ol><hr id="21217d26-beee-803e-a76e-e20f507f95ef"/><h2 id="21217d26-beee-8066-b442-c809017ea18d" class="">✅ Catatan Tambahan:</h2><ul id="21217d26-beee-8071-acc2-ee784e426173" class="bulleted-list"><li style="list-style-type:disc"><strong>Jangan jalankan sebagai root.</strong> Tor Browser akan menolak berjalan.</li></ul><ul id="21217d26-beee-8057-a831-caea587b8294" class="bulleted-list"><li style="list-style-type:disc">Jika kamu masih root, masuk sebagai user biasa atau buat user baru.</li></ul><ul id="21217d26-beee-808f-adb2-e938ac29e46d" class="bulleted-list"><li style="list-style-type:disc"><strong>Jangan sembarangan edit script pengaman root check</strong> (meski bisa dilakukan, tidak disarankan untuk pemula karena berisiko).</li></ul><ul id="21217d26-beee-8040-b3b3-cdbf2584a36c" class="bulleted-list"><li style="list-style-type:disc">Untuk keamanan maksimal, <strong>hindari add-ons, JavaScript, dan login akun pribadi</strong> saat memakai Tor. Kalian bisa atur di settings. Cari sendiri &gt;:(</li></ul><hr id="21217d26-beee-80d7-a3cd-c6d5dc98aa68"/><h2 id="21217d26-beee-80cd-a366-fc02886ec259" class="">🧅 Mencari web .onion</h2><ul id="21217d26-beee-8074-a72e-c1e7d87646c2" class="bulleted-list"><li style="list-style-type:disc">Cari kata kunci “hidden wiki” dan temukan link .onion di sana.</li></ul><ul id="21217d26-beee-804b-a294-cc615bec0f11" class="bulleted-list"><li style="list-style-type:disc">Jangan beli jasa hacker, jangan beli jasa hitman, jangan beli barang curian, jangan beli identitas, jangan beli senjata api, jangan beli narkoba, jangan menonton video gore, dan jangan menonton video porn****fi a*** k****! 💢💢💢</li></ul><figure id="21217d26-beee-8089-827c-e2daaf5990be" class="image" style="text-align:left"><a href="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHNuZW40MjNxeXl6ZXA4amM2NDgyOGxlMGtub3Y2YW1nM2liNjZvdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/PveGpIwKV1aQK7x7rD/giphy.gif"><img style="width:240px" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHNuZW40MjNxeXl6ZXA4amM2NDgyOGxlMGtub3Y2YW1nM2liNjZvdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/PveGpIwKV1aQK7x7rD/giphy.gif"/></a></figure><p id="21217d26-beee-8016-ab2e-d2f60fdea26c" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
