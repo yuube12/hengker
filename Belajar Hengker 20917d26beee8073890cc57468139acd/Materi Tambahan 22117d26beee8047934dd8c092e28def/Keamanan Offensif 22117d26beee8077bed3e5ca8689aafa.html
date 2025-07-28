@@ -1,0 +1,807 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Keamanan Offensif</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  a, a.visited {
+    color: #9ecbff;
+  }
+
+  .source, .callout, .code, blockquote, table, th, td {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #e0e0e0;
+  }
+
+  .simple-table-header-color {
+    background: #333 !important;
+    color: #fff !important;
+  }
+
+  hr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .table_of_contents-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .highlight-default,
+  .highlight-gray,
+  .highlight-brown,
+  .highlight-orange,
+  .highlight-yellow,
+  .highlight-teal,
+  .highlight-blue,
+  .highlight-purple,
+  .highlight-pink,
+  .highlight-red {
+    color: inherit;
+  }
+
+  .highlight-gray_background,
+  .highlight-brown_background,
+  .highlight-orange_background,
+  .highlight-yellow_background,
+  .highlight-teal_background,
+  .highlight-blue_background,
+  .highlight-purple_background,
+  .highlight-pink_background,
+  .highlight-red_background {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .code,
+  code {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f78c6c;
+  }
+
+  blockquote {
+    border-left: 3px solid #888;
+    color: #ccc;
+  }
+
+  .bookmark-description {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .select-value-color-default,
+  .select-value-color-gray,
+  .select-value-color-brown,
+  .select-value-color-orange,
+  .select-value-color-yellow,
+  .select-value-color-green,
+  .select-value-color-blue,
+  .select-value-color-purple,
+  .select-value-color-pink,
+  .select-value-color-red {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+body {
+  padding: 0px 20px 50px 20px;
+}
+
+img {
+  border-radius: 20px;
+}
+
+.block-color-gray_background{
+  border-radius: 10px;
+}
+
+/* Callout dasar: flex container dengan gap */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+              /* fallback background */
+  border: 1px solid #ddd;
+  margin: 1.5em 0;
+}
+
+
+}
+
+/* Contoh ikon dalam callout */
+.callout .icon {
+  font-size: 1.5em;
+  flex-shrink: 0;
+}
+
+/* Konten callout */
+.callout h1,
+.callout h2,
+.callout h3,
+.callout p {
+  margin: 0;
+}
+
+
+	
+</style></head><body><article id="22117d26-beee-8077-bed3-e5ca8689aafa" class="page sans"><header><img class="page-cover-image" src="Keamanan%20Offensif%2022117d26beee8077bed3e5ca8689aafa/hikari_nozomi_rl.jpg" style="object-position:center 66.14999999999999%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">⚔️</span></div><h1 class="page-title">Keamanan Offensif</h1><p class="page-description"></p></header><div class="page-body"><p id="22117d26-beee-8053-88bb-c3bc52cd93c2" class="">Keamanan ofensif adalah cabang keamanan siber yang <strong>berfokus pada mencari, mengeksploitasi, dan menunjukkan kelemahan dalam sistem</strong>, dengan tujuan akhir: <strong>meningkatkan pertahanan</strong> sistem tersebut.</p><p id="22117d26-beee-803e-b5ef-f212095ccc76" class="">Daripada hanya menunggu serangan, praktisi keamanan ofensif <strong>berpura-pura menjadi penyerang</strong> untuk mengetahui seberapa kuat pertahanan yang ada.</p><hr id="22117d26-beee-800b-9868-cc635ad4f041"/><h2 id="22117d26-beee-808c-89e2-fd89f5a792d3" class="">🔧 Tujuan Utama Keamanan Ofensif</h2><ol type="1" id="22117d26-beee-80ea-bebe-db852ea02c41" class="numbered-list" start="1"><li><strong>Mencari celah sebelum penjahat siber menemukannya</strong></li></ol><ol type="1" id="22117d26-beee-80be-b081-fef6a39c05b7" class="numbered-list" start="2"><li><strong>Membuktikan bahwa sistem bisa diretas</strong></li></ol><ol type="1" id="22117d26-beee-808b-8267-d53c601ebebc" class="numbered-list" start="3"><li><strong>Memberikan laporan dan rekomendasi perbaikan</strong></li></ol><ol type="1" id="22117d26-beee-804b-adcd-ca5dad29a005" class="numbered-list" start="4"><li><strong>Menguji kesiapan tim keamanan (blue team)</strong></li></ol><hr id="22117d26-beee-8075-8086-c99766b35109"/><h2 id="22117d26-beee-807e-b1bd-d0467243735d" class="">👥 Siapa yang Melakukan?</h2><ul id="22117d26-beee-8075-931a-ca5d91c07783" class="bulleted-list"><li style="list-style-type:disc"><strong>Red Team</strong><p id="22117d26-beee-80a7-8a13-fb28a458158f" class="">Tim “penyerang” yang berpura-pura menjadi hacker sungguhan untuk menguji pertahanan.</p></li></ul><ul id="22117d26-beee-8040-bc1e-de0567b8c462" class="bulleted-list"><li style="list-style-type:disc"><strong>Penetration Tester (Pentester)</strong><p id="22117d26-beee-80da-a7d8-cfc26559c12f" class="">Profesional yang diberi izin untuk melakukan serangan terbatas ke sistem untuk menguji keamanannya.</p></li></ul><hr id="22117d26-beee-807b-bf9f-ca8b898cb27a"/><h2 id="22117d26-beee-80d5-99a0-d329a4dcb085" class="">🧠 Teknik dalam Keamanan Ofensif</h2><h3 id="22117d26-beee-80a1-868b-c112652ff463" class="">1. <strong>Pemindaian dan Pengintaian (Reconnaissance)</strong></h3><p id="22117d26-beee-809e-9516-f68ac2f80260" class="">Sebelum menyerang, penyerang akan mencari informasi sebanyak mungkin.</p><p id="22117d26-beee-8016-bd88-daecd7dc5f54" class="">Contoh:</p><ul id="22117d26-beee-8091-9383-c11db38b0547" class="bulleted-list"><li style="list-style-type:disc">Mengumpulkan nama domain dan IP</li></ul><ul id="22117d26-beee-806e-b2e5-e8917edc038c" class="bulleted-list"><li style="list-style-type:disc">Menemukan halaman tersembunyi (seperti dengan Gobuster)</li></ul><ul id="22117d26-beee-809c-a051-d17d1eb21607" class="bulleted-list"><li style="list-style-type:disc">Menganalisis konfigurasi DNS</li></ul><h3 id="22117d26-beee-80a8-ae3d-d0d7e9d4ffa0" class="">2. <strong>Pemindaian Kerentanan (Vulnerability Scanning)</strong></h3><p id="22117d26-beee-80d3-b9e4-c1ead0a4f26f" class="">Menggunakan alat seperti <strong>Nmap</strong>, <strong>Nessus</strong>, atau <strong>Nikto</strong> untuk mencari:</p><ul id="22117d26-beee-8055-8694-c0bc1a525c6a" class="bulleted-list"><li style="list-style-type:disc">Port terbuka</li></ul><ul id="22117d26-beee-808b-8cb5-db9b360747ee" class="bulleted-list"><li style="list-style-type:disc">Versi software rentan</li></ul><ul id="22117d26-beee-80ad-a586-f5e7869ff3bc" class="bulleted-list"><li style="list-style-type:disc">Layanan yang berjalan</li></ul><h3 id="22117d26-beee-8096-939c-c9ef25e90240" class="">3. <strong>Eksploitasi (Exploitation)</strong></h3><p id="22117d26-beee-807f-b9b9-faff7f4c62fa" class="">Menyerang sistem menggunakan kelemahan yang ditemukan.</p><p id="22117d26-beee-8057-8be3-f6449f324561" class="">Contoh eksploitasi:</p><ul id="22117d26-beee-80bd-9bea-cfd14f660f77" class="bulleted-list"><li style="list-style-type:disc">SQL Injection</li></ul><ul id="22117d26-beee-802e-97aa-d5036f10da88" class="bulleted-list"><li style="list-style-type:disc">Remote Code Execution (RCE)</li></ul><ul id="22117d26-beee-80cf-a23a-db582e9ce843" class="bulleted-list"><li style="list-style-type:disc">Buffer Overflow</li></ul><p id="22117d26-beee-80bd-9869-c4cb80e23b04" class="">Alat populer: <strong>Metasploit</strong>, <strong>SQLmap</strong>, <strong>Burp Suite</strong></p><h3 id="22117d26-beee-80f9-8eef-ddd7cfb68179" class="">4. <strong>Escalation dan Persistence</strong></h3><p id="22117d26-beee-801a-89b9-cd93da992cfa" class="">Jika berhasil masuk ke sistem, penyerang akan:</p><ul id="22117d26-beee-8010-8e4a-d3c6f1c92224" class="bulleted-list"><li style="list-style-type:disc"><strong>Escalate Privilege</strong>: Meningkatkan hak akses jadi admin</li></ul><ul id="22117d26-beee-8085-a31d-f99bba6cebb3" class="bulleted-list"><li style="list-style-type:disc"><strong>Persistence</strong>: Menanam <em>backdoor</em> agar bisa masuk kembali</li></ul><h3 id="22117d26-beee-8047-bc48-cba428b31ae2" class="">5. <strong>Exfiltration dan Lateral Movement</strong></h3><ul id="22117d26-beee-806d-a1ec-c65b0c24891d" class="bulleted-list"><li style="list-style-type:disc"><strong>Exfiltration</strong>: Mencuri data penting (data breach)</li></ul><ul id="22117d26-beee-8070-a4b5-ca90e3303123" class="bulleted-list"><li style="list-style-type:disc"><strong>Lateral Movement</strong>: Menyusup ke sistem lain di jaringan yang sama</li></ul><hr id="22117d26-beee-80d3-b5d5-f0ceef817f35"/><h2 id="22117d26-beee-80cb-8ba2-c01cab1bff05" class="">🔬 Simulasi Umum Red Team</h2><ol type="1" id="22117d26-beee-8029-ab36-de295907cfa6" class="numbered-list" start="1"><li>Red Team mengirim email phishing ke staf perusahaan</li></ol><ol type="1" id="22117d26-beee-8007-918f-c2ed0db4b831" class="numbered-list" start="2"><li>Salah satu staf mengklik dan malware masuk</li></ol><ol type="1" id="22117d26-beee-80af-a2d9-db947bffd1f8" class="numbered-list" start="3"><li>Malware memberi akses ke Red Team</li></ol><ol type="1" id="22117d26-beee-80ce-9fb8-d96becac8ada" class="numbered-list" start="4"><li>Red Team menjelajah sistem internal</li></ol><ol type="1" id="22117d26-beee-80be-a55c-ce4a84401100" class="numbered-list" start="5"><li>Mereka mencuri data dummy</li></ol><ol type="1" id="22117d26-beee-801b-b7d3-da09c7b736a5" class="numbered-list" start="6"><li>Laporan dikirim ke Blue Team dengan cara-cara serangan dan rekomendasi perbaikan</li></ol><hr id="22117d26-beee-8019-b2ed-ed2ef20dfbbb"/><h2 id="22117d26-beee-8068-bb28-f167203de834" class="">✨ Perbedaan Penting: Red Team vs Pentester</h2><table id="22117d26-beee-80ce-83a8-c0d1e3c8532c" class="simple-table"><thead class="simple-table-header"><tr id="22117d26-beee-8018-8f8d-e99ed8524dc6"><th id="A}~K" class="simple-table-header-color simple-table-header">Aspek</th><th id="HPWM" class="simple-table-header-color simple-table-header">Red Team</th><th id="wuJI" class="simple-table-header-color simple-table-header">Pentester</th></tr></thead><tbody><tr id="22117d26-beee-80cc-99fb-d0dafd60ca98"><td id="A}~K" class="">Tujuan</td><td id="HPWM" class="">Menguji seluruh pertahanan</td><td id="wuJI" class="">Menguji bagian tertentu</td></tr><tr id="22117d26-beee-8022-b2cf-e7daefbcca65"><td id="A}~K" class="">Pendekatan</td><td id="HPWM" class="">Diam-diam, seperti hacker asli</td><td id="wuJI" class="">Terbatas dan terkontrol</td></tr><tr id="22117d26-beee-8038-a625-ff27a4d4dee6"><td id="A}~K" class="">Lama waktu</td><td id="HPWM" class="">Beberapa minggu/bulan</td><td id="wuJI" class="">Beberapa hari</td></tr><tr id="22117d26-beee-8049-9766-f45926d767bb"><td id="A}~K" class="">Fokus</td><td id="HPWM" class="">Mendeteksi dan mengelabui Blue Team</td><td id="wuJI" class="">Mencari dan membuktikan celah</td></tr></tbody></table><hr id="22117d26-beee-8047-b2dd-cefedc751d77"/><h2 id="22117d26-beee-80c3-aa72-f48289e3ed24" class="">⚠️ Contoh Celah yang Dieksploitasi</h2><table id="22117d26-beee-8097-9d65-d7669b850442" class="simple-table"><thead class="simple-table-header"><tr id="22117d26-beee-80f8-9217-eda88436c3d6"><th id="BTsj" class="simple-table-header-color simple-table-header">Jenis Serangan</th><th id="~Agu" class="simple-table-header-color simple-table-header">Contoh</th></tr></thead><tbody><tr id="22117d26-beee-805c-8bdd-dc01f53c5128"><td id="BTsj" class="">SQL Injection</td><td id="~Agu" class="">Mengambil data rahasia dari database</td></tr><tr id="22117d26-beee-80ff-b117-e8b62d7752ca"><td id="BTsj" class="">XSS (Cross-site Scripting)</td><td id="~Agu" class="">Menyisipkan skrip jahat ke situs web yang terlihat aman</td></tr><tr id="22117d26-beee-806e-8ba0-c829c8c92d67"><td id="BTsj" class="">Misconfigured Server</td><td id="~Agu" class="">Server yang tidak dilindungi password atau update</td></tr><tr id="22117d26-beee-80bb-8b50-f9a283fadd1b"><td id="BTsj" class="">Brute Force Attack</td><td id="~Agu" class="">Menebak password dengan kombinasi ribuan kata</td></tr><tr id="22117d26-beee-80f0-b9f2-db16bd75a699"><td id="BTsj" class="">Directory Traversal</td><td id="~Agu" class="">Mengakses file penting di server yang seharusnya tidak boleh dilihat</td></tr></tbody></table><hr id="22117d26-beee-8040-8ec0-ed8f908bba88"/><h2 id="22117d26-beee-8073-b311-f7a569c2f6e6" class="">🧩 Tools Populer di Keamanan Ofensif</h2><table id="22117d26-beee-8072-bb53-c48bdffe25e4" class="simple-table"><thead class="simple-table-header"><tr id="22117d26-beee-8051-845d-e7db714763bb"><th id="Pml|" class="simple-table-header-color simple-table-header">Nama Alat</th><th id="cUQV" class="simple-table-header-color simple-table-header">Fungsi</th></tr></thead><tbody><tr id="22117d26-beee-80e5-af10-e893f0ec60c7"><td id="Pml|" class=""><strong>Nmap</strong></td><td id="cUQV" class="">Memindai port dan layanan pada target</td></tr><tr id="22117d26-beee-8008-bfd7-cacf4592d375"><td id="Pml|" class=""><strong>Gobuster</strong></td><td id="cUQV" class="">Mencari direktori atau halaman tersembunyi di web</td></tr><tr id="22117d26-beee-80b1-bdda-e559a2ebbd30"><td id="Pml|" class=""><strong>Metasploit</strong></td><td id="cUQV" class="">Framework eksploitasi dan post-exploitation</td></tr><tr id="22117d26-beee-80fa-8673-fe8228c25303"><td id="Pml|" class=""><strong>Burp Suite</strong></td><td id="cUQV" class="">Menganalisis dan mengubah lalu lintas HTTP</td></tr><tr id="22117d26-beee-800a-85de-da8e290bba3f"><td id="Pml|" class=""><strong>Wireshark</strong></td><td id="cUQV" class="">Menganalisis lalu lintas jaringan</td></tr><tr id="22117d26-beee-8095-a0ca-cdbdb0099fc1"><td id="Pml|" class=""><strong>Hydra</strong></td><td id="cUQV" class="">Brute force login (SSH, FTP, dll)</td></tr></tbody></table><hr id="22117d26-beee-80f9-a62a-eb3a94d798af"/><h2 id="22117d26-beee-8042-b43c-d19daaf8e8d5" class="">💡 Kesimpulan</h2><p id="22117d26-beee-80ba-aa76-db293a8d5f8c" class=""><strong>Keamanan Ofensif</strong> sangat penting karena:</p><ul id="22117d26-beee-8064-82a4-edb189d8306b" class="bulleted-list"><li style="list-style-type:disc">Mendeteksi kelemahan lebih awal</li></ul><ul id="22117d26-beee-80ae-85af-d14da1f22ae4" class="bulleted-list"><li style="list-style-type:disc">Memberi pemahaman tentang bagaimana penyerang berpikir</li></ul><ul id="22117d26-beee-8049-b7b7-cdcbc13123d5" class="bulleted-list"><li style="list-style-type:disc">Melatih tim pertahanan melalui simulasi nyata</li></ul><p id="22117d26-beee-8008-8bc9-eb790c0c5b98" class="">Gabungan <strong>Red Team + Blue Team = Purple Team</strong>, tim gabungan untuk saling belajar dan meningkatkan pertahanan secara keseluruhan.</p><p id="22117d26-beee-808c-8633-cd7c3cc19e23" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

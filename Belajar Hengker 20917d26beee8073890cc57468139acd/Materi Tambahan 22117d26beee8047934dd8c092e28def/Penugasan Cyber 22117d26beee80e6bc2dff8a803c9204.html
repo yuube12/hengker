@@ -1,0 +1,808 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Penugasan Cyber</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  a, a.visited {
+    color: #9ecbff;
+  }
+
+  .source, .callout, .code, blockquote, table, th, td {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #e0e0e0;
+  }
+
+  .simple-table-header-color {
+    background: #333 !important;
+    color: #fff !important;
+  }
+
+  hr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .table_of_contents-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .highlight-default,
+  .highlight-gray,
+  .highlight-brown,
+  .highlight-orange,
+  .highlight-yellow,
+  .highlight-teal,
+  .highlight-blue,
+  .highlight-purple,
+  .highlight-pink,
+  .highlight-red {
+    color: inherit;
+  }
+
+  .highlight-gray_background,
+  .highlight-brown_background,
+  .highlight-orange_background,
+  .highlight-yellow_background,
+  .highlight-teal_background,
+  .highlight-blue_background,
+  .highlight-purple_background,
+  .highlight-pink_background,
+  .highlight-red_background {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .code,
+  code {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f78c6c;
+  }
+
+  blockquote {
+    border-left: 3px solid #888;
+    color: #ccc;
+  }
+
+  .bookmark-description {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .select-value-color-default,
+  .select-value-color-gray,
+  .select-value-color-brown,
+  .select-value-color-orange,
+  .select-value-color-yellow,
+  .select-value-color-green,
+  .select-value-color-blue,
+  .select-value-color-purple,
+  .select-value-color-pink,
+  .select-value-color-red {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+body {
+  padding: 0px 20px 50px 20px;
+}
+
+img {
+  border-radius: 20px;
+}
+
+.block-color-gray_background{
+  border-radius: 10px;
+}
+
+/* Callout dasar: flex container dengan gap */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+              /* fallback background */
+  border: 1px solid #ddd;
+  margin: 1.5em 0;
+}
+
+
+}
+
+/* Contoh ikon dalam callout */
+.callout .icon {
+  font-size: 1.5em;
+  flex-shrink: 0;
+}
+
+/* Konten callout */
+.callout h1,
+.callout h2,
+.callout h3,
+.callout p {
+  margin: 0;
+}
+
+
+	
+</style></head><body><article id="22117d26-beee-80e6-bc2d-ff8a803c9204" class="page sans"><header><img class="page-cover-image" src="Penugasan%20Cyber%2022117d26beee80e6bc2dff8a803c9204/hikari_nozomi_rl.jpg" style="object-position:center 64.96%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">💼</span></div><h1 class="page-title">Penugasan Cyber</h1><p class="page-description"></p></header><div class="page-body"><h2 id="22117d26-beee-805e-a225-f75ac4122a8c" class="">⚔️ Peran dalam <strong>Keamanan Siber Ofensif</strong></h2><h3 id="22117d26-beee-809f-ab0a-f9816a8fc63e" class="">1. 🕵️‍♂️ <strong>Penguji Penetrasi (Penetration Tester / Pentester)</strong></h3><p id="22117d26-beee-8005-8bcb-e8f7124b43df" class="">Disebut juga <strong>ethical hacker</strong>, pentester bertugas menguji keamanan sistem dan software perusahaan dengan cara meretasnya secara terkendali. Tujuannya: menemukan celah sebelum hacker sungguhan menemukannya.</p><p id="22117d26-beee-80cc-8d86-f5cf0fc306ad" class=""><strong>Tugas:</strong></p><ul id="22117d26-beee-80cb-a63b-e3a0babeff9f" class="bulleted-list"><li style="list-style-type:disc">Melakukan pengujian terhadap sistem, jaringan, dan aplikasi berbasis web.</li></ul><ul id="22117d26-beee-80ba-8c7b-dc99b9724e0f" class="bulleted-list"><li style="list-style-type:disc">Melakukan audit keamanan dan menganalisis kebijakan perusahaan.</li></ul><ul id="22117d26-beee-8041-b856-d48b7a470eaa" class="bulleted-list"><li style="list-style-type:disc">Menyusun laporan temuan dan merekomendasikan langkah pencegahan yang tepat.</li></ul><hr id="22117d26-beee-805a-8843-e17e082633cf"/><h3 id="22117d26-beee-8010-ba02-e4b5946a8968" class="">2. 🟥 <strong>Anggota Red Team (Red Teamer)</strong></h3><p id="22117d26-beee-803d-9d53-cca5a3ca606f" class="">Red teamer mirip pentester, tetapi lebih <strong>fokus pada simulasi serangan nyata</strong> dan <strong>mengelabui tim keamanan (blue team)</strong>. Red team ingin tahu: apakah sistem bisa mendeteksi dan merespons serangan dengan baik?</p><p id="22117d26-beee-80c3-be37-feb1267ea818" class=""><strong>Tugas:</strong></p><ul id="22117d26-beee-809b-9a9a-ef79aff9804a" class="bulleted-list"><li style="list-style-type:disc">Meniru aksi penyerang sungguhan, seperti mencuri data, mempertahankan akses, dan menghindari deteksi.</li></ul><ul id="22117d26-beee-8090-b976-d81a3c9fcece" class="bulleted-list"><li style="list-style-type:disc">Menguji kekuatan deteksi, respons, dan kontrol keamanan perusahaan.</li></ul><ul id="22117d26-beee-807b-b366-cae729abea15" class="bulleted-list"><li style="list-style-type:disc">Menyusun laporan berbasis skenario nyata untuk meningkatkan kesiapan tim keamanan.</li></ul><p id="22117d26-beee-80a9-978e-e2354d9d6286" class="">🕐 Red team assessment bisa berlangsung hingga <strong>1 bulan</strong>, dan biasanya dilakukan oleh tim <strong>eksternal</strong>.</p><hr id="22117d26-beee-807a-b0af-d80fbcd0db01"/><p id="22117d26-beee-8029-8b37-fd4d07cd976e" class="">
+</p><h2 id="22117d26-beee-8069-b37b-e3a8ab9de8eb" class="">🛡️ Peran dalam <strong>Keamanan Siber Defensif</strong></h2><h3 id="22117d26-beee-8031-9273-f85a3e974cfa" class="">1. 🔍 <strong>Analis Keamanan (Security Analyst)</strong></h3><p id="22117d26-beee-80b5-95b6-c750924f066d" class="">Analis keamanan adalah tulang punggung dalam membangun sistem pertahanan siber di perusahaan. Mereka bertugas mengevaluasi jaringan dan sistem untuk menemukan celah serta memberikan rekomendasi kepada insinyur keamanan.</p><p id="22117d26-beee-8081-95aa-f9593a29fef2" class=""><strong>Tugas:</strong></p><ul id="22117d26-beee-8074-a07d-d89a17d978ea" class="bulleted-list"><li style="list-style-type:disc">Berkolaborasi dengan berbagai pihak untuk meninjau dan menganalisis keamanan perusahaan secara menyeluruh.</li></ul><ul id="22117d26-beee-8032-aa0e-c42219859cb6" class="bulleted-list"><li style="list-style-type:disc">Menyusun laporan rutin mengenai status keamanan jaringan, termasuk dokumentasi masalah dan solusi yang telah diterapkan.</li></ul><ul id="22117d26-beee-8046-8849-f70598324cf6" class="bulleted-list"><li style="list-style-type:disc">Mengembangkan rencana keamanan berdasarkan tren serangan baru dan langkah-langkah pencegahan yang dibutuhkan antar tim.</li></ul><hr id="22117d26-beee-8044-9b32-d29b13f5f5cd"/><h3 id="22117d26-beee-8001-9780-c14c61436f17" class="">2. 🛠️ <strong>Insinyur Keamanan (Security Engineer)</strong></h3><p id="22117d26-beee-80c7-b6e6-eff44c4ff69a" class="">Security engineer merancang dan mengimplementasikan solusi keamanan berdasarkan data ancaman dan kerentanan. Mereka memastikan sistem terlindungi dari berbagai serangan, seperti serangan web, jaringan, dan metode terbaru lainnya.</p><p id="22117d26-beee-80c4-b0c6-ed341aab9605" class=""><strong>Tugas:</strong></p><ul id="22117d26-beee-80fa-b837-dee0450c817c" class="bulleted-list"><li style="list-style-type:disc">Menguji dan menyaring langkah-langkah keamanan pada perangkat lunak.</li></ul><ul id="22117d26-beee-802c-b231-edd121face72" class="bulleted-list"><li style="list-style-type:disc">Memantau jaringan dan laporan untuk memperbarui sistem serta menutup celah keamanan.</li></ul><ul id="22117d26-beee-807f-98a5-d3a28d1af4be" class="bulleted-list"><li style="list-style-type:disc">Mengidentifikasi dan menerapkan sistem tambahan yang diperlukan untuk perlindungan optimal.</li></ul><hr id="22117d26-beee-8099-b34a-c052144bef88"/><h3 id="22117d26-beee-80b8-8a09-c4ffef5a546c" class="">3. 🚨 <strong>Penanggap Insiden (Incident Responder)</strong></h3><p id="22117d26-beee-805f-a006-c4b4f4d4258d" class="">Penanggap insiden bertugas menangani insiden keamanan secara cepat dan efisien. Ini adalah pekerjaan yang penuh tekanan karena sering harus membuat keputusan dalam waktu nyata saat serangan sedang berlangsung.</p><p id="22117d26-beee-8080-8b75-fe891bbdb92e" class=""><strong>Tugas:</strong></p><ul id="22117d26-beee-80ca-8dd1-e31db018eaf7" class="bulleted-list"><li style="list-style-type:disc">Mengembangkan dan menerapkan rencana respons insiden yang detail dan bisa langsung dijalankan.</li></ul><ul id="22117d26-beee-80ff-a5d9-c1b704aee2ca" class="bulleted-list"><li style="list-style-type:disc">Menjaga praktik keamanan terbaik dan mendukung semua proses respons insiden.</li></ul><ul id="22117d26-beee-8023-9a0f-db961ef7ce9e" class="bulleted-list"><li style="list-style-type:disc">Melakukan pelaporan pasca-insiden dan menyiapkan langkah-langkah antisipasi berdasarkan pelajaran dari serangan sebelumnya.</li></ul><p id="22117d26-beee-8044-9ef1-ffafa1414324" class="">📊 <strong>Istilah penting:</strong></p><ul id="22117d26-beee-80e1-8185-ec33a3832de2" class="bulleted-list"><li style="list-style-type:disc"><strong>MTTD</strong> (Mean Time to Detect): Waktu rata-rata untuk mendeteksi serangan</li></ul><ul id="22117d26-beee-802f-91e0-df1247e26c99" class="bulleted-list"><li style="list-style-type:disc"><strong>MTTA</strong> (Mean Time to Acknowledge): Waktu untuk menyadari dan mengakui insiden</li></ul><ul id="22117d26-beee-8063-a7bb-ed43854114cb" class="bulleted-list"><li style="list-style-type:disc"><strong>MTTR</strong> (Mean Time to Recover): Waktu untuk pulih dari insiden</li></ul><hr id="22117d26-beee-80ef-ab8a-ee3214fbcdb8"/><h3 id="22117d26-beee-80f2-8cee-c5c01fe4a820" class="">4. 🧪 <strong>Ahli Forensik Digital (Digital Forensics Analyst)</strong></h3><p id="22117d26-beee-80f7-926e-c595354b6e9b" class="">Cocok untuk kamu yang suka &quot;main detektif&quot;. Ahli forensik digital bertugas mengumpulkan dan menganalisis bukti digital dalam insiden keamanan. Jika bekerja di lembaga penegak hukum, tugasnya adalah mengungkap kejahatan digital. Di perusahaan, mereka meneliti pelanggaran kebijakan atau insiden keamanan.</p><p id="22117d26-beee-8040-aaf9-eb7f8b8da0a4" class=""><strong>Tugas:</strong></p><ul id="22117d26-beee-805d-9a2f-e4e382dbc596" class="bulleted-list"><li style="list-style-type:disc">Mengumpulkan bukti digital sambil mengikuti prosedur hukum.</li></ul><ul id="22117d26-beee-8024-8129-df9a8190a5a2" class="bulleted-list"><li style="list-style-type:disc">Menganalisis bukti untuk menemukan pelaku atau penyebab serangan.</li></ul><ul id="22117d26-beee-8093-8b18-c3f9990c30a9" class="bulleted-list"><li style="list-style-type:disc">Mendokumentasikan hasil dan menyusun laporan resmi.</li></ul><hr id="22117d26-beee-8011-856a-f1aa2f87de4b"/><h3 id="22117d26-beee-8009-b198-d8552a8382e2" class="">5. 🦠 <strong>Analis Malware (Malware Analyst)</strong></h3><p id="22117d26-beee-80fd-bf02-c4fd6897ba06" class="">Analis malware bertugas <strong>membongkar program berbahaya</strong>, memahami cara kerjanya, dan menuliskan laporannya. Mereka sering disebut <strong>reverse engineer</strong> karena harus mengubah program dari kode mesin ke kode yang dapat dibaca.</p><p id="22117d26-beee-8071-90a1-fd8813a9e207" class=""><strong>Tugas:</strong></p><ul id="22117d26-beee-80b7-a124-e8d3169f6253" class="bulleted-list"><li style="list-style-type:disc">Melakukan <strong>analisis statis</strong>, yaitu membedah malware tanpa menjalankannya, dengan membalik kode (reverse engineering).</li></ul><ul id="22117d26-beee-803d-8f9f-e70af392bc7c" class="bulleted-list"><li style="list-style-type:disc">Melakukan <strong>analisis dinamis</strong>, yakni menjalankan malware di lingkungan terkontrol dan mengamati perilakunya.</li></ul><ul id="22117d26-beee-8044-85ad-f66d2a5ef54f" class="bulleted-list"><li style="list-style-type:disc">Mendokumentasikan semua temuan agar bisa digunakan untuk deteksi dan pencegahan di masa depan.</li></ul><hr id="22117d26-beee-8064-aae2-d78b81073c51"/><h2 id="22117d26-beee-802f-a83a-db5bf2fdd2ac" class="">🧩 Ringkasan Perbandingan</h2><table id="22117d26-beee-80b0-9466-c94248aa3b1d" class="simple-table"><thead class="simple-table-header"><tr id="22117d26-beee-8037-b107-d20c5dacecee"><th id="Ar\t" class="simple-table-header-color simple-table-header">Peran</th><th id="~|~D" class="simple-table-header-color simple-table-header">Fokus</th><th id="|`gx" class="simple-table-header-color simple-table-header">Jenis Keamanan</th></tr></thead><tbody><tr id="22117d26-beee-80e5-b5fa-cb037cf0e058"><td id="Ar\t" class=""><strong>Penetration Tester</strong></td><td id="~|~D" class="">Menemukan dan mengeksploitasi celah</td><td id="|`gx" class="">Ofensif</td></tr><tr id="22117d26-beee-8098-8edf-f70cb8a8f570"><td id="Ar\t" class=""><strong>Red Teamer</strong></td><td id="~|~D" class="">Meniru serangan untuk menguji pertahanan</td><td id="|`gx" class="">Ofensif (lanjutan)</td></tr><tr id="22117d26-beee-80f7-aa33-eb69690baf7c"><td id="Ar\t" class=""><strong>Security Analyst</strong></td><td id="~|~D" class="">Menganalisis dan melaporkan status keamanan</td><td id="|`gx" class="">Defensif</td></tr><tr id="22117d26-beee-80df-ab9a-d96c18715cc9"><td id="Ar\t" class=""><strong>Security Engineer</strong></td><td id="~|~D" class="">Membangun dan menerapkan sistem perlindungan</td><td id="|`gx" class="">Defensif</td></tr><tr id="22117d26-beee-80f9-9050-c440ff5f3cb0"><td id="Ar\t" class=""><strong>Incident Responder</strong></td><td id="~|~D" class="">Menangani dan memulihkan dari insiden</td><td id="|`gx" class="">Defensif</td></tr><tr id="22117d26-beee-80ca-9e13-daf37e2c9eb2"><td id="Ar\t" class=""><strong>Digital Forensics Analyst</strong></td><td id="~|~D" class="">Mengumpulkan dan menganalisis bukti digital</td><td id="|`gx" class="">Defensif</td></tr><tr id="22117d26-beee-8086-bdac-f33e5bb0fc23"><td id="Ar\t" class=""><strong>Malware Analyst</strong></td><td id="~|~D" class="">Membongkar dan memahami malware</td><td id="|`gx" class="">Defensif</td></tr></tbody></table><p id="22117d26-beee-809e-9cf6-d4f117c4e7e6" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

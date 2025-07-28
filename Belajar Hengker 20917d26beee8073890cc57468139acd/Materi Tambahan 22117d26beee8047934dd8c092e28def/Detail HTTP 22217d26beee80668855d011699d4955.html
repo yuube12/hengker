@@ -1,0 +1,830 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Detail HTTP</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  a, a.visited {
+    color: #9ecbff;
+  }
+
+  .source, .callout, .code, blockquote, table, th, td {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #e0e0e0;
+  }
+
+  .simple-table-header-color {
+    background: #333 !important;
+    color: #fff !important;
+  }
+
+  hr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .table_of_contents-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .highlight-default,
+  .highlight-gray,
+  .highlight-brown,
+  .highlight-orange,
+  .highlight-yellow,
+  .highlight-teal,
+  .highlight-blue,
+  .highlight-purple,
+  .highlight-pink,
+  .highlight-red {
+    color: inherit;
+  }
+
+  .highlight-gray_background,
+  .highlight-brown_background,
+  .highlight-orange_background,
+  .highlight-yellow_background,
+  .highlight-teal_background,
+  .highlight-blue_background,
+  .highlight-purple_background,
+  .highlight-pink_background,
+  .highlight-red_background {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .code,
+  code {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f78c6c;
+  }
+
+  blockquote {
+    border-left: 3px solid #888;
+    color: #ccc;
+  }
+
+  .bookmark-description {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .select-value-color-default,
+  .select-value-color-gray,
+  .select-value-color-brown,
+  .select-value-color-orange,
+  .select-value-color-yellow,
+  .select-value-color-green,
+  .select-value-color-blue,
+  .select-value-color-purple,
+  .select-value-color-pink,
+  .select-value-color-red {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+body {
+  padding: 0px 20px 50px 20px;
+}
+
+img {
+  border-radius: 20px;
+}
+
+.block-color-gray_background{
+  border-radius: 10px;
+}
+
+/* Callout dasar: flex container dengan gap */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+              /* fallback background */
+  border: 1px solid #ddd;
+  margin: 1.5em 0;
+}
+
+
+}
+
+/* Contoh ikon dalam callout */
+.callout .icon {
+  font-size: 1.5em;
+  flex-shrink: 0;
+}
+
+/* Konten callout */
+.callout h1,
+.callout h2,
+.callout h3,
+.callout p {
+  margin: 0;
+}
+
+
+	
+</style></head><body><article id="22217d26-beee-8066-8855-d011699d4955" class="page sans"><header><img class="page-cover-image" src="Detail%20HTTP%2022217d26beee80668855d011699d4955/hikari_nozomi_rl.jpg" style="object-position:center 65.32%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🧲</span></div><h1 class="page-title">Detail HTTP</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22217d26-beee-80b4-889f-c5dbb588073c"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><h2 id="22217d26-beee-80e1-8a6a-f5c3f11570f1" class="">Apa itu HTTP?</h2></div></figure><p id="22217d26-beee-8099-9116-c5791e9a5f4e" class=""><strong>HTTP (HyperText Transfer Protocol)</strong> adalah protokol komunikasi yang digunakan saat kita mengakses halaman web. Protokol ini dikembangkan oleh <strong>Tim Berners-Lee</strong> dan timnya antara tahun 1989–1991.</p><p id="22217d26-beee-8061-b2d4-f11c5fecc252" class="">HTTP digunakan untuk <strong>mengirim dan menerima data</strong> seperti:</p><ul id="22217d26-beee-809d-84e4-d756be6cfbaf" class="bulleted-list"><li style="list-style-type:disc">HTML (struktur halaman web)</li></ul><ul id="22217d26-beee-80a3-98b5-d9b68d92828a" class="bulleted-list"><li style="list-style-type:disc">Gambar</li></ul><ul id="22217d26-beee-80fd-b9e9-ee65c9cf016c" class="bulleted-list"><li style="list-style-type:disc">Video</li></ul><ul id="22217d26-beee-8021-a8ad-f99d307e5038" class="bulleted-list"><li style="list-style-type:disc">Script, dan lainnya</li></ul><p id="22217d26-beee-8010-9571-d286f718546e" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22217d26-beee-8043-8b37-c40d8514e625"><div style="font-size:1.5em"><span class="icon">🔒</span></div><div style="width:100%"><h2 id="22217d26-beee-805b-8636-c0e403ce08e9" class="">Apa itu HTTPS?</h2></div></figure><p id="22217d26-beee-80ab-a55b-dd06086ed220" class=""><strong>HTTPS (HTTP Secure)</strong> adalah versi aman dari HTTP. Bedanya:</p><ul id="22217d26-beee-804d-b157-ec11476d766c" class="bulleted-list"><li style="list-style-type:disc">Data yang dikirim <strong>dienkripsi</strong>, sehingga tidak bisa disadap oleh pihak ketiga.</li></ul><ul id="22217d26-beee-80bf-af68-fbfecb61ac9d" class="bulleted-list"><li style="list-style-type:disc">HTTPS juga memastikan bahwa kamu benar-benar terhubung ke server yang sah (bukan server palsu).</li></ul><ul id="22217d26-beee-8060-a24f-c345f355f8b6" class="bulleted-list"><li style="list-style-type:disc">Menggunakan protokol tambahan: <strong>TLS (Transport Layer Security)</strong></li></ul><p id="22217d26-beee-8014-9049-e8d20ba5b948" class="">Tanda bahwa situs menggunakan HTTPS:</p><ul id="22217d26-beee-800c-817f-f352b08a5bd4" class="bulleted-list"><li style="list-style-type:disc">Ada ikon gembok 🔒 di address bar browser</li></ul><ul id="22217d26-beee-80ac-9147-d97989ecd501" class="bulleted-list"><li style="list-style-type:disc">URL dimulai dengan <code>https://</code></li></ul><p id="22217d26-beee-8072-905b-ee4df1a8f38f" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22217d26-beee-80bc-9510-c399c585431e"><div style="font-size:1.5em"><span class="icon">📍</span></div><div style="width:100%"><h2 id="22217d26-beee-8082-a803-e891e6386d07" class="">Apa itu URL?</h2></div></figure><p id="22217d26-beee-8074-b6b2-c2cb42d7ce2d" class=""><strong>URL (Uniform Resource Locator)</strong> adalah <strong>alamat lengkap</strong> dari suatu sumber daya (resource) di internet. Saat kamu mengakses situs apa pun, kamu sedang menggunakan URL.</p><p id="22217d26-beee-8079-aa79-f20c1aed4c26" class="">Contoh URL lengkap:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22217d26-beee-806c-83af-ec5a9e9c5a9b" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">http://user:password@tryhackme.com:80/view-room?id=1#task3</code></pre><h3 id="22217d26-beee-8079-9ea5-e8f3ef361ed9" class="">🔍 Penjelasan Bagian-bagiannya:</h3><table id="22217d26-beee-80bf-b879-c5dda7d6f01c" class="simple-table"><thead class="simple-table-header"><tr id="22217d26-beee-80c9-b65f-f8c27e28e994"><th id="WKbp" class="simple-table-header-color simple-table-header">Bagian</th><th id="&gt;B_L" class="simple-table-header-color simple-table-header">Fungsi</th><th id="~dak" class="simple-table-header-color simple-table-header">Contoh</th></tr></thead><tbody><tr id="22217d26-beee-8045-afa1-de504825c4aa"><th id="WKbp" class="simple-table-header-color simple-table-header"><strong>Scheme</strong></th><td id="&gt;B_L" class="">Protokol yang digunakan</td><td id="~dak" class=""><code>http</code>, <code>https</code>, <code>ftp</code></td></tr><tr id="22217d26-beee-8036-8754-c58d2043b549"><th id="WKbp" class="simple-table-header-color simple-table-header"><strong>User:Password</strong></th><td id="&gt;B_L" class="">(Opsional) Login otomatis ke server</td><td id="~dak" class=""><code>user:password@</code></td></tr><tr id="22217d26-beee-8055-921c-c336b8ebeea4"><th id="WKbp" class="simple-table-header-color simple-table-header"><strong>Host</strong></th><td id="&gt;B_L" class="">Nama domain / IP server tujuan</td><td id="~dak" class=""><code>tryhackme.com</code></td></tr><tr id="22217d26-beee-8049-8fe9-e02aa5254982"><th id="WKbp" class="simple-table-header-color simple-table-header"><strong>Port</strong></th><td id="&gt;B_L" class="">Port yang digunakan</td><td id="~dak" class=""><code>80</code> (HTTP), <code>443</code> (HTTPS)</td></tr><tr id="22217d26-beee-80aa-a233-f00d78c694b5"><th id="WKbp" class="simple-table-header-color simple-table-header"><strong>Path</strong></th><td id="&gt;B_L" class="">Jalur ke file/resource</td><td id="~dak" class=""><code>/view-room</code></td></tr><tr id="22217d26-beee-80d0-b3be-fdc7642e021e"><th id="WKbp" class="simple-table-header-color simple-table-header"><strong>Query</strong></th><td id="&gt;B_L" class="">Parameter tambahan</td><td id="~dak" class=""><code>?id=1</code></td></tr><tr id="22217d26-beee-807e-9f38-d2a292f3b544"><th id="WKbp" class="simple-table-header-color simple-table-header"><strong>Fragment</strong></th><td id="&gt;B_L" class="">Penanda bagian tertentu di halaman</td><td id="~dak" class=""><code>#task3</code></td></tr></tbody></table><h3 id="22217d26-beee-80c7-aa48-cb3b553bab82" class="">🧠 Contoh Praktis:</h3><ul id="22217d26-beee-80e4-aaec-f9b630f4f849" class="bulleted-list"><li style="list-style-type:disc"><code>https://youtube.com/watch?v=abc123</code><ul id="22217d26-beee-809e-9dbf-fc6eec3a519c" class="bulleted-list"><li style="list-style-type:circle">Protocol: HTTPS</li></ul><ul id="22217d26-beee-801f-b742-f89891cbef29" class="bulleted-list"><li style="list-style-type:circle">Domain: youtube.com</li></ul><ul id="22217d26-beee-8049-a868-d3bdbbc6322f" class="bulleted-list"><li style="list-style-type:circle">Path: <code>/watch</code></li></ul><ul id="22217d26-beee-8078-870a-f4d29f044f06" class="bulleted-list"><li style="list-style-type:circle">Query: <code>v=abc123</code> → memberi tahu video mana yang ingin dibuka</li></ul></li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22217d26-beee-8011-bf53-f00abc76b352"><div style="font-size:1.5em"><span class="icon">📤</span></div><div style="width:100%"><h2 id="22217d26-beee-80fd-85c9-f703df977059" class=""><strong>Apa itu HTTP Request (Permintaan)?</strong></h2></div></figure><p id="22217d26-beee-80d4-831d-d6b58dd13a3a" class="">Ketika kamu mengunjungi sebuah situs web, browser kamu akan mengirimkan <strong>HTTP Request</strong> ke server. Ini seperti kamu berkata:</p><blockquote id="22217d26-beee-80d9-a10b-d4f6dbf871a5" class="">&quot;Hai server, tolong kirimkan halaman ini kepadaku.&quot;</blockquote><p id="22217d26-beee-8051-87cc-c15b71e9afe2" class="">Contoh paling sederhana dari HTTP Request:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22217d26-beee-80bd-ae42-fb2757efb4ff" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">GET / HTTP/1.1</code></pre><p id="22217d26-beee-80cb-bf0a-dc1809bce575" class="">Namun, untuk komunikasi yang <strong>lebih kaya</strong>, kamu juga perlu mengirim informasi tambahan melalui <strong>header</strong>. Header berisi metadata, informasi tambahan tentang permintaanmu, seperti browser yang digunakan, asal permintaan, dan sebagainya.</p><hr id="22217d26-beee-803a-8220-cb770b27efa7"/><h3 id="22217d26-beee-80da-8798-dfb9fe20e08d" class="">🧾 Contoh HTTP Request Lengkap:</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22217d26-beee-80bc-932f-fc33d47d9e86" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">GET / HTTP/1.1
+Host: tryhackme.com
+User-Agent: Mozilla/5.0 Firefox/87.0
+Referer: https://tryhackme.com/
+</code></pre><h3 id="22217d26-beee-8098-b1ce-dc817a07d529" class="">🔍 Penjelasan baris demi baris:</h3><table id="22217d26-beee-801a-b154-ce5f034d8915" class="simple-table"><thead class="simple-table-header"><tr id="22217d26-beee-80db-ab1b-ee538d6b9fab"><th id="jg&gt;G" class="simple-table-header-color simple-table-header">Baris</th><th id="lHL=" class="simple-table-header-color simple-table-header">Fungsi</th></tr></thead><tbody><tr id="22217d26-beee-80a4-8152-e3789829195a"><td id="jg&gt;G" class=""><strong>1</strong></td><td id="lHL=" class=""><code>GET / HTTP/1.1</code> → Meminta halaman utama (<code>/</code>) menggunakan metode GET dengan versi HTTP 1.1</td></tr><tr id="22217d26-beee-80ec-98d0-fceffe29bf48"><td id="jg&gt;G" class=""><strong>2</strong></td><td id="lHL=" class=""><code>Host: tryhackme.com</code> → Menentukan domain yang diminta</td></tr><tr id="22217d26-beee-800f-9058-d2c86c1f903a"><td id="jg&gt;G" class=""><strong>3</strong></td><td id="lHL=" class=""><code>User-Agent: Mozilla...</code> → Mengidentifikasi browser atau software client yang digunakan</td></tr><tr id="22217d26-beee-8072-a510-d661a79d477f"><td id="jg&gt;G" class=""><strong>4</strong></td><td id="lHL=" class=""><code>Referer: https://...</code> → Memberi tahu dari halaman mana user sebelumnya berasal</td></tr><tr id="22217d26-beee-809f-b86c-e3184642f013"><td id="jg&gt;G" class=""><strong>5</strong></td><td id="lHL=" class=""><strong>Baris kosong</strong> menandai akhir dari permintaan HTTP</td></tr></tbody></table><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22217d26-beee-80b0-b28d-d24c5828d331"><div style="font-size:1.5em"><span class="icon">📥</span></div><div style="width:100%"><h2 id="22217d26-beee-8007-a556-ecad7f01b4d3" class=""><strong>Apa itu HTTP Response (Respons)?</strong></h2></div></figure><p id="22217d26-beee-80b8-9cd4-cb5e0ad82a14" class="">Setelah server menerima permintaan, ia akan membalas dengan <strong>HTTP Response</strong>. Ini seperti server berkata:</p><blockquote id="22217d26-beee-80e8-b6a0-c0024802974e" class="">&quot;Ini halaman yang kamu minta!&quot;</blockquote><hr id="22217d26-beee-8011-8b13-e10c3478ff38"/><h3 id="22217d26-beee-8068-886e-f4310122e03f" class="">🧾 Contoh HTTP Response:</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22217d26-beee-8010-82b8-d48d974971f0" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">HTTP/1.1 200 OK
+Server: nginx/1.15.8
+Date: Fri, 09 Apr 2021 13:34:03 GMT
+Content-Type: text/html
+Content-Length: 98
+
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;TryHackMe&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    Welcome To TryHackMe.com
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="22217d26-beee-80fd-a617-f1be28788cc9" class="">🔍 Penjelasan baris demi baris:</h3><table id="22217d26-beee-80d5-8f4e-d223ad2e6410" class="simple-table"><tbody><tr id="22217d26-beee-80ca-b8b2-d261721df489"><td id="{cHY" class="">Baris</td><td id="&lt;cTj" class="">Fungsi</td></tr><tr id="22217d26-beee-80a2-8337-ffda759e977d"><td id="{cHY" class=""><strong>1</strong></td><td id="&lt;cTj" class=""><code>HTTP/1.1 200 OK</code> → Versi HTTP yang digunakan + status code <code>200 OK</code> (berhasil)</td></tr><tr id="22217d26-beee-800e-b264-d18b8d360d12"><td id="{cHY" class=""><strong>2</strong></td><td id="&lt;cTj" class=""><code>Server: nginx/1.15.8</code> → Web server yang digunakan</td></tr><tr id="22217d26-beee-80b7-9ca8-d00490e07381"><td id="{cHY" class=""><strong>3</strong></td><td id="&lt;cTj" class=""><code>Date: ...</code> → Tanggal &amp; waktu di server</td></tr><tr id="22217d26-beee-806a-9e89-c436f2c254e7"><td id="{cHY" class=""><strong>4</strong></td><td id="&lt;cTj" class=""><code>Content-Type: text/html</code> → Jenis data yang dikirim (HTML, gambar, JSON, dsb)</td></tr><tr id="22217d26-beee-80ff-9543-f6c6dc15344e"><td id="{cHY" class=""><strong>5</strong></td><td id="&lt;cTj" class=""><code>Content-Length: 98</code> → Panjang data dalam byte (untuk memeriksa apakah ada data yang hilang)</td></tr><tr id="22217d26-beee-8081-9967-c52e5d07872b"><td id="{cHY" class=""><strong>6</strong></td><td id="&lt;cTj" class=""><strong>Baris kosong</strong> menandai akhir dari header</td></tr><tr id="22217d26-beee-80d4-90ca-e8da093829dc"><td id="{cHY" class=""><strong>7–14</strong></td><td id="&lt;cTj" class="">Isi dari halaman HTML yang diminta oleh browser</td></tr></tbody></table><p id="22217d26-beee-8042-8953-da843e381027" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22217d26-beee-80e6-b740-f8e8bb9ff164"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><h2 id="22217d26-beee-804a-91d5-c8cdd1ca1f56" class=""><strong>HTTP Methods (Metode HTTP)</strong></h2></div></figure><p id="22217d26-beee-8022-a207-d837092a6f09" class="">Metode HTTP adalah cara klien (browser atau aplikasi) memberi tahu server: <strong>“Saya ingin melakukan aksi apa.”</strong> Ada banyak metode HTTP, tapi yang paling sering digunakan adalah:</p><table id="22217d26-beee-809e-bfc6-e84b218bdd1b" class="simple-table"><tbody><tr id="22217d26-beee-80af-bf24-f369a14d5549"><td id="^lLs" class="">Metode</td><td id="@_aa" class="">Fungsi</td></tr><tr id="22217d26-beee-80d2-92a1-f2dc1d8f7d01"><td id="^lLs" class=""><strong>GET</strong></td><td id="@_aa" class="">Meminta data dari server (contoh: membuka halaman web)</td></tr><tr id="22217d26-beee-80ac-a0e4-c4e84ef95d87"><td id="^lLs" class=""><strong>POST</strong></td><td id="@_aa" class="">Mengirim data ke server (contoh: mengisi form login atau registrasi)</td></tr><tr id="22217d26-beee-80f7-b6fe-fb27283946de"><td id="^lLs" class=""><strong>PUT</strong></td><td id="@_aa" class="">Mengirim data untuk <em>mengubah</em> atau <em>memperbarui</em> data yang sudah ada</td></tr><tr id="22217d26-beee-80f9-903c-e1875c722626"><td id="^lLs" class=""><strong>DELETE</strong></td><td id="@_aa" class="">Meminta server untuk menghapus suatu data</td></tr></tbody></table><h3 id="22217d26-beee-8056-be4d-d32c9855ec5a" class="">🔍 Contoh:</h3><ul id="22217d26-beee-80d4-ac23-c3c4d04051e8" class="bulleted-list"><li style="list-style-type:disc">GET <code>/home</code> → “Tolong kirimkan halaman utama”</li></ul><ul id="22217d26-beee-8023-ab41-e3ad37f2c481" class="bulleted-list"><li style="list-style-type:disc">POST <code>/register</code> → “Berikut data akun baruku”</li></ul><ul id="22217d26-beee-801d-baa1-db1d802c5274" class="bulleted-list"><li style="list-style-type:disc">PUT <code>/user/12</code> → “Tolong ubah data pengguna ke-12 ini”</li></ul><ul id="22217d26-beee-801c-8bd3-ecebe4be5a60" class="bulleted-list"><li style="list-style-type:disc">DELETE <code>/comment/5</code> → “Hapus komentar nomor 5”</li></ul><p id="22217d26-beee-80d7-ac47-dbaaa6868140" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22217d26-beee-80a8-9ed0-d7d13e41e1fd"><div style="font-size:1.5em"><span class="icon">📊</span></div><div style="width:100%"><h2 id="22217d26-beee-80f5-8886-c4fcc7b57004" class=""><strong>HTTP Status Codes (Kode Status HTTP)</strong></h2></div></figure><p id="22217d26-beee-80fe-9074-e8ce89598b4c" class="">Setiap kali server merespons permintaan, ia akan memberi “kode status” untuk memberi tahu bagaimana hasilnya.</p><h3 id="22217d26-beee-8057-94a6-cacb464204ed" class="">🔢 <strong>Kategori Kode HTTP:</strong></h3><table id="22217d26-beee-8091-8a26-d3f0d123c154" class="simple-table"><thead class="simple-table-header"><tr id="22217d26-beee-8091-8091-c5e41b90962d"><th id="iPPN" class="simple-table-header-color simple-table-header">Kode</th><th id="okby" class="simple-table-header-color simple-table-header">Kategori</th><th id="cfBe" class="simple-table-header-color simple-table-header">Penjelasan</th></tr></thead><tbody><tr id="22217d26-beee-8045-a7c4-e93719220101"><td id="iPPN" class="">100–199</td><td id="okby" class=""><strong>Informasi</strong></td><td id="cfBe" class="">Server sedang memproses permintaan, belum selesai</td></tr><tr id="22217d26-beee-800e-85a4-fc5e7b26178c"><td id="iPPN" class="">200–299</td><td id="okby" class=""><strong>Sukses</strong></td><td id="cfBe" class="">Permintaan berhasil dilakukan</td></tr><tr id="22217d26-beee-802e-b38e-f770112bce53"><td id="iPPN" class="">300–399</td><td id="okby" class=""><strong>Redirect</strong></td><td id="cfBe" class="">Klien diarahkan ke alamat lain</td></tr><tr id="22217d26-beee-80c7-8fe8-e3061621b075"><td id="iPPN" class="">400–499</td><td id="okby" class=""><strong>Client Error</strong></td><td id="cfBe" class="">Ada kesalahan dari sisi klien (browser/user)</td></tr><tr id="22217d26-beee-80c6-ba86-e35fa990f5d3"><td id="iPPN" class="">500–599</td><td id="okby" class=""><strong>Server Error</strong></td><td id="cfBe" class="">Ada kesalahan dari sisi server</td></tr></tbody></table><hr id="22217d26-beee-8031-adb9-d0097dccb5b1"/><h3 id="22217d26-beee-8029-a8c9-d5d40b4aed74" class="">📌 <strong>Kode Status HTTP Umum:</strong></h3><table id="22217d26-beee-80ff-b6c3-cadbb1a9b111" class="simple-table"><thead class="simple-table-header"><tr id="22217d26-beee-8033-9f35-fa2588ee299e"><th id="jBj{" class="simple-table-header-color simple-table-header">Kode</th><th id="Kdku" class="simple-table-header-color simple-table-header">Nama</th><th id="lNFy" class="simple-table-header-color simple-table-header">Penjelasan</th></tr></thead><tbody><tr id="22217d26-beee-8041-b5bc-cce4df83e0f8"><td id="jBj{" class=""><strong>200 OK</strong></td><td id="Kdku" class="">Sukses</td><td id="lNFy" class="">Permintaan berhasil, data dikirim</td></tr><tr id="22217d26-beee-805e-a209-d08d9aebebe8"><td id="jBj{" class=""><strong>201 Created</strong></td><td id="Kdku" class="">Dibuat</td><td id="lNFy" class="">Data baru berhasil ditambahkan (contoh: user baru)</td></tr><tr id="22217d26-beee-80fc-85d6-f82031e08414"><td id="jBj{" class=""><strong>301 Moved Permanently</strong></td><td id="Kdku" class="">Pindah Permanen</td><td id="lNFy" class="">URL telah berpindah selamanya ke tempat baru</td></tr><tr id="22217d26-beee-8003-9073-f4bd677df7ea"><td id="jBj{" class=""><strong>302 Found</strong></td><td id="Kdku" class="">Pindah Sementara</td><td id="lNFy" class="">URL berpindah sementara (akan kembali lagi nanti)</td></tr><tr id="22217d26-beee-8003-841f-ea8128e18cdb"><td id="jBj{" class=""><strong>400 Bad Request</strong></td><td id="Kdku" class="">Permintaan Salah</td><td id="lNFy" class="">Klien mengirim data tidak lengkap atau rusak</td></tr><tr id="22217d26-beee-808f-8977-e575212a5d71"><td id="jBj{" class=""><strong>401 Unauthorized</strong></td><td id="Kdku" class="">Belum Login</td><td id="lNFy" class="">Harus login terlebih dulu</td></tr><tr id="22217d26-beee-80b1-9322-cc29dbc8b5f8"><td id="jBj{" class=""><strong>403 Forbidden</strong></td><td id="Kdku" class="">Dilarang</td><td id="lNFy" class="">Tidak punya izin, meskipun sudah login</td></tr><tr id="22217d26-beee-804c-b172-e20859825d39"><td id="jBj{" class=""><strong>404 Not Found</strong></td><td id="Kdku" class="">Tidak Ditemukan</td><td id="lNFy" class="">Halaman tidak ada (sering muncul 😅)</td></tr><tr id="22217d26-beee-808d-9b39-c7279235ccff"><td id="jBj{" class=""><strong>405 Method Not Allowed</strong></td><td id="Kdku" class="">Metode Salah</td><td id="lNFy" class="">Kamu pakai metode (GET/POST) yang tidak sesuai</td></tr><tr id="22217d26-beee-80e1-99ad-e50227ea47f9"><td id="jBj{" class=""><strong>500 Internal Server Error</strong></td><td id="Kdku" class="">Error Server</td><td id="lNFy" class="">Server mengalami error saat memproses permintaan</td></tr><tr id="22217d26-beee-8059-bde4-f1e4859c3013"><td id="jBj{" class=""><strong>503 Service Unavailable</strong></td><td id="Kdku" class="">Layanan Sibuk</td><td id="lNFy" class="">Server sedang penuh atau maintenance</td></tr></tbody></table><p id="22217d26-beee-806a-bb06-ec65b8307e18" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22217d26-beee-80de-b69c-c4106f16dc5c"><div style="font-size:1.5em"><span class="icon">🧾</span></div><div style="width:100%"><h2 id="22217d26-beee-80b0-81b0-d2ea3c184eb0" class="">Apa Itu HTTP Headers?</h2></div></figure><p id="22217d26-beee-80f4-ba74-c86ea8b9d521" class=""><strong>Headers</strong> adalah data tambahan yang dikirim <strong>bersama permintaan (request)</strong> atau <strong>balasan (response)</strong> dalam komunikasi HTTP. Meskipun secara teknis <strong>tidak wajib</strong>, tapi <strong>tanpa headers, website tidak akan bisa ditampilkan dengan baik</strong>.</p><hr id="22217d26-beee-805a-87fb-d009f2308145"/><h3 id="22217d26-beee-80c8-a4ad-e79505fbbc36" class="">🔼 <strong>Request Headers</strong> (Dari Klien → Server)</h3><p id="22217d26-beee-80df-ba05-dfd2c6c36049" class="">Header ini dikirim oleh <strong>browser</strong> atau <strong>aplikasi</strong> saat meminta data ke server:</p><table id="22217d26-beee-80a1-af6e-c6938cddb4d1" class="simple-table"><thead class="simple-table-header"><tr id="22217d26-beee-80b0-86bf-eb1c9a7c3150"><th id="BOeW" class="simple-table-header-color simple-table-header">Header</th><th id="Dn;}" class="simple-table-header-color simple-table-header">Fungsi</th></tr></thead><tbody><tr id="22217d26-beee-80d8-b67f-e3c12733bbdf"><td id="BOeW" class=""><strong>Host</strong></td><td id="Dn;}" class="">Menentukan nama domain yang diminta. Wajib jika satu server punya banyak domain (hosting bersama).</td></tr><tr id="22217d26-beee-80a1-b4a0-fe6904d530ae"><td id="BOeW" class=""><strong>User-Agent</strong></td><td id="Dn;}" class="">Menjelaskan jenis dan versi browser, agar server bisa menyesuaikan konten.</td></tr><tr id="22217d26-beee-80eb-ae9b-cb6493aac83a"><td id="BOeW" class=""><strong>Content-Length</strong></td><td id="Dn;}" class="">Memberi tahu server seberapa besar data yang dikirim (misalnya saat login atau upload).</td></tr><tr id="22217d26-beee-8075-b14e-e34469917282"><td id="BOeW" class=""><strong>Accept-Encoding</strong></td><td id="Dn;}" class="">Menyatakan jenis kompresi data yang bisa diterima oleh browser (misal: gzip, br).</td></tr><tr id="22217d26-beee-8045-ace9-cb8f89ffd830"><td id="BOeW" class=""><strong>Cookie</strong></td><td id="Dn;}" class="">Mengirimkan data sesi atau identitas pengguna ke server (lihat bagian &quot;Cookie&quot;).</td></tr></tbody></table><hr id="22217d26-beee-80f4-84c5-fbc3c17d8d1f"/><h3 id="22217d26-beee-8019-a5d2-e6e78f61bad5" class="">🔽 <strong>Response Headers</strong> (Dari Server → Klien)</h3><p id="22217d26-beee-801a-a690-d69fd4a8840b" class="">Header ini dikirim <strong>oleh server sebagai respon</strong> terhadap permintaan HTTP:</p><table id="22217d26-beee-8091-a345-c395d70cd78d" class="simple-table"><thead class="simple-table-header"><tr id="22217d26-beee-8079-943d-cf869e5bc638"><th id="==M?" class="simple-table-header-color simple-table-header">Header</th><th id="]duI" class="simple-table-header-color simple-table-header">Fungsi</th></tr></thead><tbody><tr id="22217d26-beee-8026-bc20-f173dc46476e"><td id="==M?" class=""><strong>Set-Cookie</strong></td><td id="]duI" class="">Mengirim data ke browser untuk disimpan sebagai cookie, yang akan dikirim balik ke server di permintaan berikutnya.</td></tr><tr id="22217d26-beee-80d6-8ede-c4074ddf63db"><td id="==M?" class=""><strong>Cache-Control</strong></td><td id="]duI" class="">Menentukan berapa lama browser boleh menyimpan konten ini sebelum minta ulang.</td></tr><tr id="22217d26-beee-803c-84d2-df0aa8eba822"><td id="==M?" class=""><strong>Content-Type</strong></td><td id="]duI" class="">Menjelaskan tipe konten: HTML, CSS, JSON, gambar, video, dll.</td></tr><tr id="22217d26-beee-80c7-bd97-eb9c4ea769f1"><td id="==M?" class=""><strong>Content-Encoding</strong></td><td id="]duI" class="">Menjelaskan metode kompresi yang dipakai pada konten.</td></tr></tbody></table><p id="22217d26-beee-80f0-a436-d48a0504a506" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22217d26-beee-80da-a886-d681ff2c75e0"><div style="font-size:1.5em"><span class="icon">🍪</span></div><div style="width:100%"><h2 id="22217d26-beee-80be-9018-d93b1d478487" class="">Apa Itu Cookie?</h2></div></figure><p id="22217d26-beee-807c-9086-f44e479cb3b5" class=""><strong>Cookie</strong> adalah <strong>data kecil</strong> yang disimpan oleh browser. Cookie biasanya berisi:</p><ul id="22217d26-beee-8038-8eac-c7de3563fe46" class="bulleted-list"><li style="list-style-type:disc">ID sesi login</li></ul><ul id="22217d26-beee-803c-80b4-fa516e0c5c87" class="bulleted-list"><li style="list-style-type:disc">Pengaturan personal (bahasa, tema)</li></ul><ul id="22217d26-beee-8073-a3d9-cec022c06354" class="bulleted-list"><li style="list-style-type:disc">Status login (kamu sudah login atau belum)</li></ul><ul id="22217d26-beee-8024-8cd0-cce85d3c8b4d" class="bulleted-list"><li style="list-style-type:disc">Token otentikasi</li></ul><h3 id="22217d26-beee-80bd-b015-e90ff18e6af7" class="">🔁 Cara kerja cookie:</h3><ol type="1" id="22217d26-beee-80ca-b546-e0bc5becc5c1" class="numbered-list" start="1"><li>Server mengirimkan header:<p id="22217d26-beee-809a-a4ed-e88075a03658" class=""><code>Set-Cookie: session=abc123;</code></p></li></ol><ol type="1" id="22217d26-beee-8046-9cc7-f0f1142ac56f" class="numbered-list" start="2"><li>Browser menyimpan cookie.</li></ol><ol type="1" id="22217d26-beee-8078-bbf3-ca3602331ee5" class="numbered-list" start="3"><li>Setiap permintaan berikutnya akan otomatis menyertakan:<p id="22217d26-beee-8086-853d-e7025ec5131a" class=""><code>Cookie: session=abc123</code></p></li></ol><ol type="1" id="22217d26-beee-80ee-aec1-e84e847e685d" class="numbered-list" start="4"><li>Server bisa mengenali kamu sebagai pengguna yang sama.</li></ol><blockquote id="22217d26-beee-80a1-973d-da43aa4a02b9" class="">HTTP bersifat stateless, artinya setiap permintaan dianggap baru, tanpa riwayat sebelumnya. Cookie dipakai agar server ingat siapa kamu.</blockquote><hr id="22217d26-beee-8039-9731-e30c0a89c041"/><h2 id="22217d26-beee-80b7-a499-d13f0e84195f" class="">🔍 Melihat Cookie di Browser (Developer Tools)</h2><p id="22217d26-beee-805e-8717-eef0081bf96c" class="">Kamu bisa melihat cookie yang dikirim browser:</p><ol type="1" id="22217d26-beee-8078-b791-d764fe2ede80" class="numbered-list" start="1"><li>Buka situs apapun (misal: tryhackme.com)</li></ol><ol type="1" id="22217d26-beee-8080-b321-e11fda9b17ec" class="numbered-list" start="2"><li>Klik kanan → <strong>Inspect / Periksa</strong></li></ol><ol type="1" id="22217d26-beee-800d-8f8d-de10fd069f64" class="numbered-list" start="3"><li>Masuk ke tab <strong>Network</strong></li></ol><ol type="1" id="22217d26-beee-802d-a3c1-e5a2d330f156" class="numbered-list" start="4"><li>Reload halaman</li></ol><ol type="1" id="22217d26-beee-80a1-ad5f-c028f6509e06" class="numbered-list" start="5"><li>Klik permintaan (biasanya <code>GET /</code>)</li></ol><ol type="1" id="22217d26-beee-80be-af65-fe47c27c1143" class="numbered-list" start="6"><li>Lihat tab <strong>Headers</strong> dan <strong>Cookies</strong></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

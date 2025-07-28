@@ -1,0 +1,810 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Apa Itu Networking</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  a, a.visited {
+    color: #9ecbff;
+  }
+
+  .source, .callout, .code, blockquote, table, th, td {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #e0e0e0;
+  }
+
+  .simple-table-header-color {
+    background: #333 !important;
+    color: #fff !important;
+  }
+
+  hr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .table_of_contents-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .highlight-default,
+  .highlight-gray,
+  .highlight-brown,
+  .highlight-orange,
+  .highlight-yellow,
+  .highlight-teal,
+  .highlight-blue,
+  .highlight-purple,
+  .highlight-pink,
+  .highlight-red {
+    color: inherit;
+  }
+
+  .highlight-gray_background,
+  .highlight-brown_background,
+  .highlight-orange_background,
+  .highlight-yellow_background,
+  .highlight-teal_background,
+  .highlight-blue_background,
+  .highlight-purple_background,
+  .highlight-pink_background,
+  .highlight-red_background {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .code,
+  code {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f78c6c;
+  }
+
+  blockquote {
+    border-left: 3px solid #888;
+    color: #ccc;
+  }
+
+  .bookmark-description {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .select-value-color-default,
+  .select-value-color-gray,
+  .select-value-color-brown,
+  .select-value-color-orange,
+  .select-value-color-yellow,
+  .select-value-color-green,
+  .select-value-color-blue,
+  .select-value-color-purple,
+  .select-value-color-pink,
+  .select-value-color-red {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+body {
+  padding: 0px 20px 50px 20px;
+}
+
+img {
+  border-radius: 20px;
+}
+
+.block-color-gray_background{
+  border-radius: 10px;
+}
+
+/* Callout dasar: flex container dengan gap */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+              /* fallback background */
+  border: 1px solid #ddd;
+  margin: 1.5em 0;
+}
+
+
+}
+
+/* Contoh ikon dalam callout */
+.callout .icon {
+  font-size: 1.5em;
+  flex-shrink: 0;
+}
+
+/* Konten callout */
+.callout h1,
+.callout h2,
+.callout h3,
+.callout p {
+  margin: 0;
+}
+
+
+	
+</style></head><body><article id="22117d26-beee-802d-8c71-c6178b158c45" class="page sans"><header><img class="page-cover-image" src="Apa%20Itu%20Networking%2022117d26beee802d8c71c6178b158c45/hikari_nozomi_rl.jpg" style="object-position:center 65.02%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🌐</span></div><h1 class="page-title">Apa Itu Networking</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22117d26-beee-806c-9699-e5e2283c12a3"><div style="font-size:1.5em"><span class="icon">📕</span></div><div style="width:100%"><h2 id="22117d26-beee-8099-ae16-c7da148d5edb" class="">Network</h2></div></figure><p id="22117d26-beee-80c3-8869-df00701076f1" class="">Dalam dunia jaringan komputer, semua perangkat yang terhubung, seperti komputer, laptop, printer, bahkan HP, biasanya tergabung dalam sebuah <strong>jaringan</strong>. Secara umum, jaringan itu dibagi menjadi dua jenis: <strong>private network</strong> dan <strong>public network</strong>.</p><h3 id="22117d26-beee-8069-9e18-c2ddc9c4d757" class="">🏠 <strong>Private Network</strong></h3><p id="22117d26-beee-8053-91a2-d45681483895" class="">Private network itu bisa kita anggap seperti jaringan <strong>internal</strong> atau <strong>pribadi</strong>. Contohnya:</p><ul id="22117d26-beee-8053-80ef-c4acb6a513c8" class="bulleted-list"><li style="list-style-type:disc">Jaringan Wi-Fi di rumah</li></ul><ul id="22117d26-beee-8026-849b-c9dd97254bc0" class="bulleted-list"><li style="list-style-type:disc">Jaringan komputer di sekolah atau kampus</li></ul><ul id="22117d26-beee-80f0-aac9-f22efc531be5" class="bulleted-list"><li style="list-style-type:disc">Jaringan internal di kantor</li></ul><p id="22117d26-beee-8027-9a1a-e188b7efb495" class="">Dalam jaringan ini, hanya perangkat-perangkat tertentu saja yang bisa bergabung. Biasanya digunakan untuk berkomunikasi dan berbagi data secara lokal, seperti mencetak dokumen ke printer atau berbagi file antar komputer.</p><p id="22117d26-beee-80b0-b470-df7eea79493b" class="">Private network tidak langsung terbuka ke dunia luar (internet). Jadi, secara keamanan juga lebih terjaga.</p><hr id="22117d26-beee-80dd-8186-e84fd8b95e77"/><h3 id="22117d26-beee-8025-b836-f2bebb4cad9e" class="">🌍 <strong>Public Network</strong></h3><p id="22117d26-beee-8009-ba1b-e9b7dfa7d4c1" class="">Public network adalah kebalikannya. Ini adalah jaringan yang <strong>terbuka untuk umum</strong> dan digunakan untuk menghubungkan banyak private network di seluruh dunia. Public network inilah yang menjadi dasar dari <strong>internet</strong>.</p><p id="22117d26-beee-809a-9e31-ffd78b57263e" class="">Contohnya:</p><ul id="22117d26-beee-805f-8ec2-c4a71515c576" class="bulleted-list"><li style="list-style-type:disc">Saat membuka Google atau YouTube dari rumah</li></ul><ul id="22117d26-beee-8067-a669-ed7c7f538c67" class="bulleted-list"><li style="list-style-type:disc">Saat perusahaan terhubung ke server di negara lain</li></ul><ul id="22117d26-beee-80da-908d-cebbb03c0caf" class="bulleted-list"><li style="list-style-type:disc">Ketika menggunakan hotspot Wi-Fi di tempat umum</li></ul><p id="22117d26-beee-80dd-a4a6-ec2615dd9a89" class="">Semua itu terjadi lewat public network.</p><hr id="22117d26-beee-8002-b819-f9367a315006"/><h3 id="22117d26-beee-8061-94d6-d73944811e71" class="">🔗 Hubungan Keduanya</h3><p id="22117d26-beee-80ec-a5c4-d96d4caf9eae" class="">Bayangkan private network itu seperti rumah-rumah pribadi. Nah, jalanan besar yang menghubungkan rumah-rumah itu adalah public network. Kalau kamu ingin mengirim surat dari rumahmu ke rumah temanmu, surat itu harus lewat jalanan umum dulu.</p><p id="22117d26-beee-8012-8b2f-d160dd5f89fa" class="">Begitu juga dengan data. Saat kamu mengakses situs web, data dari komputer kamu (di private network) akan <strong>melewati public network (internet)</strong>, lalu sampai ke server web yang mungkin juga berada di private network lain.</p><hr id="22117d26-beee-809f-96e0-c9cfe5f01cd2"/><h3 id="22117d26-beee-8006-9536-d430039c1d48" class="">✍️ Ringkasnya:</h3><table id="22117d26-beee-800d-b5e3-ccfb7958fe4b" class="simple-table"><thead class="simple-table-header"><tr id="22117d26-beee-80d5-b28e-d1de88c30459"><th id="e&lt;k?" class="simple-table-header-color simple-table-header">Jenis Jaringan</th><th id="lA~N" class="simple-table-header-color simple-table-header">Sifat</th><th id="}Rpd" class="simple-table-header-color simple-table-header">Contoh</th></tr></thead><tbody><tr id="22117d26-beee-80a9-8e5b-cb3641d61509"><td id="e&lt;k?" class="">Private Network</td><td id="lA~N" class="">Tertutup, lokal</td><td id="}Rpd" class="">Jaringan rumah, sekolah, kantor</td></tr><tr id="22117d26-beee-80b0-8913-cec03250f3e6"><td id="e&lt;k?" class="">Public Network</td><td id="lA~N" class="">Terbuka, global</td><td id="}Rpd" class="">Internet</td></tr></tbody></table><p id="22117d26-beee-8071-b68c-d2912996011e" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22117d26-beee-8071-9f40-fecedb68f4d6"><div style="font-size:1.5em"><span class="icon">📘</span></div><div style="width:100%"><h2 id="22117d26-beee-8059-85e3-d86a85c44e14" class="">Mengidentifikasi Device di Network</h2></div></figure><h2 id="22117d26-beee-80f8-ab28-dd6742d5babd" class="">🧠 <strong>Mengapa Perangkat Butuh Identitas di Jaringan?</strong></h2><p id="22117d26-beee-8014-b1f0-f71a90f137b8" class="">Bayangkan kamu sedang menelepon seseorang. Tentu kamu harus tahu <strong>nomor telepon</strong> orang tersebut agar bisa terhubung. Begitu juga dengan komputer atau HP: mereka harus <strong>dikenali</strong> dan <strong>dapat dikenali</strong> di dalam jaringan agar bisa berkomunikasi.</p><h2 id="22117d26-beee-80b2-aeff-e40a427f32a0" class="">🧍 <strong>Analogi Manusia:</strong></h2><ul id="22117d26-beee-80b6-b821-f2a874b52f39" class="bulleted-list"><li style="list-style-type:disc"><strong>Nama</strong> → Bisa diubah (seperti IP Address)</li></ul><ul id="22117d26-beee-8085-82dc-e849c5d6cbbc" class="bulleted-list"><li style="list-style-type:disc"><strong>Sidik jari</strong> → Unik dan tetap (seperti MAC Address)</li></ul><h2 id="22117d26-beee-8025-9928-fe832b98ec54" class="">💻 <strong>Dua Identitas Perangkat:</strong></h2><table id="22117d26-beee-80e0-9b7b-d412fa6051e7" class="simple-table"><tbody><tr id="22117d26-beee-80e6-ae43-d028afd49fbc"><td id="qAiE" class="">Jenis Identitas</td><td id="pEID" class="">Penjelasan</td><td id="ZRCd" class="">Bisa berubah?</td><td id="}N&gt;x" class="">Unik?</td></tr><tr id="22117d26-beee-800e-9808-ea272ab10ecb"><td id="qAiE" class=""><strong>IP Address</strong></td><td id="pEID" class="">Alamat sementara untuk komunikasi</td><td id="ZRCd" class="">Ya</td><td id="}N&gt;x" class="">Tidak selalu</td></tr><tr id="22117d26-beee-80cc-a1c9-ebf4d2e89de9"><td id="qAiE" class=""><strong>MAC Address</strong></td><td id="pEID" class="">Alamat permanen dari pabrik</td><td id="ZRCd" class="">Tidak</td><td id="}N&gt;x" class="">Ya</td></tr></tbody></table><hr id="22117d26-beee-8011-8b10-f44649a5d81a"/><h2 id="22117d26-beee-8010-8fe2-f60e7088cf77" class="">🌐 <strong>1. IP Address</strong></h2><p id="22117d26-beee-8041-b1a6-e46bf6f05889" class="">IP Address = <strong>alamat numerik</strong> (angka) yang digunakan untuk <strong>mengidentifikasi perangkat</strong> di jaringan.</p><p id="22117d26-beee-8003-9bf2-c8eb43e7c443" class="">Contoh IP: <code>192.168.1.1</code></p><p id="22117d26-beee-80b8-aadc-cae668a3768d" class="">📦 IP dibagi menjadi <strong>4 bagian (oktet)</strong>. Misalnya:</p><blockquote id="22117d26-beee-8025-89a7-f0a2a4056b85" class="">Oktet 1: 192<br/>Oktet 2: 168<br/>Oktet 3: 1<br/>Oktet 4: 1<br/></blockquote><p id="22117d26-beee-8017-bdeb-fd7f201b8294" class="">Jumlah kombinasi IP di sistem ini disebut <strong>IPv4</strong>, yang hanya bisa menampung sekitar <strong>4,29 miliar alamat</strong>.</p><h3 id="22117d26-beee-80c2-94fd-ede60598fda3" class="">🔒 <strong>Private IP Address</strong></h3><ul id="22117d26-beee-80a9-9fd8-dfcc36f57ae6" class="bulleted-list"><li style="list-style-type:disc">Digunakan di dalam jaringan lokal (rumah, sekolah, kantor)</li></ul><ul id="22117d26-beee-803b-9379-dfe6726d45d6" class="bulleted-list"><li style="list-style-type:disc">Tidak bisa langsung digunakan untuk akses internet</li></ul><ul id="22117d26-beee-80b8-8f25-f8c361cd9469" class="bulleted-list"><li style="list-style-type:disc">Biasanya seperti:<ul id="22117d26-beee-802e-a0b4-d908dfaca89b" class="bulleted-list"><li style="list-style-type:circle"><code>192.168.x.x</code></li></ul><ul id="22117d26-beee-8079-86df-d136dc66692b" class="bulleted-list"><li style="list-style-type:circle"><code>10.x.x.x</code></li></ul><ul id="22117d26-beee-80c6-ae0c-fb0cd61e361b" class="bulleted-list"><li style="list-style-type:circle"><code>172.16.x.x – 172.31.x.x</code></li></ul></li></ul><p id="22117d26-beee-8083-8e1b-c6041dccc63c" class="">Contoh:</p><table id="22117d26-beee-80bd-87ad-ded5f41f5c5a" class="simple-table"><thead class="simple-table-header"><tr id="22117d26-beee-80e7-ac1a-eb5781d0907f"><th id="d&lt;Mj" class="simple-table-header-color simple-table-header">Nama Komputer</th><th id="yhQg" class="simple-table-header-color simple-table-header">IP Address</th><th id="midT" class="simple-table-header-color simple-table-header">Tipe</th></tr></thead><tbody><tr id="22117d26-beee-80b2-88a0-deda8ceaba72"><td id="d&lt;Mj" class="">DESKTOP-KJE57FD</td><td id="yhQg" class="">192.168.1.77</td><td id="midT" class="">Private</td></tr><tr id="22117d26-beee-8049-aa9a-c77e500b1172"><td id="d&lt;Mj" class="">CMNatic-PC</td><td id="yhQg" class="">192.168.1.74</td><td id="midT" class="">Private</td></tr></tbody></table><p id="22117d26-beee-8031-8dc0-e6c12b261a0c" class="">Mereka bisa saling terhubung <strong>di jaringan lokal</strong>.</p><h3 id="22117d26-beee-80df-a430-f05d0be0faf8" class="">🌍 <strong>Public IP Address</strong></h3><ul id="22117d26-beee-8094-9c4d-d761464bc996" class="bulleted-list"><li style="list-style-type:disc">Digunakan untuk menghubungkan ke Internet</li></ul><ul id="22117d26-beee-8049-9a87-d798efadf645" class="bulleted-list"><li style="list-style-type:disc">Diberikan oleh ISP (Internet Service Provider)</li></ul><ul id="22117d26-beee-80cf-9f56-fe6c23053669" class="bulleted-list"><li style="list-style-type:disc">Satu rumah biasanya <strong>berbagi</strong> satu public IP</li></ul><ul id="22117d26-beee-80df-ac60-e213a546050a" class="bulleted-list"><li style="list-style-type:disc">Bisa terlihat sama pada banyak perangkat di rumah</li></ul><p id="22117d26-beee-8064-a29c-d9d2947c0a1b" class="">Contoh:</p><table id="22117d26-beee-80dd-aea5-ddabfb8f9f86" class="simple-table"><thead class="simple-table-header"><tr id="22117d26-beee-8096-9ca8-f62750c20994"><th id="Ueb&gt;" class="simple-table-header-color simple-table-header">Nama Komputer</th><th id="UCxg" class="simple-table-header-color simple-table-header">IP Address</th><th id="qMo&gt;" class="simple-table-header-color simple-table-header">Tipe</th></tr></thead><tbody><tr id="22117d26-beee-8089-8b14-d58bc21503fb"><td id="Ueb&gt;" class="">DESKTOP-KJE57FD</td><td id="UCxg" class="">86.157.52.6</td><td id="qMo&gt;" class="">Public</td></tr><tr id="22117d26-beee-8057-931e-c827bda9b0d3"><td id="Ueb&gt;" class="">CMNatic-PC</td><td id="UCxg" class="">86.157.52.8</td><td id="qMo&gt;" class="">Public</td></tr></tbody></table><p id="22117d26-beee-80df-be56-f20441e434a7" class="">📡 Walau perangkat berbeda, jika mengakses Internet, mereka <strong>nampak dari luar seperti satu IP</strong>.</p><h3 id="22117d26-beee-80f2-9eb2-d64c75356156" class="">📉 <strong>Masalah Kekurangan Alamat IPv4</strong></h3><p id="22117d26-beee-80ad-9b8e-f167abd3d116" class="">Karena makin banyak perangkat online (diperkirakan 50 miliar oleh Cisco pada 2021), alamat IPv4 makin habis. Oleh sebab itu, muncullah <strong>IPv6</strong>.</p><h3 id="22117d26-beee-8090-8141-e0b6370523b6" class="">🚀 <strong>IPv6: Solusi Alamat IP Masa Depan</strong></h3><table id="22117d26-beee-80f0-9edb-f9d1dde9aca8" class="simple-table"><thead class="simple-table-header"><tr id="22117d26-beee-8050-b5e8-e0e6c0d2a4d0"><th id="NQ;P" class="simple-table-header-color simple-table-header">Versi</th><th id="gL;~" class="simple-table-header-color simple-table-header">Format</th><th id="Ddna" class="simple-table-header-color simple-table-header">Jumlah Alamat Maksimal</th><th id="Iq?=" class="simple-table-header-color simple-table-header">Contoh</th></tr></thead><tbody><tr id="22117d26-beee-8053-b377-c61145c804f3"><td id="NQ;P" class="">IPv4</td><td id="gL;~" class="">4 blok angka (0–255)</td><td id="Ddna" class="">2³² (4,29 miliar alamat)</td><td id="Iq?=" class="">86.157.52.21</td></tr><tr id="22117d26-beee-80af-8e69-cc8bfaaa2453"><td id="NQ;P" class="">IPv6</td><td id="gL;~" class="">8 blok heksadesimal</td><td id="Ddna" class="">2¹²⁸ (340 triliun-triliun...)</td><td id="Iq?=" class="">2a00:22c4:a531:c500:...</td></tr></tbody></table><p id="22117d26-beee-80ec-a431-ecd18842a48a" class="">✨ Keuntungan IPv6:</p><ul id="22117d26-beee-80da-8a65-c5d5d1d20376" class="bulleted-list"><li style="list-style-type:disc">Jumlah alamat hampir tak terbatas</li></ul><ul id="22117d26-beee-80e3-b497-fb6cd05958f0" class="bulleted-list"><li style="list-style-type:disc">Lebih cepat dan efisien</li></ul><ul id="22117d26-beee-80cf-8d23-fbc701159bbe" class="bulleted-list"><li style="list-style-type:disc">Tidak perlu NAT (Network Address Translation)</li></ul><hr id="22117d26-beee-80d4-8495-e53df82b6f30"/><h2 id="22117d26-beee-80d5-9cf3-eda226dbd5d0" class="">🧾 2. <strong>MAC Address</strong></h2><p id="22117d26-beee-808f-b45e-fbe4b3b6c3ab" class=""><strong>MAC Address (Media Access Control Address)</strong> adalah <strong>identitas unik</strong> yang diberikan ke setiap <strong>perangkat jaringan</strong>, seperti komputer, laptop, atau smartphone. MAC Address diberikan saat <strong>perangkat diproduksi di pabrik</strong>, dan digunakan untuk <strong>mengidentifikasi perangkat secara fisik</strong> di jaringan lokal (LAN).</p><h3 id="22117d26-beee-8040-97d0-c2d96167cc0b" class="">🧩 Bentuk MAC Address:</h3><p id="22117d26-beee-807a-a4ff-cccaeaa6cbb1" class="">MAC Address terdiri dari <strong>12 karakter heksadesimal</strong> (angka dan huruf A–F) dan ditulis dalam 6 pasang, dipisahkan dengan tanda titik dua <code>:</code>.</p><p id="22117d26-beee-8018-bb31-ecdeca08d17e" class="">Contoh:</p><blockquote id="22117d26-beee-807e-861e-ed501cb4a05e" class="">a4:c3:f0:85:ac:2d</blockquote><h3 id="22117d26-beee-8034-be7f-d5c40fa4ba57" class="">📦 Struktur:</h3><table id="22117d26-beee-8098-9178-f673c7bfba9c" class="simple-table"><thead class="simple-table-header"><tr id="22117d26-beee-80a8-b672-fdff62e83c6e"><th id="w:Yd" class="simple-table-header-color simple-table-header">Bagian MAC Address</th><th id="nJuc" class="simple-table-header-color simple-table-header">Fungsi</th></tr></thead><tbody><tr id="22117d26-beee-80fc-bc7f-ccea7c1c727b"><td id="w:Yd" class=""><code>a4:c3:f0</code></td><td id="nJuc" class="">Kode perusahaan pembuat perangkat (misalnya: Intel)</td></tr><tr id="22117d26-beee-80b1-bd66-c4747a07c923"><td id="w:Yd" class=""><code>85:ac:2d</code></td><td id="nJuc" class="">Nomor unik untuk perangkat tersebut</td></tr></tbody></table><h3 id="22117d26-beee-80b4-b810-c4feae3b563b" class="">🧠 <strong>Fungsi MAC Address</strong></h3><p id="22117d26-beee-8004-ba9e-e4883b878629" class="">MAC Address digunakan oleh <strong>perangkat jaringan lokal</strong> (router, switch, komputer) untuk <strong>mengirimkan data ke perangkat yang benar</strong> dalam satu jaringan. Di jaringan lokal, komunikasi sering terjadi antar MAC Address, bukan langsung antar IP Address.</p><h3 id="22117d26-beee-8018-b55d-e239fa6b150f" class="">🎭 <strong>MAC Address Spoofing (Penyamaran MAC)</strong></h3><h3 id="22117d26-beee-80a8-996e-f10a390d7bbf" class="">❓Apa Itu?</h3><p id="22117d26-beee-8010-81ee-e364c846b502" class=""><strong>Spoofing</strong> adalah proses di mana seseorang <strong>mengubah MAC Address perangkatnya</strong> agar terlihat seperti perangkat lain.</p><h3 id="22117d26-beee-806e-b496-d13a6b72c41a" class="">🧪 Contoh Kasus:</h3><p id="22117d26-beee-80a1-aeb7-e48258d6161b" class="">Misalnya:</p><ul id="22117d26-beee-802e-b10e-e6586b3a8d62" class="bulleted-list"><li style="list-style-type:disc">Sebuah firewall hanya mengizinkan komunikasi dari MAC Address milik <strong>administrator</strong>.</li></ul><ul id="22117d26-beee-804c-8702-e02003eea8bf" class="bulleted-list"><li style="list-style-type:disc">Seorang penyerang <strong>mengganti MAC Address-nya</strong> agar terlihat sama seperti administrator.</li></ul><ul id="22117d26-beee-8045-891d-dcb60d5f642a" class="bulleted-list"><li style="list-style-type:disc">Firewall sekarang <strong>mengira penyerang adalah admin</strong> dan mengizinkan akses penuh!</li></ul><p id="22117d26-beee-8009-b40d-dcdbc7c8d024" class="">➡️ <strong>Hasilnya: sistem keamanan rusak.</strong></p><h3 id="22117d26-beee-809e-9b9c-fde47261b128" class="">☕ Contoh di Dunia Nyata: Wi-Fi di Kafe &amp; Hotel</h3><p id="22117d26-beee-803a-905b-f88737c8c5bd" class="">Beberapa tempat umum seperti <strong>kafe, hotel, atau ruang publik</strong> menggunakan sistem yang:</p><ul id="22117d26-beee-807b-a0e5-e93874205660" class="bulleted-list"><li style="list-style-type:disc"><strong>Mengenali perangkat berdasarkan MAC Address</strong></li></ul><ul id="22117d26-beee-8092-a852-d9708e4e27c8" class="bulleted-list"><li style="list-style-type:disc">Misalnya, <strong>satu perangkat = gratis</strong>, lebih dari itu = <strong>harus bayar</strong></li></ul><p id="22117d26-beee-805c-bec7-dde977a73365" class="">Penyerang bisa:</p><ul id="22117d26-beee-8080-80ef-f1712b1e985e" class="bulleted-list"><li style="list-style-type:disc">Mengganti MAC Address</li></ul><ul id="22117d26-beee-8025-812f-cbc9ca69b00d" class="bulleted-list"><li style="list-style-type:disc">Menyamar sebagai perangkat lain</li></ul><ul id="22117d26-beee-800d-b53c-e77e42914212" class="bulleted-list"><li style="list-style-type:disc">Mendapat akses <strong>gratis atau premium tanpa izin</strong></li></ul><p id="22117d26-beee-80ab-b423-f592f844b191" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22117d26-beee-805c-813a-df7acb56eea6"><div style="font-size:1.5em"><span class="icon">📕</span></div><div style="width:100%"><h2 id="22117d26-beee-80f0-8d95-ef196c4bd6a5" class="">Ping</h2></div></figure><p id="22117d26-beee-8055-9f32-f48e4783bc39" class=""><strong>Ping</strong> adalah alat dasar dalam jaringan komputer untuk <strong>mengetes koneksi antara dua perangkat</strong>. Tujuannya untuk mengetahui:</p><ul id="22117d26-beee-808c-bc3b-f98dcc111b2b" class="bulleted-list"><li style="list-style-type:disc">Apakah perangkat lain <strong>bisa dijangkau</strong>?</li></ul><ul id="22117d26-beee-8019-b2aa-da5e6900cbed" class="bulleted-list"><li style="list-style-type:disc">Seberapa <strong>cepat</strong> responnya?</li></ul><ul id="22117d26-beee-8030-a6f3-cae46c400d86" class="bulleted-list"><li style="list-style-type:disc">Apakah koneksinya <strong>stabil</strong>?</li></ul><h3 id="22117d26-beee-80c8-9fdb-f92be01def9a" class="">📦 Bagaimana Ping Bekerja?</h3><p id="22117d26-beee-80af-96f0-fae7a368681e" class="">Ping menggunakan protokol yang bernama <strong>ICMP</strong> (Internet Control Message Protocol). Cara kerjanya:</p><ol type="1" id="22117d26-beee-8086-9a6b-e449ac13eefa" class="numbered-list" start="1"><li>Komputer kamu mengirimkan paket yang disebut <strong>ICMP Echo Request</strong> ke target (misalnya IP <code>192.168.1.254</code>).</li></ol><ol type="1" id="22117d26-beee-806a-96be-f0d3932ccd0d" class="numbered-list" start="2"><li>Target akan membalas dengan <strong>ICMP Echo Reply</strong> jika masih hidup dan bisa dijangkau.</li></ol><ol type="1" id="22117d26-beee-80f4-890f-cbf5526d7162" class="numbered-list" start="3"><li>Ping mencatat waktu dari pengiriman hingga balasan diterima (round-trip time).</li></ol><h3 id="22117d26-beee-8018-ba67-e9c2b1cd95a4" class="">🖥️ Contoh Perintah Ping</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22117d26-beee-80ae-93c4-f1d60d90efb6" class="code"><code class="language-Bash">ping 192.168.1.254</code></pre><p id="22117d26-beee-8097-ac0d-d32281467e70" class="">Berarti kamu mengirim sinyal ke perangkat dengan IP <strong>192.168.1.254</strong>, dan menunggu balasan.</p><h3 id="22117d26-beee-80c0-9117-c758b5579761" class="">📊 Penjelasan Output Ping:</h3><blockquote id="22117d26-beee-8025-ace2-c862b554b58b" class="">PING 192.168.1.254 (192.168.1.254) 56(84) bytes of data.<br/>64 bytes from 192.168.1.254: icmp_seq=1 ttl=63 time=2.18 ms<br/>64 bytes from 192.168.1.254: icmp_seq=2 ttl=63 time=2.53 ms<br/>64 bytes from 192.168.1.254: icmp_seq=3 ttl=63 time=2.15 ms<br/>64 bytes from 192.168.1.254: icmp_seq=4 ttl=63 time=3.34 ms<br/>64 bytes from 192.168.1.254: icmp_seq=5 ttl=63 time=10.3 ms<br/>64 bytes from 192.168.1.254: icmp_seq=6 ttl=63 time=4.45 ms<br/>-- 192.168.1.254 ping statistics ---<br/>6 packets transmitted, 6 received, 0% packet loss<br/>rtt min/avg/max/mdev = 2.152/4.160/10.313/2.864 ms<br/></blockquote><h3 id="22117d26-beee-80ae-9eeb-dd9eeb7f7895" class="">Penjelasan per baris:</h3><ul id="22117d26-beee-802d-8767-f0cda629d89b" class="bulleted-list"><li style="list-style-type:disc"><code>icmp_seq=1</code> → ping ke-1</li></ul><ul id="22117d26-beee-8013-b762-e11e51309292" class="bulleted-list"><li style="list-style-type:disc"><code>ttl=63</code> → &quot;Time To Live&quot;, batas seberapa jauh paket bisa berjalan di jaringan</li></ul><ul id="22117d26-beee-805c-8180-c6df2d44ab7b" class="bulleted-list"><li style="list-style-type:disc"><code>time=2.18 ms</code> → waktu bolak-balik pengiriman &amp; balasan</li></ul><h3 id="22117d26-beee-809f-8220-c0ca7eb741bd" class="">Ringkasan di akhir:</h3><ul id="22117d26-beee-800b-830b-c22f9d3a306f" class="bulleted-list"><li style="list-style-type:disc"><strong>6 paket dikirim</strong>, <strong>6 diterima</strong>, tidak ada yang hilang (0% packet loss)</li></ul><ul id="22117d26-beee-80d3-b589-ebdf6bc4aa5e" class="bulleted-list"><li style="list-style-type:disc"><strong>rtt</strong> (round-trip time):<ul id="22117d26-beee-80e0-800e-e4aa4b229290" class="bulleted-list"><li style="list-style-type:circle"><strong>min</strong>: waktu tercepat → 2.152 ms</li></ul><ul id="22117d26-beee-8043-a20d-f63706800f49" class="bulleted-list"><li style="list-style-type:circle"><strong>avg</strong>: rata-rata waktu → 4.160 ms</li></ul><ul id="22117d26-beee-80bc-a22d-c2d72a8745ee" class="bulleted-list"><li style="list-style-type:circle"><strong>max</strong>: waktu terlama → 10.313 ms</li></ul><ul id="22117d26-beee-80d4-a163-faa0c62513eb" class="bulleted-list"><li style="list-style-type:circle"><strong>mdev</strong>: variasi (standard deviation) → 2.864 ms</li></ul></li></ul><h3 id="22117d26-beee-80e5-9822-f329e8948eac" class="">📘 Kapan Ping Digunakan?</h3><p id="22117d26-beee-804a-8621-c9405bf0b1ae" class="">✅ Untuk <strong>cek apakah server hidup</strong> (misalnya ping <code>google.com</code>)</p><p id="22117d26-beee-80c9-b43a-ca6e060ef3ec" class="">✅ Untuk <strong>tes koneksi LAN atau Wi-Fi lokal</strong></p><p id="22117d26-beee-80a4-af40-f88dabb4de08" class="">✅ Untuk <strong>ukur kecepatan dan stabilitas</strong> koneksi antar perangkat</p><p id="22117d26-beee-803c-9f2f-e99d6574357b" class="">✅ Untuk <strong>troubleshooting jaringan</strong> saat internet lambat</p><h3 id="22117d26-beee-8058-8583-e270869fa2c4" class="">⚠️ Catatan:</h3><ul id="22117d26-beee-8025-bbd7-ce298067ac40" class="bulleted-list"><li style="list-style-type:disc">Beberapa server <strong>memblokir ping</strong> (tidak berarti mati).</li></ul><ul id="22117d26-beee-8078-850e-ddd9e991df01" class="bulleted-list"><li style="list-style-type:disc">Ping hanya mengecek <strong>konektivitas</strong>, <strong>bukan</strong> semua layanan (misalnya situs bisa di-ping tapi web-nya error).</li></ul><ul id="22117d26-beee-8033-99d5-d323debf6c41" class="bulleted-list"><li style="list-style-type:disc">Oh iya, jangan lupa batasi agar tidak membanjiri.<br/><br/><table id="22117d26-beee-8038-9032-dbf8f7428d89" class="simple-table"><tbody><tr id="22117d26-beee-8051-b71c-d9e1eb2b5f3c"><td id="XCNK" class="">Perintah</td><td id="cP_{" class="">Keterangan</td></tr><tr id="22117d26-beee-80cf-8f7a-e4e9fbe191f5"><td id="XCNK" class=""><code>ping 8.8.8.8</code></td><td id="cP_{" class="">Ping terus-menerus, cocok untuk pemantauan</td></tr><tr id="22117d26-beee-80d2-82fe-c78153ea9582"><td id="XCNK" class=""><code>ping -c 4 8.8.8.8</code></td><td id="cP_{" class="">Ping 4 kali saja, efisien &amp; sopan</td></tr></tbody></table></li></ul><p id="22117d26-beee-8034-a338-c2d1234b2953" class="">
+</p><p id="22117d26-beee-80ad-866a-d41630c1e5dc" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,821 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Yang Terjadi Saat Mengakses Website</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  a, a.visited {
+    color: #9ecbff;
+  }
+
+  .source, .callout, .code, blockquote, table, th, td {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #e0e0e0;
+  }
+
+  .simple-table-header-color {
+    background: #333 !important;
+    color: #fff !important;
+  }
+
+  hr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .table_of_contents-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .highlight-default,
+  .highlight-gray,
+  .highlight-brown,
+  .highlight-orange,
+  .highlight-yellow,
+  .highlight-teal,
+  .highlight-blue,
+  .highlight-purple,
+  .highlight-pink,
+  .highlight-red {
+    color: inherit;
+  }
+
+  .highlight-gray_background,
+  .highlight-brown_background,
+  .highlight-orange_background,
+  .highlight-yellow_background,
+  .highlight-teal_background,
+  .highlight-blue_background,
+  .highlight-purple_background,
+  .highlight-pink_background,
+  .highlight-red_background {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .code,
+  code {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f78c6c;
+  }
+
+  blockquote {
+    border-left: 3px solid #888;
+    color: #ccc;
+  }
+
+  .bookmark-description {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .select-value-color-default,
+  .select-value-color-gray,
+  .select-value-color-brown,
+  .select-value-color-orange,
+  .select-value-color-yellow,
+  .select-value-color-green,
+  .select-value-color-blue,
+  .select-value-color-purple,
+  .select-value-color-pink,
+  .select-value-color-red {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+body {
+  padding: 0px 20px 50px 20px;
+}
+
+img {
+  border-radius: 20px;
+}
+
+.block-color-gray_background{
+  border-radius: 10px;
+}
+
+/* Callout dasar: flex container dengan gap */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+              /* fallback background */
+  border: 1px solid #ddd;
+  margin: 1.5em 0;
+}
+
+
+}
+
+/* Contoh ikon dalam callout */
+.callout .icon {
+  font-size: 1.5em;
+  flex-shrink: 0;
+}
+
+/* Konten callout */
+.callout h1,
+.callout h2,
+.callout h3,
+.callout p {
+  margin: 0;
+}
+
+
+	
+</style></head><body><article id="22517d26-beee-80e5-9b72-f30acb542e7e" class="page sans"><header><img class="page-cover-image" src="Yang%20Terjadi%20Saat%20Mengakses%20Website%2022517d26beee80e59b72f30acb542e7e/hikari_nozomi_rl.jpg" style="object-position:center 65.27000000000001%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🤳</span></div><h1 class="page-title">Yang Terjadi Saat Mengakses Website</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22517d26-beee-806f-82b5-fc4da3d4277d"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><h2 id="22517d26-beee-806a-982f-e99f81469b6d" class=""><strong>Apa yang Terjadi Saat Kamu Mengakses Sebuah Website?</strong></h2></div></figure><ol type="1" id="22517d26-beee-808a-b2c6-c53a6c3af233" class="numbered-list" start="1"><li><strong>DNS</strong>: Komputer kamu mencari tahu <strong>alamat IP</strong> dari nama domain yang kamu masukkan (misalnya <code>google.com</code>).</li></ol><ol type="1" id="22517d26-beee-80a9-8bc1-c119b74c3de9" class="numbered-list" start="2"><li><strong>HTTP</strong>: Komputer kamu mengirim permintaan (request) menggunakan protokol HTTP ke web server tujuan.</li></ol><ol type="1" id="22517d26-beee-8061-8da0-ef174fdc44c5" class="numbered-list" start="3"><li><strong>Server Web</strong>: Server merespons dengan mengirim <strong>file HTML, CSS, JavaScript, gambar, dll</strong>.</li></ol><ol type="1" id="22517d26-beee-800f-baa4-cfc3a35493af" class="numbered-list" start="4"><li><strong>Browser</strong>: Browser kamu membaca file tersebut dan <strong>menampilkan halaman web</strong> di layar.</li></ol><p id="22517d26-beee-80d9-b3ef-cb6fec0c8e9d" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22517d26-beee-80c7-998b-c5b1e706801d"><div style="font-size:1.5em"><span class="icon">⚙</span></div><div style="width:100%"><h2 id="22517d26-beee-8024-a9fa-de0675458253" class=""><strong>Komponen Pendukung Lainnya di Dunia Web</strong></h2></div></figure><h3 id="22517d26-beee-8099-8616-d88158fe0904" class="">✅ 1. <strong>Load Balancer</strong></h3><blockquote id="22517d26-beee-8081-8637-ea50387c1be9" class="">Digunakan untuk membagi beban pengunjung ke beberapa server.</blockquote><p id="22517d26-beee-80ea-9bee-d6b17e89a7b1" class=""><strong>Fungsi utama:</strong></p><ul id="22517d26-beee-8082-88e2-dbf122e4efcd" class="bulleted-list"><li style="list-style-type:disc">Menangani <strong>lalu lintas tinggi</strong> agar tidak overload.</li></ul><ul id="22517d26-beee-8065-8af5-d5adb17e7731" class="bulleted-list"><li style="list-style-type:disc">Memberikan <strong>cadangan otomatis</strong> jika salah satu server mati.</li></ul><p id="22517d26-beee-80eb-a3a5-fc0097104d94" class=""><strong>Cara kerja:</strong></p><ul id="22517d26-beee-801c-ab1b-e98d80c91b8a" class="bulleted-list"><li style="list-style-type:disc">Permintaan web dikirim dulu ke load balancer.</li></ul><ul id="22517d26-beee-80b3-a904-fed8a721980c" class="bulleted-list"><li style="list-style-type:disc">Load balancer memilih server paling cocok, berdasarkan:<ul id="22517d26-beee-80da-9578-e76c5e5cc61c" class="bulleted-list"><li style="list-style-type:circle"><strong>Round-robin</strong>: mengirim bergiliran ke semua server.</li></ul><ul id="22517d26-beee-8061-8514-c82086d7c565" class="bulleted-list"><li style="list-style-type:circle"><strong>Weighted</strong>: memilih server dengan beban kerja paling ringan.</li></ul></li></ul><ul id="22517d26-beee-80df-ab2e-ec7726eef6ae" class="bulleted-list"><li style="list-style-type:disc">Melakukan <strong>health check</strong> ke tiap server secara rutin.</li></ul><hr id="22517d26-beee-80a4-b9e0-e84a50fcf19e"/><h3 id="22517d26-beee-8050-aebd-e3575a58854c" class="">✅ 2. <strong>CDN (Content Delivery Network)</strong></h3><blockquote id="22517d26-beee-8076-9739-cec5a4649b55" class="">Digunakan untuk mengirim file statis (gambar, CSS, JavaScript, video) dari server terdekat.</blockquote><p id="22517d26-beee-800f-94f6-c51763044491" class=""><strong>Keuntungan:</strong></p><ul id="22517d26-beee-80f6-a082-cb38089c3316" class="bulleted-list"><li style="list-style-type:disc"><strong>Mempercepat loading</strong> website dari seluruh dunia.</li></ul><ul id="22517d26-beee-8026-81d6-c3e34a544962" class="bulleted-list"><li style="list-style-type:disc"><strong>Mengurangi beban server utama</strong>.</li></ul><ul id="22517d26-beee-80f0-ace2-da9dc6b6d7b8" class="bulleted-list"><li style="list-style-type:disc">File disalin ke ribuan server di seluruh dunia.</li></ul><p id="22517d26-beee-800c-bb5c-ef49432bdfe7" class="">Contoh CDN: Cloudflare, Akamai, Amazon CloudFront</p><hr id="22517d26-beee-8025-9255-c59cae92cef3"/><h3 id="22517d26-beee-8019-b98c-eb29c021b2a9" class="">✅ 3. <strong>Database</strong></h3><blockquote id="22517d26-beee-80dd-88b4-ff0e61a50526" class="">Digunakan untuk menyimpan dan mengambil data pengguna.</blockquote><p id="22517d26-beee-800e-a19a-f64b486fe450" class=""><strong>Contoh penggunaan:</strong></p><ul id="22517d26-beee-80ce-9420-cff15ac63451" class="bulleted-list"><li style="list-style-type:disc">Menyimpan akun/login</li></ul><ul id="22517d26-beee-8079-8f2d-da167b530b27" class="bulleted-list"><li style="list-style-type:disc">Menyimpan komentar atau postingan</li></ul><ul id="22517d26-beee-80db-86bb-d938ec1676e3" class="bulleted-list"><li style="list-style-type:disc">Menyimpan produk di toko online</li></ul><p id="22517d26-beee-80da-8af7-d1b8e82c936d" class=""><strong>Jenis database umum:</strong></p><ul id="22517d26-beee-80f2-85b0-cef7738673b5" class="bulleted-list"><li style="list-style-type:disc"><strong>MySQL, PostgreSQL</strong> → relasional</li></ul><ul id="22517d26-beee-8091-9de7-e01ea7360739" class="bulleted-list"><li style="list-style-type:disc"><strong>MongoDB</strong> → NoSQL</li></ul><ul id="22517d26-beee-8017-bee4-f96a5b6bb51c" class="bulleted-list"><li style="list-style-type:disc"><strong>MSSQL</strong> → buatan Microsoft</li></ul><hr id="22517d26-beee-80a4-8f75-d17248c89af2"/><h3 id="22517d26-beee-803c-890a-f69b04aec2ef" class="">✅ 4. <strong>WAF (Web Application Firewall)</strong></h3><blockquote id="22517d26-beee-809b-8e4e-f9fa69275af4" class="">Melindungi website dari serangan siber.</blockquote><p id="22517d26-beee-80f0-9fad-e3b71e1851d9" class=""><strong>Fungsi utama:</strong></p><ul id="22517d26-beee-808c-b14f-dec0c9f916ed" class="bulleted-list"><li style="list-style-type:disc">Memeriksa permintaan dari pengguna: apakah itu dari browser asli atau dari bot.</li></ul><ul id="22517d26-beee-80cb-bf9a-c077c23b47e6" class="bulleted-list"><li style="list-style-type:disc">Menangkal serangan seperti:<ul id="22517d26-beee-802b-b0d4-e3c755437460" class="bulleted-list"><li style="list-style-type:circle"><strong>SQL injection</strong></li></ul><ul id="22517d26-beee-8095-8091-da07f17ed86d" class="bulleted-list"><li style="list-style-type:circle"><strong>XSS (Cross-site scripting)</strong></li></ul><ul id="22517d26-beee-808b-9735-d3aa36200792" class="bulleted-list"><li style="list-style-type:circle"><strong>Brute force</strong></li></ul><ul id="22517d26-beee-805d-9059-e83583489c2b" class="bulleted-list"><li style="list-style-type:circle"><strong>DDoS ringan</strong></li></ul></li></ul><ul id="22517d26-beee-80d6-a47c-caf83e6d4ae4" class="bulleted-list"><li style="list-style-type:disc"><strong>Rate limiting</strong>: membatasi jumlah request dari satu IP dalam satu detik.</li></ul><p id="22517d26-beee-8003-b676-d656d9452b8d" class="">Jika ada permintaan mencurigakan → <strong>langsung diblokir</strong> sebelum mencapai server web.</p><p id="22517d26-beee-80fb-85a0-c228e990f56d" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22517d26-beee-804b-8d8e-f15113a6011c"><div style="font-size:1.5em"><span class="icon">🌎</span></div><div style="width:100%"><h2 id="22517d26-beee-8055-8b69-e3f1f1f30ac9" class=""><strong>Apa itu Web Server?</strong></h2></div></figure><h3 id="22517d26-beee-80ac-9a87-ff4d3c55584e" class="">✅ <strong>Definisi:</strong></h3><p id="22517d26-beee-8015-b013-ee647fe232bf" class=""><strong>Web server</strong> adalah <strong>perangkat lunak</strong> (software) yang:</p><ol type="1" id="22517d26-beee-8064-92d9-f6e099333c89" class="numbered-list" start="1"><li><strong>Mendengarkan koneksi dari klien</strong> (seperti browser)</li></ol><ol type="1" id="22517d26-beee-8093-977a-c1873b70d392" class="numbered-list" start="2"><li>Menggunakan <strong>protokol HTTP</strong> untuk mengirimkan konten web (HTML, gambar, CSS, dll)</li></ol><p id="22517d26-beee-8090-bc79-c3c373f43419" class="">Jadi, saat kamu membuka website seperti <code>http://example.com</code>, browser kamu <strong>menghubungi web server</strong>, dan server akan mengirimkan file yang diminta.</p><h3 id="22517d26-beee-80f0-8312-c5c806764f25" class="">🔧 <strong>Contoh Software Web Server Populer:</strong></h3><table id="22517d26-beee-809b-95f5-f1d638e5e7fd" class="simple-table"><thead class="simple-table-header"><tr id="22517d26-beee-8071-b57a-d15591e1e241"><th id="?&lt;Eh" class="simple-table-header-color simple-table-header">Nama</th><th id="BXcV" class="simple-table-header-color simple-table-header">Sistem Operasi</th><th id="E=_Y" class="simple-table-header-color simple-table-header">Keterangan</th></tr></thead><tbody><tr id="22517d26-beee-8077-98a8-f02a71921a4d"><td id="?&lt;Eh" class="">Apache</td><td id="BXcV" class="">Linux, Windows</td><td id="E=_Y" class="">Paling umum digunakan</td></tr><tr id="22517d26-beee-80a9-bd12-d6211f71577a"><td id="?&lt;Eh" class="">Nginx</td><td id="BXcV" class="">Linux</td><td id="E=_Y" class="">Cepat dan ringan</td></tr><tr id="22517d26-beee-8027-9120-d1980dc3e395"><td id="?&lt;Eh" class="">IIS</td><td id="BXcV" class="">Windows</td><td id="E=_Y" class="">Bawaan sistem Windows Server</td></tr><tr id="22517d26-beee-8032-9f4a-f6709e21c7d6"><td id="?&lt;Eh" class="">NodeJS</td><td id="BXcV" class="">Semua OS</td><td id="E=_Y" class="">Web server berbasis JavaScript</td></tr></tbody></table><h2 id="22517d26-beee-8047-9694-d6cfdd1cbfb8" class="">📁 <strong>Root Directory (Folder Akar)</strong></h2><p id="22517d26-beee-80d8-8da8-e35869b090d0" class="">Web server mengirim file dari folder khusus yang disebut <strong>root directory</strong> — tempat semua file web disimpan.</p><table id="22517d26-beee-80fb-ba6e-fbae93ac33b6" class="simple-table"><thead class="simple-table-header"><tr id="22517d26-beee-80bc-8d7d-f9e30614a549"><th id="K]|?" class="simple-table-header-color simple-table-header">Web Server</th><th id="FMqs" class="simple-table-header-color simple-table-header">Lokasi Default (Root Directory)</th></tr></thead><tbody><tr id="22517d26-beee-80fd-a940-e1a9fd309dae"><td id="K]|?" class="">Apache &amp; Nginx</td><td id="FMqs" class=""><code>/var/www/html</code> (di Linux)</td></tr><tr id="22517d26-beee-80f5-969d-c99d8a9e72fe"><td id="K]|?" class="">IIS</td><td id="FMqs" class=""><code>C:\inetpub\wwwroot</code> (di Windows)</td></tr></tbody></table><h3 id="22517d26-beee-8020-94b8-efeb2c60d501" class="">🧪 <strong>Contoh:</strong></h3><p id="22517d26-beee-803e-b982-db39cb81ccdc" class="">Jika kamu mengakses:</p><blockquote id="22517d26-beee-80e6-a2f1-c41967720681" class="">http://www.example.com/picture.jpg</blockquote><p id="22517d26-beee-800a-bb36-ec7fc9f0369d" class="">Web server akan mengirimkan file dari:</p><blockquote id="22517d26-beee-80f2-a739-c2c2777d7640" class="">/var/www/html/picture.jpg  (jika pakai Linux)</blockquote><p id="22517d26-beee-8025-a021-ed5cbc09f8e2" class="">Artinya file <code>picture.jpg</code> harus <strong>benar-benar ada di folder tersebut</strong>, kalau tidak maka akan muncul error 404 (file not found).</p><p id="22517d26-beee-801a-99b8-c41af88db64b" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22517d26-beee-80bc-baa7-db5c8312f980"><div style="font-size:1.5em"><span class="icon">🏠</span></div><div style="width:100%"><h2 id="22517d26-beee-8093-ac8f-ceecce1f0372" class=""><strong>Apa itu Virtual Hosts?</strong></h2></div></figure><h3 id="22517d26-beee-80d2-99e3-ca4a17f9d407" class="">✅ <strong>Pengertian:</strong></h3><p id="22517d26-beee-809d-aee1-d706147a894c" class=""><strong>Virtual Host</strong> adalah fitur pada web server yang memungkinkan <strong>satu server fisik melayani banyak website dengan domain berbeda</strong>.</p><p id="22517d26-beee-8071-abb2-fca360ec943b" class="">Dengan Virtual Host, kamu bisa meng-host:</p><ul id="22517d26-beee-80ea-ad0a-d71aaa2daac7" class="bulleted-list"><li style="list-style-type:disc"><code>www.satu.com</code></li></ul><ul id="22517d26-beee-80f5-91fb-d7de894b8204" class="bulleted-list"><li style="list-style-type:disc"><code>www.dua.com</code></li></ul><ul id="22517d26-beee-805a-a4dd-c53438e80dee" class="bulleted-list"><li style="list-style-type:disc"><code>www.apapun.com</code><p id="22517d26-beee-80a0-83b0-e8a505aae58e" class="">...semuanya di <strong>satu server saja</strong>.</p></li></ul><hr id="22517d26-beee-80e2-9497-e99eb2116e8c"/><h2 id="22517d26-beee-80ed-94cd-cb15cf69b5d5" class="">🧠 <strong>Bagaimana Cara Kerjanya?</strong></h2><ol type="1" id="22517d26-beee-8042-a418-ed36aab5e12a" class="numbered-list" start="1"><li>Saat browser mengakses website (<code>www.satu.com</code>), ia mengirim permintaan HTTP yang berisi <strong>hostname</strong> di header.</li></ol><ol type="1" id="22517d26-beee-8094-9587-fc7e39f16e4b" class="numbered-list" start="2"><li>Web server akan membaca hostname itu.</li></ol><ol type="1" id="22517d26-beee-8023-be9f-e5f018f4ce16" class="numbered-list" start="3"><li>Web server mencocokkannya dengan konfigurasi <strong>virtual host</strong>.</li></ol><ol type="1" id="22517d26-beee-802f-a724-de4b0a3ede04" class="numbered-list" start="4"><li>Jika ada <strong>cocokan</strong>, maka akan menampilkan halaman dari folder yang sesuai.</li></ol><ol type="1" id="22517d26-beee-807c-9867-f4b96af9f0e4" class="numbered-list" start="5"><li>Jika <strong>tidak ada cocokan</strong>, maka akan menampilkan <strong>website default</strong>.</li></ol><hr id="22517d26-beee-80d8-98fb-f6e01076bfa2"/><h2 id="22517d26-beee-8044-a609-dfd58ff2bb48" class="">📁 <strong>Contoh:</strong></h2><table id="22517d26-beee-80b4-8276-f5e6a8dd57ee" class="simple-table"><thead class="simple-table-header"><tr id="22517d26-beee-8012-8e07-c2d87f3a6ee4"><th id="{?dM" class="simple-table-header-color simple-table-header">Domain</th><th id="Op@a" class="simple-table-header-color simple-table-header">Root Folder</th></tr></thead><tbody><tr id="22517d26-beee-8081-9757-cf55c87ac4bd"><td id="{?dM" class=""><code>satu.com</code></td><td id="Op@a" class=""><code>/var/www/satu</code></td></tr><tr id="22517d26-beee-801d-9181-c0be472dc1ac"><td id="{?dM" class=""><code>dua.com</code></td><td id="Op@a" class=""><code>/var/www/dua</code></td></tr></tbody></table><p id="22517d26-beee-80c8-a448-e85ff6063988" class="">Jadi, jika kamu mengakses:</p><blockquote id="22517d26-beee-80f0-88c9-f7b48235dffe" class="">http://satu.com</blockquote><p id="22517d26-beee-800e-8c04-d021560cae0e" class="">Server akan memberikan isi dari:</p><blockquote id="22517d26-beee-809e-9803-e90d5a801032" class="">/var/www/satu</blockquote><hr id="22517d26-beee-80c7-b1d0-d353a17af207"/><h2 id="22517d26-beee-80e7-b3d8-d73824b33748" class="">⚙️ <strong>Konfigurasi Virtual Host di Apache (Contoh)</strong></h2><p id="22517d26-beee-80d6-9a4c-f9d0136a46ce" class="">Contoh file konfigurasi Apache (<code>/etc/apache2/sites-available/satu.com.conf</code>):</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22517d26-beee-8082-ad16-c699d14bcc13" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;VirtualHost *:80&gt;
+  ServerName satu.com
+  DocumentRoot /var/www/website_satu
+&lt;/VirtualHost&gt;</code></pre><p id="22517d26-beee-80a2-b7a1-cae835d1ee5e" class="">Dan file lainnya untuk <code>dua.com</code>:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22517d26-beee-8027-a77c-f2fa54d7ce16" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;VirtualHost *:80&gt;
+  ServerName dua.com
+  DocumentRoot /var/www/website_dua
+&lt;/VirtualHost&gt;</code></pre><p id="22517d26-beee-8086-a950-c242a987fa26" class="">Setelah itu, kamu aktifkan konfigurasi dan restart Apache:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22517d26-beee-801b-b885-d9fcf61e6a5b" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">sudo a2ensite satu.com.conf
+sudo a2ensite dua.com.conf
+sudo systemctl restart apache2</code></pre><hr id="22517d26-beee-80d9-92b0-cf38747145fd"/><h3 id="22517d26-beee-8037-8ae2-e441f7ece7ab" class="">🚫 Jika Tidak Ada Kecocokan?</h3><p id="22517d26-beee-80a4-b9d6-ce8ff3a1e093" class="">Kalau kamu akses domain yang belum dikonfigurasi (misalnya <code>tiga.com</code>), web server akan menampilkan <strong>website default</strong>.</p><p id="22517d26-beee-804a-b0cc-e08cf7a181af" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22517d26-beee-80b3-96a6-f30ba513ebc6"><div style="font-size:1.5em"><span class="icon">🆚</span></div><div style="width:100%"><h2 id="22517d26-beee-8025-90b0-f9aa2673e7c7" class="">Konten Statis vs Dinamis</h2></div></figure><h2 id="22517d26-beee-800f-a6c5-c228a0f2f23a" class="">🧱 <strong>1. Konten Statis (Static Content)</strong></h2><h3 id="22517d26-beee-80c2-ae86-cc8a8f785b55" class="">✅ <strong>Apa itu?</strong></h3><p id="22517d26-beee-804e-ab40-cfeb379c1d4a" class="">Konten yang <strong>selalu sama</strong>, <strong>tidak berubah</strong>, dan langsung dikirim dari server <strong>tanpa diproses dulu</strong>.</p><h3 id="22517d26-beee-80a2-9357-fab332a0a28a" class="">📂 Contoh:</h3><ul id="22517d26-beee-8034-bf8d-ec023f8e8b2a" class="bulleted-list"><li style="list-style-type:disc">Gambar (<code>.jpg</code>, <code>.png</code>)</li></ul><ul id="22517d26-beee-8014-9d2a-db5d59d746ff" class="bulleted-list"><li style="list-style-type:disc">File CSS (<code>style.css</code>)</li></ul><ul id="22517d26-beee-8026-84b0-f50f338b49a9" class="bulleted-list"><li style="list-style-type:disc">File JavaScript (<code>script.js</code>)</li></ul><ul id="22517d26-beee-8046-8636-cd86513d6136" class="bulleted-list"><li style="list-style-type:disc">HTML sederhana yang isinya tidak pernah berubah (<code>index.html</code>)</li></ul><h3 id="22517d26-beee-8045-958c-c44feca42047" class="">⚙️ Cara kerja:</h3><p id="22517d26-beee-808f-b14c-dedf29b38902" class="">Server hanya mengirim file apa adanya. Tidak peduli siapa yang mengakses, hasilnya <strong>selalu sama</strong>.</p><hr id="22517d26-beee-8003-aef4-c816f3c94ae4"/><h2 id="22517d26-beee-80aa-9b78-d9f7697d79f5" class="">🔄 <strong>2. Konten Dinamis (Dynamic Content)</strong></h2><h3 id="22517d26-beee-8038-b0dc-e6d699b77c3e" class="">✅ <strong>Apa itu?</strong></h3><p id="22517d26-beee-8005-ae9d-e39517c5e749" class="">Konten yang <strong>berubah-ubah tergantung permintaan</strong>. Biasanya diproses oleh <strong>bahasa pemrograman backend</strong>.</p><h3 id="22517d26-beee-80a0-8aa6-dd7ec6e34633" class="">📂 Contoh:</h3><ul id="22517d26-beee-8011-a248-d3adc66fb09d" class="bulleted-list"><li style="list-style-type:disc">Homepage blog yang menampilkan artikel terbaru</li></ul><ul id="22517d26-beee-8032-b5b7-cc4ab7ac1a17" class="bulleted-list"><li style="list-style-type:disc">Halaman profil pengguna yang berbeda tergantung siapa yang login</li></ul><ul id="22517d26-beee-801c-87c4-e5b6d900bb76" class="bulleted-list"><li style="list-style-type:disc">Halaman pencarian yang hasilnya berubah tergantung kata yang diketik</li></ul><h3 id="22517d26-beee-803b-a73e-fb151f26ab13" class="">⚙️ Cara kerja:</h3><ol type="1" id="22517d26-beee-807c-adad-c2e2cff63652" class="numbered-list" start="1"><li>Pengguna mengirim permintaan (contoh: <code>?name=adam</code>)</li></ol><ol type="1" id="22517d26-beee-80d6-ab15-dfa5effe95ee" class="numbered-list" start="2"><li>Server menjalankan <strong>kode backend</strong> (misalnya PHP, Python, NodeJS)</li></ol><ol type="1" id="22517d26-beee-80aa-9703-e624ae392123" class="numbered-list" start="3"><li>Hasil pemrosesan dikirim ke browser sebagai HTML</li></ol><hr id="22517d26-beee-8062-bbb8-de66ae436a2b"/><h2 id="22517d26-beee-803c-94b2-f45b8b6f24bf" class="">🔧 <strong>Contoh Kasus: Dynamic dengan PHP</strong></h2><p id="22517d26-beee-80b6-8919-f82846c729b4" class="">Permintaan ke URL:</p><blockquote id="22517d26-beee-8020-8a2a-ec09112ec265" class="">http://example.com/index.php?name=adam</blockquote><p id="22517d26-beee-80e0-8b6a-e0a806ffe401" class="">Isi file <code>index.php</code>:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22517d26-beee-8096-a8c1-d9e91ccf06cc" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">&lt;html&gt;&lt;body&gt;Hello &lt;?php echo $_GET[&quot;name&quot;]; ?&gt;&lt;/body&gt;&lt;/html&gt;</code></pre><p id="22517d26-beee-80c4-ac55-e35c21df816c" class="">Hasil yang dilihat pengguna:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22517d26-beee-808b-89fc-d45919eec14a" class="code"><code class="language-HTML" style="white-space:pre-wrap;word-break:break-all">&lt;html&gt;&lt;body&gt;Hello adam&lt;/body&gt;&lt;/html&gt;</code></pre><h3 id="22517d26-beee-80be-bbe4-e386145e57da" class="">🧠 Perhatikan:</h3><ul id="22517d26-beee-80e6-bcb9-ec2c1d4b4f78" class="bulleted-list"><li style="list-style-type:disc"><strong>Browser tidak pernah melihat kode PHP-nya</strong> karena PHP diproses di <strong>backend/server</strong>.</li></ul><ul id="22517d26-beee-8090-96a7-e73c51766881" class="bulleted-list"><li style="list-style-type:disc">Yang dikirim ke browser hanya hasil akhirnya dalam bentuk HTML.</li></ul><p id="22517d26-beee-80f1-a749-c407e83c6268" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22517d26-beee-808e-b2c0-f42e3e6538d1"><div style="font-size:1.5em"><span class="icon">🕹️</span></div><div style="width:100%"><h2 id="22517d26-beee-8062-b168-fde091878a5c" class=""><strong>Peran Frontend vs Backend</strong></h2></div></figure><table id="22517d26-beee-80af-ba98-fb1cede15bf6" class="simple-table"><thead class="simple-table-header"><tr id="22517d26-beee-80a1-bc4d-ec46333c9e79"><th id="LIEm" class="simple-table-header-color simple-table-header">Bagian</th><th id="QwSq" class="simple-table-header-color simple-table-header">Fungsi</th><th id="FZuG" class="simple-table-header-color simple-table-header">Contoh Teknologi</th></tr></thead><tbody><tr id="22517d26-beee-80d0-b58e-c0883f1969a7"><td id="LIEm" class=""><strong>Frontend</strong></td><td id="QwSq" class="">Apa yang dilihat pengguna</td><td id="FZuG" class="">HTML, CSS, JavaScript</td></tr><tr id="22517d26-beee-80c2-83b6-decfb24809b4"><td id="LIEm" class=""><strong>Backend</strong></td><td id="QwSq" class="">Apa yang diproses di server</td><td id="FZuG" class="">PHP, Python, NodeJS</td></tr></tbody></table><hr id="22517d26-beee-80be-940e-f282b8a35585"/><h2 id="22517d26-beee-80f0-b902-d2e83ba8dd3c" class="">🔒 <strong>Dampak Keamanan:</strong></h2><p id="22517d26-beee-80c7-aeee-e41fc95fb3bc" class="">Karena konten dinamis bisa menerima input dari pengguna dan memprosesnya di server, ini bisa:</p><ul id="22517d26-beee-800a-8f38-c82c96783462" class="bulleted-list"><li style="list-style-type:disc">Membuka celah serangan seperti <strong>SQL Injection</strong>, <strong>XSS</strong>, dll</li></ul><ul id="22517d26-beee-804b-98ec-ea049a6e2013" class="bulleted-list"><li style="list-style-type:disc">Menyebabkan data bocor jika server tidak memfilter input dengan benar</li></ul><blockquote id="22517d26-beee-80ca-a450-d3faabbf7b42" class="">⚠️ Semakin dinamis sebuah web, semakin tinggi risiko keamanannya jika tidak dirancang dengan baik.</blockquote><hr id="22517d26-beee-802e-93d2-df5da0bf78a8"/><h2 id="22517d26-beee-807d-85b6-e58d8a307d84" class="">🧠 Kesimpulan:</h2><table id="22517d26-beee-803d-8ca8-f53271a8ab4f" class="simple-table"><thead class="simple-table-header"><tr id="22517d26-beee-8020-a091-faabdd362928"><th id="{&lt;dQ" class="simple-table-header-color simple-table-header">Konten Statis</th><th id="H[Ua" class="simple-table-header-color simple-table-header">Konten Dinamis</th></tr></thead><tbody><tr id="22517d26-beee-806d-9e8d-c78669adb6d5"><td id="{&lt;dQ" class="">Tidak berubah</td><td id="H[Ua" class="">Berubah tergantung input/user</td></tr><tr id="22517d26-beee-801d-9e89-c64d3096bbf7"><td id="{&lt;dQ" class="">Langsung dikirim dari server</td><td id="H[Ua" class="">Diproses dulu oleh backend</td></tr><tr id="22517d26-beee-802c-b72a-e01669418675"><td id="{&lt;dQ" class="">Contoh: gambar, CSS, HTML</td><td id="H[Ua" class="">Contoh: hasil pencarian, profil</td></tr><tr id="22517d26-beee-80a2-a956-dcf7a7ddddbc"><td id="{&lt;dQ" class="">Lebih aman &amp; cepat</td><td id="H[Ua" class="">Lebih fleksibel, tapi rawan celah</td></tr></tbody></table><p id="22517d26-beee-8060-8b3e-e885804f1a9c" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="22517d26-beee-80be-abc3-d880d6b72b06"><div style="font-size:1.5em"><span class="icon">🛣️</span></div><div style="width:100%"><h2 id="22517d26-beee-80bf-951e-fe4c11954491" class=""><strong>Proses Saat Kamu Mengakses Sebuah Website (</strong><code><strong>tryhackme.com</strong></code><strong>)</strong></h2></div></figure><h3 id="22517d26-beee-8012-b10c-d3e6245b8523" class="">🔹 1. <strong>Browser Meminta Halaman</strong></h3><p id="22517d26-beee-803b-927e-c8771d2c951e" class="">Kamu mengetik <code>https://tryhackme.com</code> dan menekan Enter.</p><hr id="22517d26-beee-80f6-8bb4-eed2d0c093bf"/><h3 id="22517d26-beee-8078-878d-c9ff4d548774" class="">🔹 2. <strong>Periksa Cache Lokal</strong></h3><p id="22517d26-beee-8016-8707-c696e02f9351" class="">Browser atau sistem operasi akan <strong>mengecek cache DNS lokal</strong> (apakah sudah pernah mengakses <code>tryhackme.com</code> sebelumnya).</p><p id="22517d26-beee-80b6-9700-e3b303cb1802" class="">Kalau <strong>alamat IP-nya masih tersimpan</strong>, akan langsung digunakan.</p><p id="22517d26-beee-805f-bad4-d81f7f469797" class="">Kalau <strong>tidak ada</strong>, maka lanjut ke langkah 3.</p><hr id="22517d26-beee-807f-9a1f-ce0d484f9392"/><h3 id="22517d26-beee-8093-af03-ce1507429a68" class="">🔹 3. <strong>Tanya ke Recursive DNS Resolver</strong></h3><p id="22517d26-beee-809a-8d7d-c0b799791136" class="">Komputermu menghubungi <strong>DNS resolver (biasanya milik ISP atau Google: 8.8.8.8)</strong> untuk mencari tahu alamat IP dari <code>tryhackme.com</code>.</p><hr id="22517d26-beee-805e-b92d-d9430247cc6d"/><h3 id="22517d26-beee-8070-8770-fc0735b02430" class="">🔹 4. <strong>DNS Resolver Tanya ke Root Server</strong></h3><p id="22517d26-beee-8050-b33e-eebd98feda16" class="">Jika DNS resolver tidak tahu, dia akan:</p><ul id="22517d26-beee-8041-8487-e572d9ad8b55" class="bulleted-list"><li style="list-style-type:disc">Bertanya ke <strong>root DNS server</strong> (misal: “.com” ada di mana?)</li></ul><hr id="22517d26-beee-80dc-8cf5-d9ec221fdf4f"/><h3 id="22517d26-beee-807c-914c-fd5912bf9bba" class="">🔹 5. <strong>Dari Root ke Authoritative DNS Server</strong></h3><ul id="22517d26-beee-808f-b362-c52966036c23" class="bulleted-list"><li style="list-style-type:disc">Root server akan mengarahkan ke <strong>DNS server khusus domain </strong><code><strong>.com</strong></code></li></ul><ul id="22517d26-beee-8021-af33-e6d80bc9788c" class="bulleted-list"><li style="list-style-type:disc">Dari sana, diarahkan lagi ke <strong>authoritative DNS server</strong> milik TryHackMe</li></ul><ul id="22517d26-beee-809d-b325-fae0380b4a68" class="bulleted-list"><li style="list-style-type:disc">DNS server itu memberikan <strong>alamat IP sebenarnya</strong> dari <code>tryhackme.com</code></li></ul><hr id="22517d26-beee-803d-8d1f-d78872f92bec"/><h3 id="22517d26-beee-80a5-8b72-c6c53edf4754" class="">🔹 6. <strong>Permintaan Melewati Web Application Firewall (WAF)</strong></h3><ul id="22517d26-beee-8092-a339-d4e6c4b8506f" class="bulleted-list"><li style="list-style-type:disc">Setelah tahu IP tujuan, permintaanmu dikirim ke sana</li></ul><ul id="22517d26-beee-80f6-9100-d7743bdb22ab" class="bulleted-list"><li style="list-style-type:disc">Tapi sebelum sampai ke server web, permintaanmu dicek oleh <strong>WAF</strong></li></ul><ul id="22517d26-beee-8014-ab4b-d6be5c5a2785" class="bulleted-list"><li style="list-style-type:disc">WAF akan:<ul id="22517d26-beee-80d4-b0f2-d893056cad2c" class="bulleted-list"><li style="list-style-type:circle">Mendeteksi serangan (XSS, SQL Injection, dll)</li></ul><ul id="22517d26-beee-8059-a38d-dc78462cbab0" class="bulleted-list"><li style="list-style-type:circle">Memblokir traffic berbahaya</li></ul><ul id="22517d26-beee-80c9-9bc0-dbfc51d26c01" class="bulleted-list"><li style="list-style-type:circle">Membatasi spam request</li></ul></li></ul><hr id="22517d26-beee-80a3-97e0-e018569e6666"/><h3 id="22517d26-beee-800a-a826-ef6af9975221" class="">🔹 7. <strong>Permintaan Melewati Load Balancer</strong></h3><ul id="22517d26-beee-80a2-bd85-fb6d55360f34" class="bulleted-list"><li style="list-style-type:disc">Jika situsnya sibuk atau terdiri dari banyak server, permintaan kamu diarahkan ke <strong>salah satu server yang sedang tidak sibuk</strong> menggunakan <strong>load balancer</strong></li></ul><ul id="22517d26-beee-8096-a407-e0ee693ecc0e" class="bulleted-list"><li style="list-style-type:disc">Load balancer memilih server terbaik (round-robin, least connection, dll)</li></ul><hr id="22517d26-beee-80af-aeee-d05a8cd5671f"/><h3 id="22517d26-beee-807c-a827-da0941c20eba" class="">🔹 8. <strong>Sambungan ke Web Server (Port 80/443)</strong></h3><ul id="22517d26-beee-80ca-b68b-e9fbdbb9f6b0" class="bulleted-list"><li style="list-style-type:disc">Browser kamu melakukan koneksi ke server menggunakan:<ul id="22517d26-beee-80d8-b7f5-d0a03e4c6b26" class="bulleted-list"><li style="list-style-type:circle"><strong>Port 80</strong> untuk HTTP biasa</li></ul><ul id="22517d26-beee-800d-a805-d51572f8673f" class="bulleted-list"><li style="list-style-type:circle"><strong>Port 443</strong> untuk HTTPS (aman, terenkripsi)</li></ul></li></ul><hr id="22517d26-beee-80c2-bab8-d96cba2f7012"/><h3 id="22517d26-beee-8072-8c7c-ddf2780bc7ea" class="">🔹 9. <strong>Web Server Menerima GET Request</strong></h3><ul id="22517d26-beee-8072-8de0-c0386002ec16" class="bulleted-list"><li style="list-style-type:disc">Web server (Apache, Nginx, dll) menerima permintaan dari browser:<blockquote id="22517d26-beee-80c3-a0e6-d59fe43fd19e" class="">GET / HTTP/1.1<br/>Host: tryhackme.com<br/></blockquote></li></ul><hr id="22517d26-beee-80d0-a425-d0f08f37f43b"/><h3 id="22517d26-beee-80ef-9864-d14d6633f461" class="">🔹 10. <strong>Web Server Menghubungi Web Application</strong></h3><ul id="22517d26-beee-8072-9b93-db319c85acbe" class="bulleted-list"><li style="list-style-type:disc">Web server meneruskan permintaan ke <strong>web application backend</strong> (misal: PHP, Node.js)</li></ul><ul id="22517d26-beee-806a-b47f-c3c551050c2f" class="bulleted-list"><li style="list-style-type:disc">Aplikasi ini yang menentukan apa yang harus ditampilkan ke user</li></ul><hr id="22517d26-beee-80c9-ae28-ed1cdea00b10"/><h3 id="22517d26-beee-8099-9416-e2d93d70cb47" class="">🔹 11. <strong>Web Application Berinteraksi dengan Database</strong></h3><ul id="22517d26-beee-80e2-81d3-f3ca1fb2911a" class="bulleted-list"><li style="list-style-type:disc">Jika perlu data (contoh: daftar room TryHackMe), aplikasi backend akan:<ul id="22517d26-beee-8082-80cb-fc5e89c69a4c" class="bulleted-list"><li style="list-style-type:circle">Mengirim query ke <strong>database</strong> (misal: MySQL, MongoDB)</li></ul><ul id="22517d26-beee-809f-b1ac-e7be5913241e" class="bulleted-list"><li style="list-style-type:circle">Mendapat data dan menyusunnya jadi HTML</li></ul></li></ul><hr id="22517d26-beee-807c-9ca7-e858e569a653"/><h3 id="22517d26-beee-80ca-a7be-c532ad8708c0" class="">🔹 12. <strong>HTML Dikirim ke Browser</strong></h3><ul id="22517d26-beee-803c-b71f-c75282150399" class="bulleted-list"><li style="list-style-type:disc">Web server mengembalikan <strong>HTML hasil akhir</strong> ke browser kamu</li></ul><ul id="22517d26-beee-802f-8d74-f28aac959b16" class="bulleted-list"><li style="list-style-type:disc">Jika ada gambar, CSS, JavaScript, browser akan memintanya satu per satu</li></ul><hr id="22517d26-beee-80ed-b5df-cbb681a7130f"/><h3 id="22517d26-beee-80a6-b8bf-da4bc13a2dcf" class="">🔹 13. <strong>Browser Merender Website</strong></h3><ul id="22517d26-beee-80b5-9adc-e6a90e36b771" class="bulleted-list"><li style="list-style-type:disc">Browser membaca HTML, CSS, dan JavaScript</li></ul><ul id="22517d26-beee-8063-93ba-f8cbd88efa63" class="bulleted-list"><li style="list-style-type:disc">Lalu menampilkan website secara visual di layar kamu</li></ul><p id="22517d26-beee-80dc-83ba-ed96fbb2c8d4" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

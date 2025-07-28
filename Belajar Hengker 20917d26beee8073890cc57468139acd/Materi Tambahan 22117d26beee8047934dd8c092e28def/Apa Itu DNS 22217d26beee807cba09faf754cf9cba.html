@@ -1,0 +1,806 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Apa Itu DNS</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  a, a.visited {
+    color: #9ecbff;
+  }
+
+  .source, .callout, .code, blockquote, table, th, td {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #e0e0e0;
+  }
+
+  .simple-table-header-color {
+    background: #333 !important;
+    color: #fff !important;
+  }
+
+  hr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .table_of_contents-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .highlight-default,
+  .highlight-gray,
+  .highlight-brown,
+  .highlight-orange,
+  .highlight-yellow,
+  .highlight-teal,
+  .highlight-blue,
+  .highlight-purple,
+  .highlight-pink,
+  .highlight-red {
+    color: inherit;
+  }
+
+  .highlight-gray_background,
+  .highlight-brown_background,
+  .highlight-orange_background,
+  .highlight-yellow_background,
+  .highlight-teal_background,
+  .highlight-blue_background,
+  .highlight-purple_background,
+  .highlight-pink_background,
+  .highlight-red_background {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .code,
+  code {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f78c6c;
+  }
+
+  blockquote {
+    border-left: 3px solid #888;
+    color: #ccc;
+  }
+
+  .bookmark-description {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .select-value-color-default,
+  .select-value-color-gray,
+  .select-value-color-brown,
+  .select-value-color-orange,
+  .select-value-color-yellow,
+  .select-value-color-green,
+  .select-value-color-blue,
+  .select-value-color-purple,
+  .select-value-color-pink,
+  .select-value-color-red {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+body {
+  padding: 0px 20px 50px 20px;
+}
+
+img {
+  border-radius: 20px;
+}
+
+.block-color-gray_background{
+  border-radius: 10px;
+}
+
+/* Callout dasar: flex container dengan gap */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+              /* fallback background */
+  border: 1px solid #ddd;
+  margin: 1.5em 0;
+}
+
+
+}
+
+/* Contoh ikon dalam callout */
+.callout .icon {
+  font-size: 1.5em;
+  flex-shrink: 0;
+}
+
+/* Konten callout */
+.callout h1,
+.callout h2,
+.callout h3,
+.callout p {
+  margin: 0;
+}
+
+
+	
+</style></head><body><article id="22217d26-beee-807c-ba09-faf754cf9cba" class="page sans"><header><img class="page-cover-image" src="Apa%20Itu%20DNS%2022217d26beee807cba09faf754cf9cba/hikari_nozomi_rl.jpg" style="object-position:center 65.63%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">⛓️</span></div><h1 class="page-title">Apa Itu DNS</h1><p class="page-description"></p></header><div class="page-body"><p id="22217d26-beee-809e-9a07-f562d8aa2ea8" class="">Bayangkan kamu ingin mengunjungi situs web seperti <code>tryhackme.com</code>, tapi tanpa DNS, kamu harus mengetik IP seperti ini:</p><blockquote id="22217d26-beee-80b0-94d2-c62d68e8be2f" class="">104.26.10.229</blockquote><p id="22217d26-beee-8098-84b1-e523d28d8281" class="">Susah diingat, kan?</p><p id="22217d26-beee-8000-a738-fb8f3f51ca04" class="">Nah, <strong>DNS (Domain Name System)</strong> adalah sistem yang berfungsi <strong>mengubah nama domain (seperti tryhackme.com) menjadi IP address (seperti 104.26.10.229)</strong> agar kamu tidak perlu mengingat angka-angka rumit.</p><hr id="22217d26-beee-80c9-858a-ed37360460ce"/><h2 id="22217d26-beee-8067-8337-cb5935ff58e5" class="">🏠 Analogi DNS</h2><blockquote id="22217d26-beee-8048-9811-e9f8f6e48dc6" class="">Seperti buku telepon untuk internet.</blockquote><p id="22217d26-beee-80e8-8d65-c62a8899d80c" class="">Kamu ingin menelepon “Pizza Hut”, tapi kamu tidak tahu nomor teleponnya. Kamu buka buku telepon, cari &quot;Pizza Hut&quot;, lalu dapatkan nomornya.</p><p id="22217d26-beee-80ed-94eb-f8e67e83c867" class=""><strong>Begitu juga dengan DNS</strong>: kamu ketik <code>tryhackme.com</code>, DNS mencari nomor IP-nya dan menghubungkanmu.</p><hr id="22217d26-beee-804c-9b08-c70ca28ba102"/><h2 id="22217d26-beee-8066-977a-dcbd43a6820c" class="">🔗 Struktur Nama Domain</h2><p id="22217d26-beee-80fb-8a09-d4c9ab5a4103" class="">Misalnya: <code>admin.tryhackme.com</code></p><table id="22217d26-beee-803a-914c-c8dc4099b1e8" class="simple-table"><tbody><tr id="22217d26-beee-80b1-ad4b-f8a2fe62d812"><td id="_vm=" class="">Bagian</td><td id="\wyY" class="">Nama</td><td id="r_|f" class="">Penjelasan</td></tr><tr id="22217d26-beee-80e1-8875-ea87242c3f5e"><td id="_vm=" class=""><code>.com</code></td><td id="\wyY" class=""><strong>TLD</strong> (Top-Level Domain)</td><td id="r_|f" class="">Akhiran domain, contoh: <code>.com</code>, <code>.id</code>, <code>.org</code>, <code>.co.uk</code>, dll</td></tr><tr id="22217d26-beee-80a3-9a11-fcbd40549202"><td id="_vm=" class=""><code>tryhackme</code></td><td id="\wyY" class=""><strong>Second-Level Domain</strong></td><td id="r_|f" class="">Nama utama domain</td></tr><tr id="22217d26-beee-808a-9f53-ff89eec3d1d4"><td id="_vm=" class=""><code>admin</code></td><td id="\wyY" class=""><strong>Subdomain</strong></td><td id="r_|f" class="">Bagian tambahan di depan nama domain utama</td></tr></tbody></table><hr id="22217d26-beee-8050-b346-d9d11e473b1d"/><h2 id="22217d26-beee-80f6-bac6-e0079d9dd2e2" class="">📘 Jenis TLD (Top-Level Domain)</h2><ul id="22217d26-beee-80c6-9cb7-f9d85229d94b" class="bulleted-list"><li style="list-style-type:disc"><strong>gTLD (Generic)</strong>: <code>.com</code>, <code>.org</code>, <code>.net</code>, <code>.biz</code>, <code>.online</code></li></ul><ul id="22217d26-beee-8062-a7ec-e3502f739808" class="bulleted-list"><li style="list-style-type:disc"><strong>ccTLD (Country Code)</strong>: <code>.id</code>, <code>.my</code>, <code>.jp</code>, <code>.uk</code>, <code>.us</code></li></ul><hr id="22217d26-beee-8059-90b4-d3a17aafa909"/><h2 id="22217d26-beee-801a-a9d3-cd7cca0c7c0c" class="">🔧 Jenis-jenis Record DNS</h2><p id="22217d26-beee-804e-8713-d7118e69e386" class="">DNS tidak cuma dipakai untuk situs web. Ada banyak jenis record DNS, dan ini adalah yang paling sering kamu temui:</p><table id="22217d26-beee-802e-a84c-c5deea750002" class="simple-table"><thead class="simple-table-header"><tr id="22217d26-beee-8038-bbfa-e48b78ad1b26"><th id="&gt;BTj" class="simple-table-header-color simple-table-header">Jenis Record</th><th id="xxG:" class="simple-table-header-color simple-table-header">Fungsi</th></tr></thead><tbody><tr id="22217d26-beee-8017-8c2d-e0935595f4be"><td id="&gt;BTj" class=""><strong>A</strong></td><td id="xxG:" class="">Menghubungkan nama domain ke <strong>alamat IPv4</strong></td></tr><tr id="22217d26-beee-803c-a73b-d7ffed7a79da"><td id="&gt;BTj" class=""><strong>AAAA</strong></td><td id="xxG:" class="">Menghubungkan nama domain ke <strong>alamat IPv6</strong></td></tr><tr id="22217d26-beee-80f6-b051-f827a1e7fcfb"><td id="&gt;BTj" class=""><strong>CNAME</strong></td><td id="xxG:" class="">Mengarahkan satu domain ke <strong>nama domain lain</strong> (bukan IP langsung)</td></tr><tr id="22217d26-beee-805e-93aa-e576bd162fca"><td id="&gt;BTj" class=""><strong>MX</strong></td><td id="xxG:" class="">Menentukan <strong>alamat server email</strong> yang digunakan oleh domain</td></tr><tr id="22217d26-beee-808c-809b-f0bc01d75683"><td id="&gt;BTj" class=""><strong>TXT</strong></td><td id="xxG:" class="">Menyimpan <strong>teks bebas</strong> untuk verifikasi, SPF, DKIM, dll</td></tr></tbody></table><hr id="22217d26-beee-80dc-b160-ecca76f93ee2"/><h2 id="22217d26-beee-8064-b7a1-c6354300c9f3" class="">🧠 Langkah-langkah Resolusi DNS</h2><h3 id="22217d26-beee-809d-8c24-e72632095b25" class="">🔍 1. <strong>Cek Cache Lokal</strong></h3><p id="22217d26-beee-80d7-b72e-fc3fa823c0e4" class="">Komputer kamu akan <strong>mengecek cache lokal</strong> dulu:</p><ul id="22217d26-beee-80bd-bbe3-d5aeb66d2428" class="bulleted-list"><li style="list-style-type:disc">Pernahkah kamu membuka domain ini sebelumnya?</li></ul><ul id="22217d26-beee-80a0-bee3-f6d23a9fd086" class="bulleted-list"><li style="list-style-type:disc">Jika <strong>pernah</strong>, IP-nya masih disimpan sementara (cached), dan proses <strong>berhenti di sini</strong> → kamu langsung terhubung!</li></ul><p id="22217d26-beee-807c-92d9-fb3a624b7c61" class="">Jika <strong>tidak ada di cache</strong>, proses lanjut ke langkah berikutnya.</p><h3 id="22217d26-beee-8007-af59-c3d7207a8a67" class="">🌐 2. <strong>Kirim ke Recursive DNS Server</strong></h3><p id="22217d26-beee-8085-8c9b-f34fb307aa95" class="">Permintaan dikirim ke <strong>Recursive DNS Server</strong> (biasanya milik <strong>ISP</strong>, atau bisa kamu ganti ke Google DNS, Cloudflare, OpenDNS, dll).</p><ul id="22217d26-beee-809b-b1f3-c7be4a1cb7ea" class="bulleted-list"><li style="list-style-type:disc">DNS ini <strong>juga punya cache sendiri</strong>.</li></ul><ul id="22217d26-beee-8067-b4ed-dc97911e1a75" class="bulleted-list"><li style="list-style-type:disc">Jika domain <strong>sudah pernah dicari sebelumnya</strong>, jawabannya langsung dikembalikan ke kamu → <strong>hemat waktu dan bandwidth</strong>.</li></ul><p id="22217d26-beee-80a1-a224-cf9bb19e70c1" class="">Jika <strong>tidak ada juga</strong>, proses lanjut ke <strong>perjalanan utama DNS</strong>.</p><h3 id="22217d26-beee-8086-ac56-fbe6e67a9aae" class="">🌍 3. <strong>Akses Root DNS Server</strong></h3><p id="22217d26-beee-803e-abe3-e9e8374e0471" class="">Root server adalah <strong>tulang punggung DNS di internet</strong>.</p><ul id="22217d26-beee-800f-9128-ef02075a64d7" class="bulleted-list"><li style="list-style-type:disc">Fungsinya: <strong>mengarah ke server TLD</strong> (Top-Level Domain) yang tepat.</li></ul><ul id="22217d26-beee-807c-8494-e4661f58f017" class="bulleted-list"><li style="list-style-type:disc">Contoh: untuk <code>www.tryhackme.com</code>, root server akan bilang:<blockquote id="22217d26-beee-80d9-ae16-e20cc0499d83" class="">“Ini domain .com, silakan tanya ke server TLD .com!”</blockquote></li></ul><h3 id="22217d26-beee-8047-ab0e-ff95bfd107ee" class="">🏢 4. <strong>Arahkan ke TLD Server</strong></h3><p id="22217d26-beee-804d-8c38-e0be9895ee09" class="">Server TLD <code>.com</code> menyimpan informasi ke mana kita harus bertanya untuk tahu <strong>alamat IP domain yang dimaksud</strong>.</p><ul id="22217d26-beee-804b-9713-fde2dda551a6" class="bulleted-list"><li style="list-style-type:disc">Misalnya: TLD <code>.com</code> akan memberi tahu bahwa untuk <code>tryhackme.com</code>, kamu harus tanya ke:<blockquote id="22217d26-beee-80db-9bbb-f84a67a6ae50" class="">kip.ns.cloudflare.com dan uma.ns.cloudflare.com (Nameserver)</blockquote></li></ul><h3 id="22217d26-beee-802b-868b-cfe945b140ff" class="">📡 5. <strong>Tanya ke Authoritative DNS Server</strong></h3><p id="22217d26-beee-800d-b0e7-e675ddc7d519" class="">Ini adalah server yang <strong>memiliki data DNS asli</strong> dari domain tersebut.</p><ul id="22217d26-beee-80e4-b0f9-d4eb19f4cb4b" class="bulleted-list"><li style="list-style-type:disc">Misalnya, <strong>owner</strong> dari <code>tryhackme.com</code> menyimpan semua record DNS (A record, CNAME, MX, dll) di server ini.</li></ul><ul id="22217d26-beee-8050-a8e1-cc37aaf003b8" class="bulleted-list"><li style="list-style-type:disc">Server ini akan menjawab dengan informasi yang dibutuhkan, misalnya:<blockquote id="22217d26-beee-80c0-8c5e-de7034442671" class="">A record → 104.26.10.229</blockquote></li></ul><h3 id="22217d26-beee-8021-9a85-fe27170dc1e3" class="">🔁 6. <strong>Kembalikan Jawaban ke Recursive DNS</strong></h3><ul id="22217d26-beee-80e2-ae38-c0c0d42432ff" class="bulleted-list"><li style="list-style-type:disc">Jawaban dari Authoritative DNS Server <strong>dikembalikan ke Recursive DNS</strong></li></ul><ul id="22217d26-beee-80a1-adaa-c29b5a31e385" class="bulleted-list"><li style="list-style-type:disc">Recursive DNS menyimpan hasil ini di cache → jadi jika ada permintaan serupa di masa depan, tidak perlu ulang proses panjang</li></ul><h3 id="22217d26-beee-80b7-8b4a-d49a65dbc737" class="">💻 7. <strong>Kembalikan ke Komputermu</strong></h3><ul id="22217d26-beee-80a3-bb5c-c819ad45c6c2" class="bulleted-list"><li style="list-style-type:disc">Recursive DNS <strong>mengirim IP address ke komputermu</strong></li></ul><ul id="22217d26-beee-808f-8bf0-ea1415ef8c89" class="bulleted-list"><li style="list-style-type:disc">Sekarang browser tahu harus ke mana: langsung terhubung ke server tujuan (misalnya <code>104.26.10.229</code>)</li></ul><h2 id="22217d26-beee-8067-b798-f0cb0b03662b" class="">🕒 TTL (Time To Live)</h2><p id="22217d26-beee-80a2-8bd6-f019f7ec8ffb" class="">Semua <strong>record DNS memiliki TTL (Time To Live)</strong>:</p><ul id="22217d26-beee-8055-b23d-dbc134f1a841" class="bulleted-list"><li style="list-style-type:disc">TTL menentukan <strong>berapa lama hasil itu disimpan dalam cache</strong></li></ul><ul id="22217d26-beee-80dc-a259-ebcc6c66baed" class="bulleted-list"><li style="list-style-type:disc">Misalnya: TTL = 3600 → simpan 1 jam</li></ul><ul id="22217d26-beee-809f-8cb6-d0df328ee828" class="bulleted-list"><li style="list-style-type:disc">Setelah itu, perlu <strong>permintaan ulang</strong> agar dapat data terbaru</li></ul><hr id="22217d26-beee-80bc-a1f7-edb1650dda71"/><h2 id="22217d26-beee-80d2-bb6c-ceed5c8133a8" class="">🔁 Ilustrasi Alur DNS</h2><blockquote id="22217d26-beee-8040-adad-df387e8e93ba" class="">Kamu: <a href="http://tryhackme.com/">tryhackme.com</a><br/>↓<br/>Cek Cache Lokal<br/>↓<br/>Recursive DNS Server (ISP / Google DNS)<br/>↓<br/>Root Server<br/>↓<br/>TLD Server (.com)<br/>↓<br/>Authoritative Name Server (Cloudflare)<br/>↓<br/>Jawaban: 104.26.10.229<br/>↓<br/>Simpan di cache &amp; Kirim ke komputer<br/>↓<br/>Terhubung ke website!<br/></blockquote><hr id="22217d26-beee-80ee-bbba-d597dd3b6efc"/><h2 id="22217d26-beee-80bb-9dd3-dae8750a74e4" class="">🔍 1. <strong>A Record</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22217d26-beee-8063-a3ec-efb43993328e" class="code"><code class="language-Bash">nslookup --type=A website.thm</code></pre><h3 id="22217d26-beee-8048-a5af-e8840acb2c23" class="">Hasil:</h3><blockquote id="22217d26-beee-80d7-9f62-f2a8d3ac4db4" class="">Server: 127.0.0.53<br/>Address: 127.0.0.53#53<br/><br/>Non-authoritative answer:<br/>Name: website.thm<br/>Address: 10.10.10.10<br/></blockquote><p id="22217d26-beee-80ac-956d-d938354838b9" class="">🔎 <strong>Makna:</strong></p><ul id="22217d26-beee-803f-a14a-df8d1df0371b" class="bulleted-list"><li style="list-style-type:disc"><strong>Server</strong>: <code>127.0.0.53</code> – adalah <em>resolver lokal</em> (biasanya DNS cache system di Linux, seperti Systemd-resolved).</li></ul><ul id="22217d26-beee-806b-9764-db8a77ad5c00" class="bulleted-list"><li style="list-style-type:disc"><strong>Non-authoritative answer</strong>: artinya jawaban ini berasal dari cache resolver, bukan langsung dari authoritative DNS server.</li></ul><ul id="22217d26-beee-8073-9fd7-cbb12bf460e7" class="bulleted-list"><li style="list-style-type:disc">Nama domain <code>website.thm</code> diarahkan ke <strong>alamat IP versi IPv4</strong> <code>10.10.10.10</code>.</li></ul><h2 id="22217d26-beee-8051-afe7-ef604e6c1a2a" class="">🔁 2. <strong>CNAME Record</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22217d26-beee-8055-b246-ef32317380c8" class="code"><code class="language-Bash">nslookup --type=CNAME shop.website.thm</code></pre><h3 id="22217d26-beee-80b7-8b87-ca61d6ee67bb" class="">Hasil:</h3><blockquote id="22217d26-beee-80fc-a1e1-ec2e3a610523" class="">Server: 127.0.0.53<br/>Address: 127.0.0.53#53<br/><br/>Non-authoritative answer:<br/><p id="22217d26-beee-80c8-8935-c016cb7bba4d" class="">shop.website.thm canonical name = <a href="http://shops.myshopify.com/">shops.myshopify.com</a></p></blockquote><p id="22217d26-beee-804f-a862-de47479bd83e" class="">🔎 <strong>Makna:</strong></p><ul id="22217d26-beee-8022-b60d-fbde588333d7" class="bulleted-list"><li style="list-style-type:disc"><strong>Server</strong>: <code>127.0.0.53</code> – adalah <em>resolver lokal</em> (biasanya DNS cache system di Linux, seperti Systemd-resolved).</li></ul><ul id="22217d26-beee-807f-b7aa-e677bc57bacb" class="bulleted-list"><li style="list-style-type:disc"><strong>Non-authoritative answer</strong>: artinya jawaban ini berasal dari cache resolver, bukan langsung dari authoritative DNS server.</li></ul><ul id="22217d26-beee-80ae-8782-d7afc58e417b" class="bulleted-list"><li style="list-style-type:disc">Subdomain <code>shop.website.thm</code> adalah <strong>alias (CNAME)</strong> dari domain <code>shops.myshopify.com</code>.<br/>✅ Browser akan lanjut melakukan query ke <br/><code>shops.myshopify.com</code> untuk mendapatkan <strong>IP aslinya</strong>.<br/><br/></li></ul><h2 id="22217d26-beee-801a-8537-dc03d53f57bb" class="">📬 3. <strong>MX Record</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22217d26-beee-8092-94af-e386842b5f54" class="code"><code class="language-Bash">nslookup --type=MX website.thm</code></pre><h3 id="22217d26-beee-801b-93e7-c8dfe7765426" class="">Hasil:</h3><blockquote id="22217d26-beee-8011-a056-d8f9e1992f73" class="">Server: 127.0.0.53<br/>Address: 127.0.0.53#53<br/><br/>Non-authoritative answer:<br/><p id="22217d26-beee-80bf-96eb-e55e70e05c4a" class="">website.thm mail exchanger = 30 <a href="http://alt4.aspmx.l.google.com/">alt4.aspmx.l.google.com</a></p></blockquote><p id="22217d26-beee-803d-9ee5-db15ecf4a7dc" class="">🔎 <strong>Makna:</strong></p><ul id="22217d26-beee-8021-a140-c01f5cd85909" class="bulleted-list"><li style="list-style-type:disc"><strong>Server</strong>: <code>127.0.0.53</code> – adalah <em>resolver lokal</em> (biasanya DNS cache system di Linux, seperti Systemd-resolved).</li></ul><ul id="22217d26-beee-8007-a79b-fe7ed82768d6" class="bulleted-list"><li style="list-style-type:disc"><strong>Non-authoritative answer</strong>: artinya jawaban ini berasal dari cache resolver, bukan langsung dari authoritative DNS server.</li></ul><ul id="22217d26-beee-80c5-a8b9-ccf1d19682d5" class="bulleted-list"><li style="list-style-type:disc">Email yang ditujukan ke <code>@website.thm</code> akan dikirim ke server mail <code>alt4.aspmx.l.google.com</code>, dan <strong>prioritasnya adalah 30</strong>.<br/>✅ Google menangani email domain ini. Jika kamu kirim email ke <br/><code>admin@website.thm</code>, itu akan sampai ke server Google ini.</li></ul><h2 id="22217d26-beee-80c6-9b58-d17a237052f7" class="">🧾 4. TXT<strong> Record</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22217d26-beee-803f-9c6a-f5c7fe18b56b" class="code"><code class="language-Bash">nslookup --type=TXT website.thm</code></pre><h3 id="22217d26-beee-80f5-bfc9-c9651a9ff017" class="">Hasil:</h3><blockquote id="22217d26-beee-8050-bf21-e57e6a0198c4" class="">Server: 127.0.0.53<br/>Address: 127.0.0.53#53<br/><br/>Non-authoritative answer:<br/><p id="22217d26-beee-806f-915b-ceca8ebbd9a9" class="">website.thm text = &quot;THM{7012BBA60997F35A9516C2E16D2944FF}”</p></blockquote><p id="22217d26-beee-80a1-b88d-fce5b0934068" class="">🔎 <strong>Makna:</strong></p><ul id="22217d26-beee-8086-9704-e40e2e0c65c4" class="bulleted-list"><li style="list-style-type:disc"><strong>Server</strong>: <code>127.0.0.53</code> – adalah <em>resolver lokal</em> (biasanya DNS cache system di Linux, seperti Systemd-resolved).</li></ul><ul id="22217d26-beee-8034-a60f-e33bba06113c" class="bulleted-list"><li style="list-style-type:disc"><strong>Non-authoritative answer</strong>: artinya jawaban ini berasal dari cache resolver, bukan langsung dari authoritative DNS server.<br/><br/><br/></li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
